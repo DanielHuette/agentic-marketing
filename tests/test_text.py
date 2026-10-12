@@ -13,8 +13,8 @@ from agentic_marketing.text import (
     estimate_tokens,
     figure_pattern,
     figure_variants,
-    first_sentences,
     normalise,
+    sentence_with_figure,
     slugify,
 )
 
@@ -101,6 +101,25 @@ def test_token_estimate_rounds_up() -> None:
     assert estimate_tokens("") == 0
 
 
-def test_first_sentences_takes_whole_sentences() -> None:
-    text = "Erster Satz. Zweiter Satz. Dritter Satz."
-    assert first_sentences(text, 2) == "Erster Satz. Zweiter Satz."
+def test_evidence_is_the_sentence_that_holds_the_figure() -> None:
+    text = "Erster Satz ohne Zahl. Im Mai waren es 45,8 Prozent. Dritter Satz."
+    assert sentence_with_figure(text, "45,8") == "Im Mai waren es 45,8 Prozent."
+
+
+def test_a_date_does_not_end_the_evidence_sentence() -> None:
+    text = "Vorweg. Seit dem 1. Januar 2026 gilt die Pflicht fuer alle. Danach mehr."
+    assert sentence_with_figure(text, "1. Januar 2026") == (
+        "Seit dem 1. Januar 2026 gilt die Pflicht fuer alle."
+    )
+
+
+def test_a_heading_above_the_sentence_is_not_quoted() -> None:
+    text = "Seite 7, Betriebsgroessen\n\nVon 12.480 Betrieben sind 61,4 Prozent klein."
+    assert sentence_with_figure(text, "61,4") == "Von 12.480 Betrieben sind 61,4 Prozent klein."
+
+
+def test_evidence_in_the_last_sentence_and_for_an_absent_figure() -> None:
+    assert sentence_with_figure("Vorweg. Zuletzt 12.480 Betriebe", "12.480") == (
+        "Zuletzt 12.480 Betriebe"
+    )
+    assert sentence_with_figure("Keine passende Zahl.", "11,4") is None

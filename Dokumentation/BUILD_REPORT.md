@@ -20,9 +20,10 @@ workspace. Three things in that chain had no implementation.
 | The compression claim is made but never measured | every `apply` prints findings in, verdicts, kept, and the curated share of the run | `src/agentic_marketing/report.py`, `tests/test_report.py` |
 | Figure matching dropped a decimal comma, so `1,7` matched the `17` of an unrelated date | a separator before exactly three digits may be dropped, any other may only be swapped; the match is bounded on both sides | `src/agentic_marketing/text.py`, `tests/test_text.py`, found by `scripts/benchmark.py` |
 | The decimal fix treated the dot of a date (`1. Januar 2026`) as a decimal separator; the bundled example dropped from 6 to 5 supported findings while the README still said 6 | a separator belongs to a number only with a digit on both sides, otherwise it matches as written | `src/agentic_marketing/text.py`, `tests/test_text.py`, `tests/test_cli.py::test_the_bundled_example_verifies_as_documented` |
+| The evidence shown to the reviewer was the first two sentences of the source, usually its heading, not the passage with the figure | the evidence is the sentence that holds the first figure found, headings above it left out | `src/agentic_marketing/text.py`, `tests/test_text.py`, `tests/test_verify.py` |
 | Many sites refuse a request without a descriptive user agent | every fetch sends one, with the configured contact appended | `src/agentic_marketing/sources.py` |
 | `last_updated` is written and never acted on | `stale` classifies by volatility and reports what is due, deleting nothing | `src/agentic_marketing/freshness.py`, `tests/test_freshness.py` |
-| No installation, no example, no tests | installable package, bundled example workspace that runs offline, 122 tests | `pyproject.toml`, `src/agentic_marketing/example/`, `tests/` |
+| No installation, no example, no tests | installable package, bundled example workspace that runs offline, 125 tests | `pyproject.toml`, `src/agentic_marketing/example/`, `tests/` |
 
 ## Decisions that shaped the code
 
@@ -47,8 +48,8 @@ repository. | **Output:** the results below.
 | `ruff check` | passed |
 | `ruff format --check` | passed |
 | `mypy src tests` (strict) | no issues in 32 source files |
-| `pytest` | 122 passed |
-| End-to-end on the bundled example | 7 findings, 6 supported, 1 partial, 6 kept, 30 % of the run |
+| `pytest` | 125 passed |
+| End-to-end on the bundled example | 7 findings, 6 supported, 1 partial, 6 kept, 32.5 % of the run |
 | Benchmark against live sources, figure pass | 16 of 16 verdicts as declared, 0 missed, 0 false alarms |
 | Benchmark against live sources, model pass | 16 of 16 verdicts as declared, both reversed statements caught |
 | `pack` on the bundled example | 5,668 characters, about 1,419 tokens, budget 12,000 |

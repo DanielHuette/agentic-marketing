@@ -1,6 +1,6 @@
 # Agentic Marketing
 
-[Deutsche Fassung](README.de.md)
+[Deutsche Fassung](README.de.md) · [Project page with the live benchmark](https://agenticmarketing.speedofthespirit.dev)
 
 A marketing workspace for agent teams, and the step that is missing from every one of
 them: research only enters the workspace after its figures have been checked against
@@ -79,11 +79,11 @@ What the example measures:
 | Findings in the run | 7 |
 | Figures held up | 6 supported, 1 partial |
 | Kept by the reviewer | 6 |
-| Raw run | 11,801 characters |
-| Curated file | 3,535 characters, 30 % of the run |
+| Raw run | 10,879 characters |
+| Curated file | 3,535 characters, 32.5 % of the run |
 | Session context pack | 5,668 characters, about 1,419 tokens |
 
-Thirty percent is the honest figure for an example small enough to read. A real run,
+A third is the honest figure for an example small enough to read. A real run,
 whose `raw/` folder holds the downloads and the working notes, compresses far harder; the
 point of printing it after every run is that the figure is measured rather than claimed.
 

@@ -17,9 +17,7 @@ from agentic_marketing.config import Settings
 from agentic_marketing.errors import SourceError
 from agentic_marketing.models import Finding, Stage, Verdict, Verification
 from agentic_marketing.sources import extract_text
-from agentic_marketing.text import contains_figure, first_sentences
-
-EVIDENCE_SENTENCES = 2
+from agentic_marketing.text import contains_figure, sentence_with_figure
 
 
 def verify_one(finding: Finding, text: str, *, today: date | None = None) -> Verification:
@@ -51,7 +49,7 @@ def verify_one(finding: Finding, text: str, *, today: date | None = None) -> Ver
         verdict = Verdict.PARTIAL
     else:
         verdict = Verdict.UNSUPPORTED
-    evidence = first_sentences(text, EVIDENCE_SENTENCES) if found else None
+    evidence = sentence_with_figure(text, found[0]) if found else None
     return Verification(
         finding_id=finding.id,
         stage=Stage.FIGURES,

@@ -1,6 +1,6 @@
 # Agentic Marketing
 
-[English version](README.md)
+[English version](README.md) · [Projektseite mit dem Prüfstand](https://agenticmarketing.speedofthespirit.dev)
 
 Ein Marketing-Arbeitsbereich für Agententeams — und der Schritt, der in jedem von ihnen
 fehlt: Recherche kommt erst in den Arbeitsbereich, nachdem ihre Zahlen gegen die Quellen
@@ -85,11 +85,11 @@ Was das Beispiel misst:
 | Befunde im Lauf | 7 |
 | Zahlen belegt | 6 vollständig, 1 teilweise |
 | Vom Menschen behalten | 6 |
-| Rohlauf | 11.801 Zeichen |
-| Gepflegte Datei | 3.535 Zeichen, 30 % des Laufs |
+| Rohlauf | 10.879 Zeichen |
+| Gepflegte Datei | 3.535 Zeichen, 32,5 % des Laufs |
 | Kontextpack der Sitzung | 5.668 Zeichen, rund 1.419 Tokens |
 
-Dreißig Prozent ist die ehrliche Zahl für ein Beispiel, das klein genug zum Lesen ist. Ein
+Ein Drittel ist die ehrliche Zahl für ein Beispiel, das klein genug zum Lesen ist. Ein
 echter Lauf, dessen `raw/`-Ordner die Downloads und Arbeitsnotizen enthält, verdichtet
 weit stärker. Der Sinn der Ausgabe nach jedem Lauf ist, dass die Zahl gemessen und nicht
 behauptet wird.

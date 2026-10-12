@@ -21,9 +21,10 @@ Umsetzung.
 | Die Verdichtung wird behauptet, nie gemessen | jedes `apply` gibt Befunde, Urteile, Behaltenes und den Anteil am Lauf aus | `src/agentic_marketing/report.py`, `tests/test_report.py` |
 | Der Zahlenabgleich entfernte das Dezimalkomma, so dass `1,7` auf die `17` eines fremden Datums passte | ein Trennzeichen vor genau drei Ziffern darf wegfallen, jedes andere nur getauscht werden; der Treffer ist beidseitig begrenzt | `src/agentic_marketing/text.py`, `tests/test_text.py`, gefunden von `scripts/benchmark.py` |
 | Die Komma-Korrektur hielt den Punkt eines Datums (`1. Januar 2026`) für ein Dezimaltrennzeichen; das mitgelieferte Beispiel fiel von 6 auf 5 belegte Befunde, die README nannte weiter 6 | ein Trennzeichen gehört nur zur Zahl, wenn links und rechts eine Ziffer steht, sonst muss es wörtlich passen | `src/agentic_marketing/text.py`, `tests/test_text.py`, `tests/test_cli.py::test_the_bundled_example_verifies_as_documented` |
+| Als Beleg sah der Prüfer die ersten zwei Sätze der Quelle, meist ihre Überschrift, nicht die Stelle mit der Zahl | Beleg ist der Satz, in dem die erste gefundene Zahl steht, ohne die Überschrift darüber | `src/agentic_marketing/text.py`, `tests/test_text.py`, `tests/test_verify.py` |
 | Viele Seiten weisen Aufrufe ohne aussagekräftige Kennung ab | jeder Abruf sendet eine, mit der hinterlegten Kontaktadresse | `src/agentic_marketing/sources.py` |
 | `last_updated` wird geschrieben und nie beachtet | `stale` stuft nach Alterungsklasse ein und meldet Fälliges, ohne zu löschen | `src/agentic_marketing/freshness.py`, `tests/test_freshness.py` |
-| Keine Installation, kein Beispiel, keine Tests | installierbares Paket, mitgelieferter Beispiel-Arbeitsbereich ohne Netzbedarf, 122 Tests | `pyproject.toml`, `src/agentic_marketing/example/`, `tests/` |
+| Keine Installation, kein Beispiel, keine Tests | installierbares Paket, mitgelieferter Beispiel-Arbeitsbereich ohne Netzbedarf, 125 Tests | `pyproject.toml`, `src/agentic_marketing/example/`, `tests/` |
 
 ## Entscheidungen, die den Code geformt haben
 
@@ -48,8 +49,8 @@ Repository. | **Output:** die Ergebnisse unten.
 | `ruff check` | bestanden |
 | `ruff format --check` | bestanden |
 | `mypy src tests` (strict) | keine Befunde in 32 Dateien |
-| `pytest` | 122 bestanden |
-| Durchlauf auf dem Beispiel | 7 Befunde, 6 belegt, 1 teilweise, 6 behalten, 30 % des Laufs |
+| `pytest` | 125 bestanden |
+| Durchlauf auf dem Beispiel | 7 Befunde, 6 belegt, 1 teilweise, 6 behalten, 32,5 % des Laufs |
 | Prüfstand gegen echte Quellen, Zahlenstufe | 16 von 16 Urteilen wie erklärt, 0 übersehen, 0 Fehlalarme |
 | Prüfstand gegen echte Quellen, Modellstufe | 16 von 16 Urteilen wie erklärt, beide umgedrehten Aussagen gefangen |
 | `pack` auf dem Beispiel | 5.668 Zeichen, rund 1.419 Tokens, Budget 12.000 |

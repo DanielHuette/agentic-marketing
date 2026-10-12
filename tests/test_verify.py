@@ -16,7 +16,7 @@ from agentic_marketing.models import Source, SourceKind, Stage, Verdict
 from agentic_marketing.verify import verify_all, verify_one
 from tests.conftest import TODAY, make_finding
 
-TEXT = "Von 12.480 Betrieben sind 61,4 Prozent klein."
+TEXT = "Die Erhebung lief im Fruehjahr. Von 12.480 Betrieben sind 61,4 Prozent klein."
 
 
 def test_all_figures_present_is_supported() -> None:
@@ -24,7 +24,7 @@ def test_all_figures_present_is_supported() -> None:
     assert result.verdict is Verdict.SUPPORTED
     assert result.stage is Stage.FIGURES
     assert not result.figures_missing
-    assert result.evidence
+    assert result.evidence == "Von 12.480 Betrieben sind 61,4 Prozent klein."
 
 
 def test_some_figures_present_is_partial() -> None:

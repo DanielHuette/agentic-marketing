@@ -20,6 +20,8 @@ NO_BREAK_SPACE = "\u00a0"
 _NON_SLUG = re.compile(r"[^a-z0-9]+")
 _WHITESPACE = re.compile(r"\s+")
 _FIGURE_SPLIT = re.compile(r"([.,\s])")
+_PARAGRAPH_BREAK = re.compile(r"\n\s*\n")
+_SENTENCE_END = re.compile(r"(?<!\b\d)(?<!\b\d\d)[.!?]\s+(?=[A-ZÄÖÜ])")
 
 
 def slugify(value: str) -> str:
@@ -143,7 +145,33 @@ def estimate_tokens(text: str) -> int:
     return math.ceil(len(text) / CHARS_PER_TOKEN)
 
 
-def first_sentences(text: str, count: int) -> str:
-    """The first sentences of a text, used to quote evidence without quoting a page."""
-    parts = re.split(r"(?<=[.!?])\s+", normalise(text).strip())
-    return " ".join(parts[:count]).strip()
+def sentence_with_figure(text: str, figure: str) -> str | None:
+    """The sentence of a source in which a figure occurs, quoted as evidence.
+
+    A reviewer has to see where the number stands, not how the page begins. Paragraphs are
+    separated first, so a heading above the sentence is not quoted with it. A sentence ends
+    at a full stop, question or exclamation mark followed by a capital letter, except after
+    a one- or two-digit number, because `1. Januar` is a date and not a sentence end.
+
+    Args:
+        text: Plain text of the source.
+        figure: The figure as the finding states it.
+
+    Returns:
+        The sentence holding the first occurrence, or None when the figure is absent.
+    """
+    pattern = figure_pattern(figure)
+    if pattern is None:
+        return None
+    for paragraph in _PARAGRAPH_BREAK.split(text):
+        flat = normalise(paragraph).strip()
+        match = pattern.search(flat)
+        if match is None:
+            continue
+        start = 0
+        for boundary in _SENTENCE_END.finditer(flat):
+            if boundary.start() >= match.start():
+                return flat[start : boundary.start() + 1].strip()
+            start = boundary.end()
+        return flat[start:].strip()
+    return None
