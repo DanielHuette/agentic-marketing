@@ -1,0 +1,97 @@
+[
+  {
+    "finding_id": "macro-step/betriebsgroessen",
+    "stage": "figures",
+    "verdict": "supported",
+    "figures_found": [
+      "12.480",
+      "61,4",
+      "4,2"
+    ],
+    "figures_missing": [],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielverband Zerspanung e.",
+    "checked": "2026-10-09",
+    "note": null
+  },
+  {
+    "finding_id": "macro-step/nachfolge",
+    "stage": "figures",
+    "verdict": "supported",
+    "figures_found": [
+      "3.900",
+      "1.150",
+      "54,6"
+    ],
+    "figures_missing": [],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielverband Zerspanung e.",
+    "checked": "2026-10-09",
+    "note": null
+  },
+  {
+    "finding_id": "macro-step/stillstand",
+    "stage": "figures",
+    "verdict": "supported",
+    "figures_found": [
+      "41",
+      "27"
+    ],
+    "figures_missing": [],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielverband Zerspanung e.",
+    "checked": "2026-10-09",
+    "note": null
+  },
+  {
+    "finding_id": "macro-step/hartmetallpreis",
+    "stage": "figures",
+    "verdict": "supported",
+    "figures_found": [
+      "6,8",
+      "54",
+      "78,1"
+    ],
+    "figures_missing": [],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielinstitut fuer Konjunkturforschung Branchenblatt Metallverarbeitung, Ausgabe August 2026 Veroeffentlicht: 2026-08-05 Die Auftragseingaenge in der Metallverarbeitung lagen im zweiten Quartal 2026 um 2,3 Prozent unter dem Vorjahreswert.",
+    "checked": "2026-10-09",
+    "note": null
+  },
+  {
+    "finding_id": "macro-step/onlinebestellung",
+    "stage": "figures",
+    "verdict": "supported",
+    "figures_found": [
+      "38,5",
+      "19,2",
+      "46"
+    ],
+    "figures_missing": [],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielamt fuer Wirtschaftsbeobachtung Erhebung Digitalisierung im produzierenden Handwerk 2026 Veroeffentlicht: 2026-06-18 Von den befragten 2.140 Betrieben bestellen 38,5 Prozent Verbrauchsmaterial und Werkzeuge ueber Online-Shops.",
+    "checked": "2026-10-09",
+    "note": null
+  },
+  {
+    "finding_id": "macro-step/erechnung",
+    "stage": "figures",
+    "verdict": "supported",
+    "figures_found": [
+      "1. Januar 2026"
+    ],
+    "figures_missing": [],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielamt fuer Wirtschaftsbeobachtung Erhebung Digitalisierung im produzierenden Handwerk 2026 Veroeffentlicht: 2026-06-18 Von den befragten 2.140 Betrieben bestellen 38,5 Prozent Verbrauchsmaterial und Werkzeuge ueber Online-Shops.",
+    "checked": "2026-10-09",
+    "note": null
+  },
+  {
+    "finding_id": "macro-step/marktvolumen",
+    "stage": "figures",
+    "verdict": "partial",
+    "figures_found": [
+      "2,3"
+    ],
+    "figures_missing": [
+      "11,4"
+    ],
+    "evidence": "SYNTHETIC EXAMPLE SOURCE - invented for the bundled example workspace, not real data. Beispielinstitut fuer Konjunkturforschung Branchenblatt Metallverarbeitung, Ausgabe August 2026 Veroeffentlicht: 2026-08-05 Die Auftragseingaenge in der Metallverarbeitung lagen im zweiten Quartal 2026 um 2,3 Prozent unter dem Vorjahreswert.",
+    "checked": "2026-10-09",
+    "note": null
+  }
+]
