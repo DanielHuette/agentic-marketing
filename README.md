@@ -126,7 +126,10 @@ it was finished: the figure matcher used to strip a decimal comma, so `1,7` matc
 other may not, and both rules are now pinned by tests. And one declared expectation was
 corrected between the first run and this one, because the case file contradicted itself
 rather than because the model was wrong; the reason is written into `cases.yaml` next to
-the case.
+the case. That decimal fix later broke dates: it treated the dot of `1. Januar 2026` as a
+decimal separator, and the bundled example lost a supported finding. A separator now only
+counts as part of a number when a digit stands on both sides; a test pins the example's
+six supported findings so the README cannot drift from the code again.
 
 ## The workspace
 

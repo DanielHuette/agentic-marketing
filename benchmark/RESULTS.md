@@ -1,6 +1,6 @@
 # Benchmark results
 
-Run at 2026-10-09T00:43:19+00:00 against live sources.
+Run at 2026-10-12T22:57:29+00:00 against live sources.
 
 Sources are snapshotted into `benchmark/snapshots/` on every live run, so a result
 can be audited after the page behind it has changed. The digest of each snapshot is

@@ -34,6 +34,24 @@ def normalise(text: str) -> str:
     return _WHITESPACE.sub(" ", unified)
 
 
+def _separator_kind(parts: list[str], index: int) -> str:
+    """Classify the separator at an odd index of a split figure.
+
+    Only a separator with a digit on both sides belongs to a number. The dot of a date such
+    as `1. Januar 2026` and the spaces around a word are text and must match as written.
+
+    Returns:
+        "thousands", "decimal" or "literal".
+    """
+    previous = parts[index - 1]
+    following = parts[index + 1] if index + 1 < len(parts) else ""
+    if not (previous[-1:].isdigit() and following[:1].isdigit()):
+        return "literal"
+    if len(following) == 3 and following.isdigit():
+        return "thousands"
+    return "decimal"
+
+
 def figure_pattern(figure: str) -> re.Pattern[str] | None:
     """Build the expression that finds a figure in a source, whatever its spelling.
 
@@ -64,9 +82,13 @@ def figure_pattern(figure: str) -> re.Pattern[str] | None:
         if index % 2 == 0:
             pieces.append(re.escape(part))
             continue
-        following = parts[index + 1] if index + 1 < len(parts) else ""
-        thousands = len(following) == 3 and following.isdigit()
-        pieces.append(THOUSANDS_SEPARATOR if thousands else DECIMAL_SEPARATOR)
+        kind = _separator_kind(parts, index)
+        if kind == "thousands":
+            pieces.append(THOUSANDS_SEPARATOR)
+        elif kind == "decimal":
+            pieces.append(DECIMAL_SEPARATOR)
+        else:
+            pieces.append(re.escape(part))
     return re.compile(r"(?<![\d.,])" + "".join(pieces) + r"(?![\d])")
 
 
@@ -88,9 +110,13 @@ def figure_variants(figure: str) -> set[str]:
         if index % 2 == 0:
             spellings = {spelling + part for spelling in spellings}
             continue
-        following = parts[index + 1] if index + 1 < len(parts) else ""
-        thousands = len(following) == 3 and following.isdigit()
-        options = (*SEPARATORS, "") if thousands else (".", ",")
+        kind = _separator_kind(parts, index)
+        if kind == "thousands":
+            options: tuple[str, ...] = (*SEPARATORS, "")
+        elif kind == "decimal":
+            options = (".", ",")
+        else:
+            options = (part,)
         spellings = {spelling + option for spelling in spellings for option in options}
     return spellings
 

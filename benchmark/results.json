@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-09T00:43:19+00:00",
+  "run_at": "2026-10-12T22:57:29+00:00",
   "offline": false,
   "source_digests": {
     "handwerk": "1bd68f6e1f6aed48",
@@ -148,7 +148,7 @@
       "expected": "supported",
       "actual": "supported",
       "correct": true,
-      "note": "10. September 2026 - Umsatz im zulassungspflichtigen Handwerk im 2. Quartal 2026: -1,4 % zum Vorjahresquartal. Der reale (preisbereinigte) Umsatz im zulassungspflichtigen Handwerk in Deutschland ist im 2. Quartal 2026 gegen\u00fcber dem 2. Quartal 2025 um 1,4 % gesunken."
+      "note": "Der reale (preisbereinigte) Umsatz im zulassungspflichtigen Handwerk in Deutschland ist im 2. Quartal 2026 gegen\u00fcber dem 2. Quartal 2025 um 1,4 % gesunken. Wie das Statistische Bundesamt (Destatis) nach vorl\u00e4ufigen Ergebnissen weiter mitteilt"
     },
     {
       "case_id": "handwerk-beschaeftigte",
@@ -156,7 +156,7 @@
       "expected": "supported",
       "actual": "supported",
       "correct": true,
-      "note": "10. September 2026 - Umsatz im zulassungspflichtigen Handwerk im 2. Quartal 2026: -1,4 % zum Vorjahresquartal\nDer reale (preisbereinigte) Umsatz im zulassungspflichtigen Handwerk in Deutschland ist im 2. Quartal 2026 gegen\u00fcber dem 2. Quartal 2025 um 1,4 % gesunken. Wie das Statistische Bundesamt (Destatis) nach vorl\u00e4ufigen Ergebnissen weiter mitteilt, waren Ende Juni 2026 im zulassungspflichtigen Handwerk 1,9 % weniger Personen besch\u00e4ftigt als Ende Juni 2025."
+      "note": "10. September 2026 - Umsatz im zulassungspflichtigen Handwerk im 2. Quartal 2026: -1,4 % zum Vorjahresquartal Der reale (preisbereinigte) Umsatz im zulassungspflichtigen Handwerk in Deutschland ist im 2. Quartal 2026 gegen\u00fcber dem 2. Quartal 2025 um 1,4 % gesunken. Wie das Statistische Bundesamt (Destatis) nach vorl\u00e4ufigen Ergebnissen weiter mitteilt, waren Ende Juni 2026 im zulassungspflichtigen Handwerk 1,9 % weniger Personen besch\u00e4ftigt als Ende Juni 2025."
     },
     {
       "case_id": "handwerk-umsatz-erfunden",
@@ -204,7 +204,7 @@
       "expected": "partial",
       "actual": "partial",
       "correct": true,
-      "note": "waren rund 5 150 landwirtschaftliche Betriebe, die in der Rechtsform juristische Person oder Personenhandelsgesellschaft gef\u00fchrt wurden, im Jahr 2024 Teil einer Unternehmensgruppe. Das entsprach 46 % der insgesamt 11 100 Betriebe dieser Rechtsformen"
+      "note": "rund 5 150 landwirtschaftliche Betriebe, die in der Rechtsform juristische Person oder Personenhandelsgesellschaft gef\u00fchrt wurden, im Jahr 2024 Teil einer Unternehmensgruppe. Das entsprach 46 % der insgesamt 11 100 Betriebe dieser Rechtsformen"
     },
     {
       "case_id": "dienstleistungen-umsatz",
@@ -220,7 +220,7 @@
       "expected": "unsupported",
       "actual": "unsupported",
       "correct": true,
-      "note": "Der Dienstleistungssektor in Deutschland (ohne Finanz- und Versicherungsdienstleistungen) hat im Juli 2026 nach vorl\u00e4ufigen Ergebnissen des Statistischen Bundesamtes (Destatis) kalender- und saisonbereinigt real (preisbereinigt) 0,7 % und nominal (nicht preisbereinigt) 0,6 % mehr Umsatz erwirtschaftet als im Juni 2026. Verglichen mit dem Vorjahresmonat Juli 2025 verzeichnete der Umsatz einen R\u00fcckgang von real 0,9 %, wohingegen er nominal um 2,9 % stieg."
+      "note": "Verglichen mit dem Vorjahresmonat Juli 2025 verzeichnete der Umsatz einen R\u00fcckgang von real 0,9 %, wohingegen er nominal um 2,9 % stieg."
     },
     {
       "case_id": "industrie-auftragseingang",
@@ -228,7 +228,7 @@
       "expected": "supported",
       "actual": "supported",
       "correct": true,
-      "note": "6. Oktober 2026 \nAuftragseingang im Verarbeitenden Gewerbe im August 2026: -10,6 % zum Vormonat"
+      "note": "6. Oktober 2026 \n    Auftragseingang im Verarbeitenden Gewerbe im August 2026: -10,6 % zum Vormonat"
     },
     {
       "case_id": "industrie-maut",
@@ -236,7 +236,7 @@
       "expected": "supported",
       "actual": "supported",
       "correct": true,
-      "note": "8. Oktober 2026 Lkw-Maut-Fahrleistungsindex im September 2026: +0,8 % zum Vormonat Die Fahrleistung mautpflichtiger Lastkraftwagen mit mindestens vier Achsen auf Bundesautobahnen ist im September 2026 gegen\u00fcber August 2026 kalender- und saisonbereinigt um 0,8 % gestiegen. Wie das Bundesamt f\u00fcr Logistik und Mobilit\u00e4t (BALM) und das Statistische Bundesamt (Destatis) weiter mitteilen, lag der kalenderbereinigte Lkw-Maut-Fahrleistungsindex 2,5 % \u00fcber dem Niveau des Vorjahresmonats September 2025."
+      "note": "8. Oktober 2026 \nLkw-Maut-Fahrleistungsindex im September 2026: +0,8 % zum Vormonat \nDie Fahrleistung mautpflichtiger Lastkraftwagen mit mindestens vier Achsen auf Bundesautobahnen ist im September 2026 gegen\u00fcber August 2026 kalender- und saisonbereinigt um 0,8 % gestiegen. Wie das Bundesamt f\u00fcr Logistik und Mobilit\u00e4t (BALM) und das Statistische Bundesamt (Destatis) weiter mitteilen, lag der kalenderbereinigte Lkw-Maut-Fahrleistungsindex 2,5 % \u00fcber dem Niveau des Vorjahresmonats September 2025."
     },
     {
       "case_id": "industrie-maut-erfunden",

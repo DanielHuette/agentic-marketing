@@ -33,6 +33,23 @@ def test_figure_is_found_across_spellings(haystack: str, figure: str) -> None:
     assert contains_figure(haystack, figure)
 
 
+@pytest.mark.parametrize(
+    ("haystack", "figure"),
+    [
+        ("gilt seit\ndem 1. Januar 2026 fuer alle Betriebe", "1. Januar 2026"),
+        ("Stand: 30. Juni 2026, vorlaeufig", "30. Juni 2026"),
+        ("ein Plus von 2,3 Prozent im Jahr", "2,3 Prozent"),
+    ],
+)
+def test_separators_next_to_words_match_as_written(haystack: str, figure: str) -> None:
+    """The dot of a date and the space before a word are text, not parts of a number."""
+    assert contains_figure(haystack, figure)
+
+
+def test_a_date_is_not_found_with_a_different_day() -> None:
+    assert not contains_figure("seit dem 11. Januar 2026", "1. Januar 2026")
+
+
 def test_absent_figure_is_not_found() -> None:
     assert not contains_figure("Der Anteil liegt bei 45,8 Prozent", "11,4")
 
@@ -59,6 +76,7 @@ def test_a_thousands_separator_may_be_dropped() -> None:
 def test_variants_show_what_was_looked_for() -> None:
     assert figure_variants("1,7") == {"1,7", "1.7"}
     assert figure_variants("90.336") == {"90.336", "90,336", "90 336", "90336"}
+    assert figure_variants("1. Januar 2026") == {"1. Januar 2026"}
 
 
 def test_a_figure_without_digits_has_no_pattern() -> None:

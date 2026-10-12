@@ -8,13 +8,14 @@ and written files.
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 import pytest
 
 from agentic_marketing.cli import main
 from agentic_marketing.models import Lens
-from agentic_marketing.workspace import curated_file
+from agentic_marketing.workspace import curated_file, example_root
 
 
 @pytest.fixture(autouse=True)
@@ -117,3 +118,20 @@ def test_unknown_command_is_usage_error() -> None:
     with pytest.raises(SystemExit) as exit_info:
         main(["gibtsnicht"])
     assert exit_info.value.code == 2
+
+
+def test_the_bundled_example_verifies_as_documented(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The README promises six supported findings and one partial for the example run."""
+    copy = tmp_path / "example"
+    shutil.copytree(example_root(), copy)
+    monkeypatch.setenv("AGENTIC_MARKETING_WORKSPACE", str(copy))
+    run = copy / "strategie" / "umwelt" / "makroanalyse" / "makroanalyse-2026-08-29"
+    assert main(["verify", str(run)]) == 0
+    verdicts = [
+        entry["verdict"]
+        for entry in json.loads((run / "verifications.json").read_text(encoding="utf-8"))
+    ]
+    assert verdicts.count("supported") == 6
+    assert verdicts.count("partial") == 1

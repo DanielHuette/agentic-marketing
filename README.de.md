@@ -135,7 +135,11 @@ auf die „17" eines Datums an anderer Stelle der Seite passte. Ein Trennzeichen
 Ziffern darf wegfallen, jedes andere nicht, und beide Regeln sind jetzt durch Tests
 festgenagelt. Und eine erklärte Erwartung wurde zwischen dem ersten und diesem Lauf
 korrigiert — weil die Falldatei sich selbst widersprach, nicht weil das Modell falsch lag;
-die Begründung steht in `cases.yaml` neben dem Fall.
+die Begründung steht in `cases.yaml` neben dem Fall. Die Komma-Korrektur hat später Daten
+gebrochen: Sie hielt den Punkt in „1. Januar 2026" für ein Dezimaltrennzeichen, und das
+mitgelieferte Beispiel verlor einen belegten Befund. Ein Trennzeichen zählt jetzt nur dann
+zur Zahl, wenn links und rechts eine Ziffer steht; ein Test hält die sechs belegten Befunde
+des Beispiels fest, damit README und Code nicht wieder auseinanderlaufen.
 
 ## Der Arbeitsbereich
 
