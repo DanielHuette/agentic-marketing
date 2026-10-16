@@ -116,6 +116,11 @@ textarea { min-height: 280px; resize: vertical; line-height: 1.5; font-family: u
 .prose { font-size: 1rem; line-height: 1.7; }
 .prose h1, .prose h2, .prose h3 { margin: 1.2em 0 0.4em; }
 .prose p, .prose ul, .prose ol { margin: 0 0 0.9em; }
+.prose table { width: 100%; border-collapse: collapse; margin: 0 0 1em; font-size: 0.92rem; }
+.prose th, .prose td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+.prose th { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.prose blockquote { margin: 0 0 1em; padding: 10px 14px; background: var(--gold-soft); color: var(--gold-strong); border-radius: 8px; }
+.prose blockquote p { margin: 0; }
 .prose mark { background: var(--bad-soft); color: var(--bad); padding: 0 3px; border-radius: 3px; }
 .linkedin-preview { white-space: pre-wrap; font-size: 0.98rem; line-height: 1.6; }
 .finding { display: grid; gap: 6px; padding: 12px 0; border-top: 1px solid var(--line); }
@@ -142,6 +147,7 @@ textarea { min-height: 280px; resize: vertical; line-height: 1.5; font-family: u
 .hero h1 { color: #fff; }
 .hero .muted { color: #b9c4d0; }
 .hero .kicker { color: #e0a526; }
+.hero .badge--ink { background: #fff; color: var(--ink); }
 .example-flag { border-left: 4px solid var(--gold); }
 
 @media (max-width: 960px) {

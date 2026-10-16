@@ -216,7 +216,7 @@ def test_views_and_clicks_count_page_reads_and_tracked_visits(target: Target) ->
 
 def test_fold_hits_writes_one_row_per_post_and_day(target: Target) -> None:
     fake = FakeCockpit()
-    campaign = _running_campaign(fake)
+    campaign = _running_campaign(fake, is_example=False)
     fake.add("posts", campaign_id=campaign["id"], slug="erster", channel="blog", status="published")
     for _ in range(3):
         fake.add("hits", day="2026-10-19", host=target.host, path="/beispiel-blog/erster/")
@@ -423,3 +423,12 @@ def test_simulation_stops_at_the_end_of_a_campaign() -> None:
     written = simulate_example(cast(CockpitClient, fake), date(2026, 10, 20))
     assert written == 3
     assert max(row["day"] for row in fake.rows("metrics")) == "2026-10-12"
+
+
+def test_fold_hits_leaves_example_campaigns_to_the_simulation(target: Target) -> None:
+    fake = FakeCockpit()
+    campaign = _running_campaign(fake)
+    fake.add("posts", campaign_id=campaign["id"], slug="erster", channel="blog", status="published")
+    fake.add("hits", day="2026-10-19", host=target.host, path="/beispiel-blog/erster/")
+    result = fold_hits(cast(CockpitClient, fake), {"beispiel": target}, date(2026, 10, 19))
+    assert result.rows == 0

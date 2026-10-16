@@ -1,10 +1,12 @@
 # Agentic Marketing
 
-[Deutsche Fassung](README.de.md) · [Project page with the live benchmark](https://agenticmarketing.speedofthespirit.dev) · [Presentation (German)](https://agenticmarketing.speedofthespirit.dev/praesentation/)
+[Deutsche Fassung](README.de.md) · [Project page](https://agenticmarketing.speedofthespirit.dev) · [Presentation (German)](https://agenticmarketing.speedofthespirit.dev/praesentation/) · [Cockpit](https://app.agenticmarketing.speedofthespirit.dev) · [Example blog](https://agenticmarketing.speedofthespirit.dev/beispiel-blog/) · [Operating manual](Dokumentation/OPERATING_MANUAL.md)
 
 A marketing workspace for agent teams, and the step that is missing from every one of
 them: research only enters the workspace after its figures have been checked against
-their sources and a person has decided what stays.
+their sources and a person has decided what stays. The checked findings become campaigns
+that a person approves and starts in a cockpit, that publish themselves on a plan, and whose
+effect is measured.
 
 ## The problem
 
@@ -131,6 +133,53 @@ decimal separator, and the bundled example lost a supported finding. A separator
 counts as part of a number when a digit stands on both sides; a test pins the example's
 six supported findings so the README cannot drift from the code again.
 
+## From research to publication
+
+Research alone is not marketing. The second part of the project takes checked findings to the
+public without giving up the gate in between:
+
+```
+kampagnen/<name>/kampagne.yaml      goal, audience, target blog, duration, goals
+kampagnen/<name>/beitraege/*.md     per post: channel, offset in days, cited findings, text
+        ↓  campaign                 figure guard, hand-over to the cockpit
+Cockpit                             review, edit, approve, "Freigeben & starten"
+        ↓  publish (hourly)         blog post, index, feed: one commit to the target repository
+        ↓  metrics (daily)          cookie-free counter → reads and clicks per post
+        ↓  report (Mondays)         weekly report against the goals
+```
+
+Every figure a post shows must be a figure of a cited, kept and backed finding. The guard checks
+this on hand-over, while editing in the app, and a third time in the database: a trigger refuses
+the approval even when someone bypasses the app. LinkedIn posts are shown in the cockpit on their
+day and posted by hand.
+
+| | Where |
+|---|---|
+| Cockpit, installable as an app | https://app.agenticmarketing.speedofthespirit.dev |
+| Example blog of the fictional campaign | https://agenticmarketing.speedofthespirit.dev/beispiel-blog/ |
+| Blog of the real RadarAuditor campaign | https://radarauditor.speedofthespirit.dev/blog/ |
+| Operation step by step | [Dokumentation/OPERATING_MANUAL.md](Dokumentation/OPERATING_MANUAL.md) |
+| Architecture, data model, setup | [Dokumentation/ARCHITECTURE.md](Dokumentation/ARCHITECTURE.md) |
+
+**Two campaigns are in the cockpit.** The real one, "RadarAuditor: Lokale Sichtbarkeit im
+Münsterland", rests on nine findings from Bitkom, ZDH, the Münster chamber of crafts, the
+Federal Network Agency and a YouGov survey; every figure is checked against its live source, six
+posts are written and approved, and it starts once the product can be sold. The fictional one,
+"Nordwind: Stillstand vermeiden", has run once from start to end:
+
+| Example run Nordwind (fictional, results simulated) | |
+|---|---|
+| Posts | 3 blog, 3 LinkedIn, all published |
+| Stopped by the guard | 1 post with an unbacked figure, corrected |
+| Rejected and revised | 1 post with an unbacked claim |
+| Reads | 1,774 against a goal of 1,500 |
+| Clicks | 37 of 40 |
+| Inquiries | 3 of 4 |
+| Weekly reports | 4 |
+
+The run was played with `example-run` and a simulated clock; the command uses the same publishing
+code as live operation and refuses every campaign that is not marked as an example.
+
 ## The workspace
 
 `agentic-marketing new <folder>` writes a workspace you then fill with your own material:
@@ -170,6 +219,12 @@ same gate.
 | `apply <run> --auto` | decide by verdict, for an unattended run | nothing |
 | `pack` | assemble and measure the session context | nothing |
 | `stale` | report curated points that are due again | network |
+| `campaign <folder>` | check a campaign and hand it to the cockpit | Supabase |
+| `publish` | publish approved posts that are due | Supabase, GitHub |
+| `site <target> --out <checkout>` | write the index, feed and counter of a blog | Supabase |
+| `metrics [--day]` | fold one day of hits into results | Supabase |
+| `report [--period-end]` | write the weekly reports | Supabase |
+| `example-run <slug> --start` | replay an example campaign with a simulated clock | Supabase, GitHub |
 
 ## Design decisions
 
@@ -180,13 +235,16 @@ same gate.
 | Age, not expiry | a date after which a point is dropped | A statistic about an ageing profession does not expire; a hardware price does. `stale` reports what is due and deletes nothing. |
 | One finding per file | one file per analysis field | A finding that is its own file can be decided on, moved and traced. Parsing many findings out of one essay is where the provenance gets lost. |
 | Sources downloaded into `daten/` | citing the live address | An address that resolves today may not in a year. A check that still runs in a year is worth more than a link. |
-| Plain Markdown, no database | a database behind an interface | Agents read files. Anything else needs an adapter, and the adapter is where the context budget goes. |
+| Workspace in Markdown, database only for decisions and results | everything in a database | Agents read files. The database holds only what an app and the schedules must share: approvals, dates, counts. |
+| GitHub Actions as scheduler | n8n, Zapier, Make | reliable, free, versioned; more in [ARCHITECTURE.md](Dokumentation/ARCHITECTURE.md) |
+| Guard in the database too | client only | a rule only the client enforces is bypassed by any other client |
 
 ## Requirements
 
 Python 3.11 or newer. The second verification pass needs
 `pip install 'agentic-marketing[judge]'` and `ANTHROPIC_API_KEY`; everything else runs
-without either.
+without either. The campaign commands need a Supabase project and the keys listed in
+`.env.example`, the app Node.js 22.
 
 ## Licence
 

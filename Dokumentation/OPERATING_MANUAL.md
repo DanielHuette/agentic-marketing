@@ -134,7 +134,8 @@ click through it is counted on the blog and credited to the LinkedIn post.
 | Inquiries | by hand, on the post that brought them |
 
 The counter sets no cookie and stores nothing about the reader: only page, day and the campaign
-parameters of the address. Every Monday each running campaign, or one that ended in the previous
+parameters of the address. Example campaigns are not counted; their results are simulated, and
+real visits to the example blog do not mix into them. Every Monday each running campaign, or one that ended in the previous
 week, gets a weekly report: result against goal, what went out, which posts brought the most,
 what is open.
 

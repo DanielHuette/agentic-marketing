@@ -1,10 +1,12 @@
 # Agentic Marketing
 
-[English version](README.md) · [Projektseite mit dem Prüfstand](https://agenticmarketing.speedofthespirit.dev) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/praesentation/)
+[English version](README.md) · [Projektseite](https://agenticmarketing.speedofthespirit.dev) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/praesentation/) · [Cockpit](https://app.agenticmarketing.speedofthespirit.dev) · [Beispielblog](https://agenticmarketing.speedofthespirit.dev/beispiel-blog/) · [Betriebsanleitung](Dokumentation/BETRIEBSANLEITUNG.de.md)
 
 Ein Marketing-Arbeitsbereich für Agententeams — und der Schritt, der in jedem von ihnen
 fehlt: Recherche kommt erst in den Arbeitsbereich, nachdem ihre Zahlen gegen die Quellen
-geprüft wurden und ein Mensch entschieden hat, was bleibt.
+geprüft wurden und ein Mensch entschieden hat, was bleibt. Aus den geprüften Befunden werden
+Kampagnen, die ein Mensch in einem Cockpit freigibt und startet, die sich nach Plan selbst
+veröffentlichen und deren Wirkung gemessen wird.
 
 ## Das Problem
 
@@ -141,6 +143,54 @@ mitgelieferte Beispiel verlor einen belegten Befund. Ein Trennzeichen zählt jet
 zur Zahl, wenn links und rechts eine Ziffer steht; ein Test hält die sechs belegten Befunde
 des Beispiels fest, damit README und Code nicht wieder auseinanderlaufen.
 
+## Von der Recherche zur Veröffentlichung
+
+Recherche allein ist kein Marketing. Der zweite Teil des Projekts bringt geprüfte Befunde
+an die Öffentlichkeit, ohne das Tor dazwischen aufzugeben:
+
+```
+kampagnen/<name>/kampagne.yaml      Ziel, Zielgruppe, Ziel-Blog, Laufzeit, Kennzahlenziele
+kampagnen/<name>/beitraege/*.md     je Beitrag: Kanal, Versatz in Tagen, zitierte Befunde, Text
+        ↓  campaign                 Zahlenwächter, Übergabe ins Cockpit
+Cockpit                             prüfen, bearbeiten, freigeben, „Freigeben & starten“
+        ↓  publish (stündlich)      Blogbeitrag, Übersicht, Feed: ein Commit ins Zielrepository
+        ↓  metrics (täglich)        Zähler ohne Cookies → Aufrufe und Klicks je Beitrag
+        ↓  report (montags)         Wochenbericht gegen die Ziele
+```
+
+Jede Zahl, die ein Beitrag zeigt, muss eine Zahl eines zitierten, behaltenen und belegten
+Befunds sein. Der Wächter prüft das bei der Übergabe, beim Bearbeiten in der App und ein
+drittes Mal in der Datenbank: Ein Trigger verweigert die Freigabe, auch wenn jemand die App
+umgeht. LinkedIn-Beiträge werden zum Termin im Cockpit angezeigt und von Hand gepostet.
+
+| | Wo |
+|---|---|
+| Cockpit, installierbar als App | https://app.agenticmarketing.speedofthespirit.dev |
+| Beispielblog der fiktiven Kampagne | https://agenticmarketing.speedofthespirit.dev/beispiel-blog/ |
+| Blog der echten RadarAuditor-Kampagne | https://radarauditor.speedofthespirit.dev/blog/ |
+| Betrieb Schritt für Schritt | [Dokumentation/BETRIEBSANLEITUNG.de.md](Dokumentation/BETRIEBSANLEITUNG.de.md) |
+| Aufbau, Datenmodell, Einrichtung | [Dokumentation/ARCHITEKTUR.de.md](Dokumentation/ARCHITEKTUR.de.md) |
+
+**Zwei Kampagnen liegen im Cockpit.** Die echte, „RadarAuditor: Lokale Sichtbarkeit im
+Münsterland“, ruht auf neun Befunden von Bitkom, ZDH, Handwerkskammer Münster,
+Bundesnetzagentur und einer YouGov-Umfrage; alle Zahlen sind gegen die Live-Quellen geprüft,
+sechs Beiträge sind geschrieben und freigegeben, gestartet wird erst, wenn das Produkt verkauft
+werden kann. Die fiktive, „Nordwind: Stillstand vermeiden“, ist einmal komplett durchgelaufen:
+
+| Beispiellauf Nordwind (fiktiv, Ergebnisse simuliert) | |
+|---|---|
+| Beiträge | 3 Blog, 3 LinkedIn, alle veröffentlicht |
+| Vom Wächter gestoppt | 1 Beitrag mit einer Zahl ohne Beleg, korrigiert |
+| Abgelehnt und überarbeitet | 1 Beitrag mit einer unbelegten Behauptung |
+| Aufrufe | 1.774 von 1.500 als Ziel |
+| Klicks | 37 von 40 |
+| Anfragen | 3 von 4 |
+| Wochenberichte | 4 |
+
+Der Lauf wurde mit `example-run` und simulierter Uhr durchgespielt; der Befehl benutzt
+denselben Veröffentlichungscode wie der Echtbetrieb und verweigert jede Kampagne, die nicht als
+Beispiel markiert ist.
+
 ## Der Arbeitsbereich
 
 `agentic-marketing new <ordner>` schreibt einen Arbeitsbereich, den du mit deinem eigenen
@@ -181,6 +231,12 @@ geht.
 | `apply <lauf> --auto` | nach Prüfurteil entscheiden, für unbeaufsichtigte Läufe | nichts |
 | `pack` | Sitzungskontext zusammenstellen und messen | nichts |
 | `stale` | melden, welche Punkte wieder fällig sind | Netz |
+| `campaign <ordner>` | Kampagne prüfen und ins Cockpit übergeben | Supabase |
+| `publish` | fällige freigegebene Beiträge veröffentlichen | Supabase, GitHub |
+| `site <ziel> --out <checkout>` | Übersicht, Feed und Zähler eines Blogs schreiben | Supabase |
+| `metrics [--day]` | Zählerdaten eines Tages zu Ergebnissen falten | Supabase |
+| `report [--period-end]` | Wochenberichte schreiben | Supabase |
+| `example-run <slug> --start` | Beispielkampagne mit simulierter Uhr durchspielen | Supabase, GitHub |
 
 ## Entwurfsentscheidungen
 
@@ -191,13 +247,16 @@ geht.
 | Alter statt Verfallsdatum | Datum, nach dem ein Punkt entfällt | Eine Statistik über einen alternden Berufsstand verfällt nicht, ein Hardwarepreis schon. `stale` meldet, was fällig ist, und löscht nichts. |
 | Eine Datei je Befund | eine Datei je Analysefeld | Ein Befund, der eine eigene Datei ist, lässt sich entscheiden, verschieben und zurückverfolgen. Beim Herauslesen vieler Befunde aus einem Aufsatz geht die Herkunft verloren. |
 | Quellen nach `daten/` herunterladen | die Netzadresse zitieren | Eine Adresse, die heute antwortet, tut es in einem Jahr vielleicht nicht. Eine Prüfung, die in einem Jahr noch läuft, ist mehr wert als ein Link. |
-| Reines Markdown, keine Datenbank | Datenbank hinter einer Oberfläche | Agenten lesen Dateien. Alles andere braucht einen Zwischenschritt, und genau dort geht das Kontextbudget hin. |
+| Arbeitsbereich in Markdown, Datenbank nur für Entscheidungen und Ergebnisse | alles in einer Datenbank | Agenten lesen Dateien. Die Datenbank hält nur, was eine App und Zeitpläne teilen müssen: Freigaben, Termine, Zählungen. |
+| GitHub Actions als Zeitplan | n8n, Zapier, Make | zuverlässig, kostenlos, versioniert; weitere Gründe in [ARCHITEKTUR.de.md](Dokumentation/ARCHITEKTUR.de.md) |
+| Wächter auch in der Datenbank | nur im Client | eine Regel, die nur der Client prüft, umgeht jeder andere Client |
 
 ## Voraussetzungen
 
 Python 3.11 oder neuer. Die zweite Prüfstufe braucht
 `pip install 'agentic-marketing[judge]'` und `ANTHROPIC_API_KEY`; alles andere läuft ohne
-beides.
+beides. Die Kampagnenbefehle brauchen ein Supabase-Projekt und die Schlüssel aus
+`.env.example`, die App Node.js 22.
 
 ## Lizenz
 

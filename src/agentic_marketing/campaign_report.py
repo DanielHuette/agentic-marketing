@@ -17,6 +17,14 @@ from agentic_marketing.metrics import SIMULATED, totals
 
 PERIOD_DAYS = 7
 KPI_LABELS = {"views": "Aufrufe", "clicks": "Klicks", "leads": "Anfragen"}
+STATUS_LABELS = {
+    "draft": "Entwurf",
+    "ready": "startklar",
+    "running": "läuft",
+    "paused": "pausiert",
+    "done": "abgeschlossen",
+}
+CHANNEL_LABELS = {"blog": "Blog", "linkedin": "LinkedIn"}
 
 
 def _ratio(done: int, goal: int) -> str:
@@ -67,7 +75,7 @@ def render_report(
         f"# Wochenbericht: {campaign['title']}",
         "",
         f"Zeitraum {start.strftime('%d.%m.%Y')} bis {period_end.strftime('%d.%m.%Y')}. "
-        f"Status der Kampagne: {campaign['status']}.",
+        f"Status der Kampagne: {STATUS_LABELS.get(str(campaign['status']), campaign['status'])}.",
     ]
     if simulated:
         lines += ["", "> Beispielkampagne: Die Ergebnisse sind simuliert, nicht gemessen."]
@@ -85,7 +93,9 @@ def render_report(
             f"| {_ratio(overall[key], goal)} |"
         )
     lines += ["", "## Veröffentlicht in diesem Zeitraum", ""]
-    lines += [f"- {post['channel']}: {post['title']}" for post in new] or ["- nichts"]
+    lines += [f"- {CHANNEL_LABELS[str(post['channel'])]}: {post['title']}" for post in new] or [
+        "- nichts"
+    ]
     lines += [
         "",
         "## Beiträge nach Wirkung",
@@ -97,7 +107,7 @@ def render_report(
     for post in ranked:
         result = per_post[str(post["id"])]
         lines.append(
-            f"| {post['title']} | {post['channel']} | {result['views']} "
+            f"| {post['title']} | {CHANNEL_LABELS[str(post['channel'])]} | {result['views']} "
             f"| {result['clicks']} | {result['leads']} |"
         )
     lines += ["", "## Offen", ""]

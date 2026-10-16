@@ -152,7 +152,8 @@ und dem LinkedIn-Beitrag zugerechnet wird.
 | Anfragen | von Hand, im Beitrag, der sie ausgelöst hat |
 
 Der Zähler setzt kein Cookie und speichert nichts über die lesende Person: nur Seite,
-Tag und die Kampagnenparameter der Adresse.
+Tag und die Kampagnenparameter der Adresse. Beispielkampagnen werden nicht gezählt, ihre
+Ergebnisse sind simuliert; echte Besuche im Beispielblog fließen nicht hinein.
 
 Montags entsteht für jede laufende oder in der Vorwoche beendete Kampagne ein Wochenbericht:
 Ergebnis gegen Ziel, was veröffentlicht wurde, welche Beiträge am meisten gebracht haben, was

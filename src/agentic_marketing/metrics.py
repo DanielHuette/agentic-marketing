@@ -72,13 +72,15 @@ def fold_hits(client: CockpitClient, targets: Mapping[str, Target], day: date) -
     """Write the measured reads and clicks of one day for every published post.
 
     Running it twice for the same day writes the same rows again, so a repeated or late job
-    never counts twice.
+    never counts twice. Example campaigns are left out; their results are simulated, and a
+    real visit to the example blog must not mix into them.
     """
     hits = client.select(
         "hits", {"day": f"eq.{day.isoformat()}", "select": "host,path,campaign,content"}
     )
     rows: list[dict[str, object]] = []
-    for campaign in client.select("campaigns", {"select": "id,slug,target"}):
+    real = client.select("campaigns", {"is_example": "eq.false", "select": "id,slug,target"})
+    for campaign in real:
         target = targets.get(str(campaign["target"]))
         if target is None:
             logger.warning(
