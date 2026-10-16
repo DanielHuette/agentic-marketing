@@ -52,6 +52,9 @@ be installed like a program and then opens in its own window with its own icon.
 Updates arrive by themselves: Cloudflare rebuilds the app on every push, and the installed app
 loads the new version on its next start.
 
+[Releases](https://github.com/DanielHuette/agentic-marketing/releases/latest) offers the Python
+package (`.whl`) and the built app as a `.zip` that runs on any static web server.
+
 ## Signing in
 
 Sign in with the operator account (email and password), the same account as in the RadarAuditor

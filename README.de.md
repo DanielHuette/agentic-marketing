@@ -1,6 +1,6 @@
 # Agentic Marketing
 
-[English version](README.md) · [Projektseite](https://agenticmarketing.speedofthespirit.dev) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/praesentation/) · [Cockpit](https://app.agenticmarketing.speedofthespirit.dev) · [Beispielblog](https://agenticmarketing.speedofthespirit.dev/beispiel-blog/) · [Betriebsanleitung](Dokumentation/BETRIEBSANLEITUNG.de.md)
+[English version](README.md) · [Projektseite](https://agenticmarketing.speedofthespirit.dev) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/praesentation/) · [Cockpit](https://app.agenticmarketing.speedofthespirit.dev) · [Beispielblog](https://agenticmarketing.speedofthespirit.dev/beispiel-blog/) · [Betriebsanleitung](Dokumentation/BETRIEBSANLEITUNG.de.md) · [Downloads](https://github.com/DanielHuette/agentic-marketing/releases/latest)
 
 Ein Marketing-Arbeitsbereich für Agententeams — und der Schritt, der in jedem von ihnen
 fehlt: Recherche kommt erst in den Arbeitsbereich, nachdem ihre Zahlen gegen die Quellen

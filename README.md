@@ -1,6 +1,6 @@
 # Agentic Marketing
 
-[Deutsche Fassung](README.de.md) · [Project page](https://agenticmarketing.speedofthespirit.dev) · [Presentation (German)](https://agenticmarketing.speedofthespirit.dev/praesentation/) · [Cockpit](https://app.agenticmarketing.speedofthespirit.dev) · [Example blog](https://agenticmarketing.speedofthespirit.dev/beispiel-blog/) · [Operating manual](Dokumentation/OPERATING_MANUAL.md)
+[Deutsche Fassung](README.de.md) · [Project page](https://agenticmarketing.speedofthespirit.dev) · [Presentation (German)](https://agenticmarketing.speedofthespirit.dev/praesentation/) · [Cockpit](https://app.agenticmarketing.speedofthespirit.dev) · [Example blog](https://agenticmarketing.speedofthespirit.dev/beispiel-blog/) · [Operating manual](Dokumentation/OPERATING_MANUAL.md) · [Downloads](https://github.com/DanielHuette/agentic-marketing/releases/latest)
 
 A marketing workspace for agent teams, and the step that is missing from every one of
 them: research only enters the workspace after its figures have been checked against

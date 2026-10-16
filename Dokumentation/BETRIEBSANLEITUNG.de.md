@@ -53,6 +53,10 @@ Fenster mit eigenem Symbol.
 Updates kommen von selbst: Nach jedem Push baut Cloudflare die App neu, und die installierte
 App lädt die neue Fassung beim nächsten Start.
 
+Unter [Releases](https://github.com/DanielHuette/agentic-marketing/releases/latest) liegen
+zum Herunterladen das Python-Paket (`.whl`) und die fertig gebaute App als `.zip`, die sich auf
+jedem statischen Webserver betreiben lässt.
+
 ## Anmelden
 
 Angemeldet wird mit dem Betreiberkonto (E-Mail und Passwort), demselben Konto wie im
