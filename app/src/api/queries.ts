@@ -157,6 +157,11 @@ export async function signIn(email: string, password: string): Promise<void> {
   if (error !== null) throw new QueryError("Anmelden", error.message, error.code ?? null);
 }
 
+export async function requestPasswordReset(email: string, redirectTo: string): Promise<void> {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+  if (error !== null) throw new QueryError("Link senden", error.message, error.code ?? null);
+}
+
 export async function signOut(): Promise<void> {
   await supabase.auth.signOut();
 }

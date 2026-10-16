@@ -2,11 +2,13 @@
 import { LocationProvider, Route, Router } from "preact-iso";
 import { Shell } from "./components/Shell";
 import { Loading } from "./components/ui";
+import { usePasswordRecovery } from "./hooks/recovery";
 import { useSession } from "./hooks/useSession";
 import { CampaignPage } from "./pages/Campaign";
 import { Campaigns } from "./pages/Campaigns";
 import { Guide } from "./pages/Guide";
 import { PostPage } from "./pages/Post";
+import { SetPassword } from "./pages/SetPassword";
 import { Settings } from "./pages/Settings";
 import { SignIn } from "./pages/SignIn";
 
@@ -16,6 +18,7 @@ function NotFound() {
 
 export function App() {
   const session = useSession();
+  const recovery = usePasswordRecovery();
   if (session === undefined) {
     return (
       <main class="page">
@@ -24,6 +27,7 @@ export function App() {
     );
   }
   if (session === null) return <SignIn />;
+  if (recovery.pending) return <SetPassword onDone={recovery.finish} />;
   const email = session.user.email ?? "";
   return (
     <LocationProvider>
