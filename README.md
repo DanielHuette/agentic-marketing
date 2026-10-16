@@ -1,6 +1,6 @@
 # Agentic Marketing
 
-[Deutsche Fassung](README.de.md) · [Project page with the live benchmark](https://agenticmarketing.speedofthespirit.dev)
+[Deutsche Fassung](README.de.md) · [Project page with the live benchmark](https://agenticmarketing.speedofthespirit.dev) · [Presentation (German)](https://agenticmarketing.speedofthespirit.dev/praesentation/)
 
 A marketing workspace for agent teams, and the step that is missing from every one of
 them: research only enters the workspace after its figures have been checked against

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Marketing – Präsentation</title>
+<meta name="description" content="Präsentation: Marktrecherche mit KI-Agenten, bei der jede Zahl gegen ihre Quelle geprüft wird, bevor ein Mensch sie freigibt. Mit Prüfstand gegen das Statistische Bundesamt und Rechenbeispiel.">
+<meta property="og:title" content="Agentic Marketing – Präsentation">
+<meta property="og:image" content="https://agenticmarketing.speedofthespirit.dev/assets/img/vorschau.jpg">
+<link rel="icon" href="../favicon.svg">
+<link rel="stylesheet" href="deck.css">
+<style>
+@font-face { font-family: Inter; src: url(../assets/fonts/inter-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Inter; src: url(../assets/fonts/inter-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Inter; src: url(../assets/fonts/inter-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: Serif; src: url(../assets/fonts/serif-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Serif; src: url(../assets/fonts/serif-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+:root { --ink: #1d2228; --muted: #5d6670; --paper: #f6f4ef; --line: #dcd8cf; --white: #fff; --green: #13795b; --greenbg: #e3f1ea; --red: #b4352a; --redbg: #f7e3e0; --gold: #a8741a; --navy: #1f2a37; --deck-bg: #e9e6df; --deck-accent: #a8741a; }
+section { background: var(--paper); color: var(--ink); font-family: Inter, Arial, sans-serif; }
+.photo { position: absolute; top: 0; bottom: 0; background-size: cover; background-position: center; }
+.pad { position: absolute; inset: 72px 96px 64px; }
+.kicker { display: flex; gap: 14px; align-items: center; font: 600 18px/1 Inter, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.kicker::before { content: ""; width: 40px; height: 2px; background: var(--gold); }
+h1, h2 { font-family: Serif, Georgia, serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.08; margin: 20px 0 22px; }
+h1 { font-size: 76px; }
+h2 { font-size: 54px; max-width: 1250px; }
+.lead { font-size: 25px; line-height: 1.5; color: var(--muted); max-width: 820px; }
+.small { font-size: 17px; line-height: 1.5; color: var(--muted); }
+.card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 28px 30px; box-shadow: 0 18px 40px rgba(29,34,40,.06); }
+.card h3 { margin: 0 0 10px; font-size: 24px; }
+.card p { margin: 0; font-size: 19px; line-height: 1.5; color: var(--muted); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.stamp { display: inline-block; font: 700 14px/1 Inter, sans-serif; letter-spacing: .12em; padding: 7px 10px; border-radius: 3px; }
+.ok { color: var(--green); background: var(--greenbg); }
+.no { color: var(--red); background: var(--redbg); }
+.part { color: var(--gold); background: #f6ecd8; }
+.big { font: 700 72px/1 Serif, Georgia, serif; }
+.foot { position: absolute; left: 96px; bottom: 34px; font-size: 15px; color: var(--muted); letter-spacing: .04em; }
+.rule { position: absolute; left: 96px; right: 96px; bottom: 60px; height: 1px; background: var(--line); }
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 30px; }
+.flow .step { background: var(--white); border: 1px solid var(--line); padding: 28px 26px 30px; position: relative; }
+.flow .step + .step { border-left: 0; }
+.flow .step .n { font: 700 46px/1 Serif, Georgia, serif; color: var(--gold); }
+.flow .step h3 { margin: 14px 0 8px; font-size: 23px; }
+.flow .step p { margin: 0; font-size: 18px; line-height: 1.45; color: var(--muted); }
+.flow .step.dark { background: var(--navy); border-color: var(--navy); color: #fff; }
+.flow .step.dark p { color: #c9ced4; }
+.flow .step.dark .n { color: #e0b25a; }
+.funnel { display: flex; flex-direction: column; gap: 18px; margin-top: 10px; }
+.funnel .row { display: grid; grid-template-columns: 300px 1fr 170px; align-items: center; gap: 22px; font-size: 21px; }
+.funnel .barx { height: 46px; background: var(--navy); border-radius: 3px; }
+.funnel .val { font: 700 32px/1 Serif, Georgia, serif; text-align: right; }
+.hbar { display: grid; grid-template-columns: 260px 1fr 70px; gap: 18px; align-items: center; font-size: 20px; margin-bottom: 18px; }
+.hbar .track { height: 30px; background: #ebe7de; border-radius: 3px; display: flex; }
+.hbar .fill { height: 100%; border-radius: 3px; }
+.hbar b { font: 700 34px/1 Serif, Georgia, serif; text-align: right; }
+.calc { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; margin-top: 8px; }
+.calc label { display: grid; grid-template-columns: 1fr 160px; gap: 18px; align-items: center; font-size: 20px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.calc input { font: 600 21px Inter, sans-serif; color: var(--ink); background: var(--white); border: 1px solid #c9c4b8; border-radius: 4px; padding: 10px 12px; text-align: right; width: 100%; box-sizing: border-box; }
+.calc input:focus { outline: 2px solid var(--gold); }
+.result { background: var(--navy); color: #fff; border-radius: 6px; padding: 30px 34px; display: flex; flex-direction: column; gap: 20px; }
+.result .num { font: 700 70px/1 Serif, Georgia, serif; color: #e0b25a; }
+.result .lbl { font-size: 19px; color: #c9ced4; margin-top: 6px; }
+ul.list { list-style: none; margin: 0; padding: 0; }
+ul.list li { position: relative; padding: 0 0 16px 32px; font-size: 21px; line-height: 1.45; }
+ul.list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 14px; height: 2px; background: var(--gold); }
+.shot { border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 30px 70px rgba(29,34,40,.16); background: #fff; overflow: hidden; }
+.shot img { display: block; width: 100%; }
+.strike { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; color: var(--muted); }
+a.inline { color: var(--gold); }
+</style>
+</head>
+<body>
+<main class="deck" aria-label="Präsentation Agentic Marketing">
+
+<section aria-label="Titel">
+  <div class="photo" style="left:0;width:640px;background-image:url(../assets/img/strategie.jpg);background-position:35% 50%"></div>
+  <div class="pad" style="left:730px;top:150px">
+    <div class="kicker">Agentic Marketing</div>
+    <h1>Marktrecherche mit KI.<br>Jede Zahl belegt.</h1>
+    <p class="lead">Bevor ein Befund Ihrer Agenten in Strategie, Kampagne oder Pressetext wandert, wird jede Zahl in ihrer Quelle nachgeschlagen – und ein Mensch entscheidet.</p>
+    <p class="small" style="margin-top:46px">Daniel Hütte · AI Agent Engineer · Münster</p>
+  </div>
+</section>
+
+<section aria-label="Das Risiko">
+  <div class="pad">
+    <div class="kicker">Das Risiko</div>
+    <h2>Eine erfundene Zahl liest sich genau wie eine echte</h2>
+    <p class="lead">Sprachmodelle liefern Zahlen mit großer Sicherheit. Im Marketing landet eine falsche Zahl nicht in einem Test, sondern in der Öffentlichkeit.</p>
+    <div class="grid2" style="margin-top:38px;max-width:1300px">
+      <div class="card"><span class="stamp ok">IN DER QUELLE</span><h3 style="margin-top:16px">„Die Auftragseingänge liegen 2,3 Prozent unter Vorjahr …“</h3><p>Steht so in der genannten Quelle.</p></div>
+      <div class="card"><span class="stamp no">IN KEINER QUELLE</span><h3 style="margin-top:16px">„… der Nachschliffmarkt wächst gegenläufig um 11,4 Prozent“</h3><p>Klingt plausibel, steht aber nirgends. Ohne Prüfung geht sie in die Präsentation beim Kunden.</p></div>
+    </div>
+    <p class="small" style="margin-top:22px">Beispiel aus dem mitgelieferten Beispiellauf mit gekennzeichneten Beispielquellen.</p>
+  </div>
+</section>
+
+<section aria-label="Zu viel Text">
+  <div class="pad">
+    <div class="kicker">Das zweite Problem</div>
+    <h2>Zu viel Text, zu wenig Entscheidung</h2>
+    <p class="lead" style="margin-bottom:40px">Wer den ganzen Rechercheverlauf in die nächste Sitzung mitnimmt, bezahlt für Material, über das nie jemand entschieden hat. Gemessen am Beispiellauf:</p>
+    <div class="funnel">
+      <div class="row"><span>Rohlauf der Agenten</span><div class="barx" style="width:100%"></div><span class="val">10.879 Z.</span></div>
+      <div class="row"><span>Gepflegte, belegte Datei</span><div class="barx" style="width:32.5%;background:var(--gold)"></div><span class="val">3.535 Z.</span></div>
+      <div class="row"><span>Startkontext der nächsten Sitzung</span><div class="barx" style="width:52.1%;background:#7b8794"></div><span class="val">5.668 Z.</span></div>
+    </div>
+    <p class="small" style="margin-top:28px">Z. = Zeichen. Die gepflegte Datei enthält 32,5 % des Rohlaufs – und nur Geprüftes. Der Startkontext umfasst zusätzlich die Grunddateien, rund 1.419 Tokens. Echte Läufe mit Downloads verdichten deutlich stärker.</p>
+  </div>
+</section>
+
+<section aria-label="Die Lösung">
+  <div class="pad">
+    <div class="kicker">Die Lösung</div>
+    <h2>Ein Tor vor dem Arbeitsbereich: prüfen, entscheiden, übernehmen</h2>
+    <div class="flow">
+      <div class="step"><div class="n">1</div><h3>Zahlenabgleich</h3><p>Jede Zahl wird in der genannten Quelle gesucht – auch über Schreibweisen hinweg. Ohne Modell, ohne Kosten.</p></div>
+      <div class="step"><div class="n">2</div><h3>Modell mit Zitat</h3><p>Nur Offenes geht an Claude. Es muss die Stelle zitieren, auf die es sich stützt.</p></div>
+      <div class="step"><div class="n">3</div><h3>Freigabe</h3><p>Ein Mensch behält oder verwirft jeden Befund. Die Entscheidungen liegen als Datei vor.</p></div>
+      <div class="step dark"><div class="n">4</div><h3>Gepflegte Datei</h3><p>Nur Belegtes kommt in den Arbeitsbereich – die einzige Datei, die je wieder geladen wird.</p></div>
+    </div>
+    <p class="lead" style="margin-top:36px;font-family:Serif,Georgia,serif;color:var(--ink);font-size:28px">„Jeder Punkt hier ist durch die Quelle dahinter belegt. Was nicht hier steht, gilt als ungeprüft und darf nicht erfunden werden.“</p>
+  </div>
+</section>
+
+<section aria-label="Zwei Stufen">
+  <div class="pad">
+    <div class="kicker">Kosten bewusst eingesetzt</div>
+    <h2>Die kostenlose Stufe klärt das Meiste – das Modell nur den Rest</h2>
+    <p class="lead" style="margin-bottom:34px">Unbelegte Befunde im Prüfstand, erkannt je Stufe:</p>
+    <div style="max-width:1150px">
+      <div class="hbar"><span>Zahlenabgleich, ohne Modell</span><div class="track"><div class="fill" style="width:75%;background:var(--navy)"></div></div><b>6</b></div>
+      <div class="hbar"><span>Mit Modellstufe</span><div class="track"><div class="fill" style="width:100%;background:var(--gold)"></div></div><b>8</b></div>
+    </div>
+    <div class="grid2" style="margin-top:30px;max-width:1300px">
+      <div class="card"><h3>Was die erste Stufe sicher kann</h3><p>Erfundene oder veränderte Zahlen finden: nichts übersehen, kein falscher Alarm.</p></div>
+      <div class="card"><h3>Wofür die zweite Stufe bezahlt wird</h3><p>Richtig zitierte Zahl, falscher Schluss: die zwei umgedrehten Aussagen fängt nur das Modell.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Prüfstand">
+  <div class="photo" style="right:0;width:520px;background-image:url(../assets/img/pruefung.jpg)"></div>
+  <div class="pad" style="right:600px">
+    <div class="kicker">Prüfstand gegen echte Quellen</div>
+    <h2>16 von 16 Fällen gegen das Statistische Bundesamt richtig eingestuft</h2>
+    <div class="grid2" style="margin-top:26px">
+      <div class="card"><div class="big" style="color:var(--green)">16/16</div><p style="margin-top:8px">Zahlenabgleich</p></div>
+      <div class="card"><div class="big" style="color:var(--green)">16/16</div><p style="margin-top:8px">mit Modellstufe</p></div>
+      <div class="card"><div class="big">0</div><p style="margin-top:8px">unbelegte Befunde übersehen</p></div>
+      <div class="card"><div class="big">0</div><p style="margin-top:8px">belegte zu Unrecht markiert</p></div>
+    </div>
+    <p class="small" style="margin-top:22px">Echte Sätze von Destatis-Seiten, gezielt verändert: wie veröffentlicht, andere Schreibweise, Ziffer geändert, Zahl erfunden, Aussage umgedreht, Adresse antwortet nicht. Live gelaufen, Quellen mit Prüfsumme gesichert.</p>
+  </div>
+</section>
+
+<section aria-label="Beispiellauf">
+  <div class="pad">
+    <div class="kicker">So sieht die Freigabe aus</div>
+    <h2 style="max-width:620px">Die erfundene 11,4 % fällt auf, bevor sie jemand veröffentlicht</h2>
+    <ul class="list" style="max-width:600px;margin-top:26px">
+      <li>7 Befunde einer Umfeldanalyse für einen Werkzeughändler.</li>
+      <li>6 vollständig belegt, 1 nur teilweise: die 11,4 % fehlt in der Quelle.</li>
+      <li>Der Mensch behält 6 und verwirft 1 – nachvollziehbar gespeichert.</li>
+    </ul>
+  </div>
+  <div class="shot" style="position:absolute;right:96px;top:100px;width:760px"><img src="../assets/img/review.jpg" alt="Prüfseite: belegter Befund wird behalten, Befund mit fehlender Zahl 11,4 wird verworfen"></div>
+</section>
+
+<section aria-label="Arbeitsbereich">
+  <div class="photo" style="left:0;width:540px;background-image:url(../assets/img/team.jpg);background-position:42% 50%"></div>
+  <div class="pad" style="left:620px">
+    <div class="kicker">Für das ganze Team</div>
+    <h2>Ein Arbeitsbereich, den Mensch und Agent gleich lesen</h2>
+    <div class="grid2" style="margin-top:26px">
+      <div class="card"><h3>Acht Analyse-Skills</h3><p>STEP-Makroanalyse, Mikroanalyse, Wettbewerb, Porters fünf Kräfte, Bewertungsauswertung, Zielgruppe, Entwürfe für LinkedIn und Blog.</p></div>
+      <div class="card"><h3>Klare Ordnung</h3><p>Stammdaten, Strategie, Produkte, Kanäle, Kampagnen, Daten – alles als lesbare Dateien, keine Datenbank dazwischen.</p></div>
+      <div class="card"><h3>Budget als Zahl</h3><p>Der Sitzungskontext wird gemessen statt geschätzt, bevor er etwas kostet.</p></div>
+      <div class="card"><h3>Nichts verfällt still</h3><p>„stale“ meldet, welche Punkte nach ihrer Art wieder fällig sind – und löscht nichts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Rechenbeispiel">
+  <div class="pad">
+    <div class="kicker">Rechenbeispiel – mit Ihren Zahlen</div>
+    <h2 style="font-size:48px">Was die Prüfung an Arbeitszeit spart</h2>
+    <div class="calc">
+      <div>
+        <label>Rechercheergebnisse (Befunde) pro Monat <input id="c-findings" type="number" min="0" step="10" value="120"></label>
+        <label>Minuten, um einen Befund heute von Hand gegenzuprüfen <input id="c-manual" type="number" min="0" step="1" value="12"></label>
+        <label>Minuten für die Freigabe mit fertigem Prüfurteil <input id="c-review" type="number" min="0" step="1" value="2"></label>
+        <label>Interner Stundensatz (€) <input id="c-rate" type="number" min="0" step="5" value="75"></label>
+        <p class="small" style="margin-top:18px">Alle Werte sind Annahmen – tragen Sie Ihre eigenen ein. Die erste Prüfstufe kostet nichts; die Modellstufe läuft nur über das, was offen bleibt.</p>
+      </div>
+      <div class="result">
+        <div><div class="num" id="r-hours">0</div><div class="lbl">eingesparte Stunden pro Monat</div></div>
+        <div><div class="num" id="r-year">0 €</div><div class="lbl">eingesparte Arbeitszeit pro Jahr</div></div>
+        <div><div class="num" style="font-size:44px">0 ungeprüfte Zahlen</div><div class="lbl">im Arbeitsbereich – das lässt sich nicht in Euro rechnen</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Nachvollziehbarkeit">
+  <div class="pad">
+    <div class="kicker">Nachvollziehbarkeit</div>
+    <h2>Jede Entscheidung bleibt prüfbar – auch in einem Jahr</h2>
+    <div class="grid3" style="margin-top:34px">
+      <div class="card"><h3>Quellen gesichert</h3><p>Jeder Lauf legt Abzüge der Quellen mit Prüfsumme ab. Ändert sich eine Seite, bleibt das Ergebnis nachprüfbar.</p></div>
+      <div class="card"><h3>Entscheidungen als Datei</h3><p>Die gepflegte Datei entsteht nur aus Lauf und Entscheidungen – wiederherstellbar statt „Stimmung im Browser“.</p></div>
+      <div class="card"><h3>Grenzen offen benannt</h3><p>Der Prüfstand misst die Prüfung, nicht die Qualität der Recherche. Gefundene Fehler stehen mit Test im Repository.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Nächster Schritt">
+  <div class="photo" style="right:0;width:560px;background-image:url(../assets/img/strategie.jpg);background-position:60% 50%"></div>
+  <div class="pad" style="right:640px">
+    <div class="kicker">Nächster Schritt</div>
+    <h2>Ein Pilot mit Ihrer nächsten Marktanalyse</h2>
+    <div class="flow" style="grid-template-columns:repeat(3,1fr)">
+      <div class="step"><div class="n">1</div><h3>Thema wählen</h3><p>Eine Analyse, die Sie ohnehin brauchen.</p></div>
+      <div class="step"><div class="n">2</div><h3>Prüfen</h3><p>Agentenlauf, Zahlenabgleich, Ihre Freigabe.</p></div>
+      <div class="step dark"><div class="n">3</div><h3>Vergleichen</h3><p>Zeit und Fehler gegen Ihren heutigen Weg.</p></div>
+    </div>
+    <p class="lead" style="margin-top:36px;color:var(--ink)">Daniel Hütte · AI Agent Engineer · Münster<br><a class="inline" href="https://github.com/DanielHuette/agentic-marketing">github.com/DanielHuette/agentic-marketing</a></p>
+  </div>
+</section>
+
+</main>
+<a class="deck-home" href="../">Zur Projektseite</a>
+<nav class="deck-ui" aria-label="Folien steuern">
+  <button class="deck-prev" type="button" aria-label="Vorherige Folie">&#8592;</button>
+  <span class="deck-count" aria-live="polite">1 / 1</span>
+  <button class="deck-next" type="button" aria-label="Nächste Folie">&#8594;</button>
+  <button class="deck-full" type="button" aria-label="Vollbild">&#x26F6;</button>
+</nav>
+<div class="deck-progress" aria-hidden="true"><i></i></div>
+<script src="deck.js"></script>
+<script>
+(() => {
+  const value = (id) => Math.max(0, parseFloat(document.getElementById(id).value) || 0);
+  const fmt = (n) => Math.round(n).toLocaleString('de-DE');
+  function update() {
+    const saved = value('c-findings') * Math.max(0, value('c-manual') - value('c-review')) / 60;
+    document.getElementById('r-hours').textContent = fmt(saved);
+    document.getElementById('r-year').textContent = `${fmt(saved * value('c-rate') * 12)} €`;
+  }
+  ['c-findings', 'c-manual', 'c-review', 'c-rate'].forEach((id) => document.getElementById(id).addEventListener('input', update));
+  update();
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Agentic Marketing
 
-[English version](README.md) · [Projektseite mit dem Prüfstand](https://agenticmarketing.speedofthespirit.dev)
+[English version](README.md) · [Projektseite mit dem Prüfstand](https://agenticmarketing.speedofthespirit.dev) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/praesentation/)
 
 Ein Marketing-Arbeitsbereich für Agententeams — und der Schritt, der in jedem von ihnen
 fehlt: Recherche kommt erst in den Arbeitsbereich, nachdem ihre Zahlen gegen die Quellen
