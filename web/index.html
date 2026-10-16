@@ -61,6 +61,10 @@ code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86em}
 .button-solid:hover{filter:brightness(1.08)}
 .button-ghost{border-color:rgba(255,255,255,.45);color:#fff}
 .button-ghost:hover{background:rgba(255,255,255,.08)}
+#kampagnen .caption{color:var(--muted)}
+#kampagnen .button-ghost{border-color:var(--line);color:var(--ink)}
+#kampagnen .button-ghost:hover{background:var(--surface)}
+#kampagnen .button-row{margin-top:1.2rem}
 
 section{padding:4.2rem 0;border-bottom:1px solid var(--line)}
 section.white{background:var(--surface)}
@@ -170,6 +174,8 @@ tr.semantic td{background:#fffaf0}
       <a href="#pruefstand"><span class="de">Prüfstand</span><span class="en">Benchmark</span></a>
       <a href="#beispiel"><span class="de">Beispiellauf</span><span class="en">Example run</span></a>
       <a href="#ablauf"><span class="de">Ablauf</span><span class="en">How it works</span></a>
+      <a href="#kampagnen"><span class="de">Kampagnen</span><span class="en">Campaigns</span></a>
+      <a href="https://app.agenticmarketing.speedofthespirit.dev">Cockpit</a>
       <a href="https://github.com/DanielHuette/agentic-marketing">GitHub</a>
       <a href="praesentation/"><span class="de">Präsentation</span><span class="en">Presentation</span></a>
       <span class="lang" role="group" aria-label="Sprache / Language">
@@ -183,12 +189,13 @@ tr.semantic td{background:#fffaf0}
 <div class="hero">
   <div class="wrap">
     <div>
-      <h1><span class="de">Marketing-Recherche, bei der jede Zahl ihre Quelle hat.</span><span class="en">Marketing research where every figure has its source.</span></h1>
-      <p class="de">Ein Agententeam liefert viel Text, und eine ungeprüfte Zahl liest sich genau wie eine geprüfte. Hier kommt ein Rechercheergebnis erst in den Arbeitsbereich, wenn jede Zahl in der genannten Quelle nachgeschlagen wurde und ein Mensch entschieden hat, was bleibt. Der erste Prüfschritt braucht kein Modell und kostet nichts, der zweite muss die Stelle zitieren, auf die er sich stützt.</p>
-      <p class="en">An agent team produces a lot of text, and an unchecked figure reads exactly like a checked one. Here a research finding only enters the workspace once every figure has been looked up in the source it names and a person has decided what stays. The first pass needs no model and costs nothing, the second must quote the passage it relies on.</p>
+      <h1><span class="de">Marketing mit KI-Agenten, bei dem jede Zahl ihre Quelle hat.</span><span class="en">Marketing with AI agents where every figure has its source.</span></h1>
+      <p class="de">Ein Agententeam liefert viel Text, und eine ungeprüfte Zahl liest sich genau wie eine geprüfte. Hier kommt ein Rechercheergebnis erst in den Arbeitsbereich, wenn jede Zahl in der genannten Quelle nachgeschlagen wurde und ein Mensch entschieden hat, was bleibt. Der erste Prüfschritt braucht kein Modell und kostet nichts, der zweite muss die Stelle zitieren, auf die er sich stützt. Aus den geprüften Befunden werden Kampagnen, die ein Mensch im Cockpit freigibt und startet; veröffentlicht und gemessen wird automatisch.</p>
+      <p class="en">An agent team produces a lot of text, and an unchecked figure reads exactly like a checked one. Here a research finding only enters the workspace once every figure has been looked up in the source it names and a person has decided what stays. The first pass needs no model and costs nothing, the second must quote the passage it relies on. The checked findings become campaigns that a person approves and starts in a cockpit; publishing and measuring run on their own.</p>
       <div class="button-row">
         <a class="button button-solid" href="#pruefstand"><span class="de">Prüfstand ansehen</span><span class="en">See the benchmark</span></a>
         <a class="button button-ghost" href="praesentation/"><span class="de">Präsentation</span><span class="en">Presentation</span></a>
+        <a class="button button-ghost" href="#kampagnen"><span class="de">Kampagnen</span><span class="en">Campaigns</span></a>
         <a class="button button-ghost" href="https://github.com/DanielHuette/agentic-marketing"><span class="de">Quelltext</span><span class="en">Source code</span></a>
       </div>
     </div>
@@ -220,6 +227,22 @@ tr.semantic td{background:#fffaf0}
     <p class="lead en">Seven findings of a macro analysis for a tooling dealer, checked against bundled example sources. One finding claims the regrinding market grows by 11.4 percent, a figure that appears in no source. The figure pass marks it partial, the person drops it, and the curated file ends up holding only what is backed.</p>
     <div class="kpis" id="example-kpis"><p class="loading">…</p></div>
     <div id="findings"></div>
+  </div>
+</section>
+
+<section id="kampagnen">
+  <div class="wrap">
+    <p class="kicker"><span class="de">Von der Recherche zur Veröffentlichung</span><span class="en">From research to publication</span></p>
+    <h2><span class="de">Ein Cockpit, in dem ein Mensch freigibt und startet</span><span class="en">A cockpit where a person approves and starts</span></h2>
+    <p class="lead de">Beiträge zitieren nur geprüfte Befunde. Eine Zahl ohne Beleg sperrt die Freigabe, in der App und in der Datenbank. Nach „Freigeben &amp; starten“ bekommt jeder Beitrag seinen Termin; Blogbeiträge erscheinen automatisch, LinkedIn-Beiträge werden zum Termin von Hand gepostet. Ein Zähler ohne Cookies misst Aufrufe und Klicks, montags kommt ein Bericht gegen die Ziele.</p>
+    <p class="lead en">Posts cite checked findings only. A figure without a source blocks approval, in the app and in the database. After "Freigeben &amp; starten" every post gets its date; blog posts appear on their own, LinkedIn posts are posted by hand on their day. A cookie-free counter measures reads and clicks, and every Monday brings a report against the goals.</p>
+    <div class="shot"><img src="assets/img/cockpit/ergebnisse.jpg" width="1020" height="650" alt="Ergebnisse der fiktiven Beispielkampagne im Cockpit: 1.774 Aufrufe, 37 Klicks, 3 Anfragen gegen die Ziele, Tagesverlauf und Tabelle je Beitrag" loading="lazy"></div>
+    <div class="caption"><span class="de">Fiktive Beispielkampagne Nordwind nach 21 Tagen: Ziel bei den Aufrufen übertroffen, bei Klicks und Anfragen verfehlt. Ergebnisse simuliert, Veröffentlichung echt.</span><span class="en">Fictional example campaign Nordwind after 21 days: reads above goal, clicks and inquiries below. Results simulated, publishing real.</span></div>
+    <div class="button-row">
+      <a class="button button-solid" href="https://app.agenticmarketing.speedofthespirit.dev">Cockpit</a>
+      <a class="button button-ghost" href="beispiel-blog/"><span class="de">Beispielblog</span><span class="en">Example blog</span></a>
+      <a class="button button-ghost" href="https://github.com/DanielHuette/agentic-marketing/blob/main/Dokumentation/BETRIEBSANLEITUNG.de.md"><span class="de">Betriebsanleitung</span><span class="en">Operating manual</span></a>
+    </div>
   </div>
 </section>
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agentic Marketing – Präsentation</title>
-<meta name="description" content="Präsentation: Marktrecherche mit KI-Agenten, bei der jede Zahl gegen ihre Quelle geprüft wird, bevor ein Mensch sie freigibt. Mit Prüfstand gegen das Statistische Bundesamt und Rechenbeispiel.">
+<meta name="description" content="Präsentation: Von der geprüften Marktrecherche zur Kampagne, die ein Mensch im Cockpit freigibt und startet. Mit Beispiellauf, echter Kampagne und Rechenbeispiel.">
 <meta property="og:title" content="Agentic Marketing – Präsentation">
 <meta property="og:image" content="https://agenticmarketing.speedofthespirit.dev/assets/img/vorschau.jpg">
 <link rel="icon" href="../favicon.svg">
@@ -70,17 +70,39 @@ ul.list li::before { content: ""; position: absolute; left: 0; top: 11px; width:
 .strike { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; color: var(--muted); }
 a.inline { color: var(--gold); }
 </style>
+<style>
+.shot.tall img { height: 100%; object-fit: cover; object-position: top; }
+.layers { display: grid; gap: 14px; margin-top: 26px; }
+.layer { display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 18px 22px; }
+.layer .n { font: 700 34px/1 Serif, Georgia, serif; color: var(--gold); }
+.layer h3 { margin: 0 0 4px; font-size: 22px; }
+.layer p { margin: 0; font-size: 18px; line-height: 1.45; color: var(--muted); }
+.kpi3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.kpi3 .card { padding: 22px 24px; }
+.kpi3 .v { font: 700 54px/1 Serif, Georgia, serif; }
+.kpi3 .g { font-size: 17px; color: var(--muted); margin-top: 8px; }
+.kpi3 .track { height: 8px; background: #ebe7de; border-radius: 4px; margin-top: 12px; overflow: hidden; }
+.kpi3 .track i { display: block; height: 100%; background: var(--gold); }
+table.plan { border-collapse: collapse; width: 100%; font-size: 19px; }
+table.plan th { text-align: left; font: 600 14px/1 Inter, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 0 12px; border-bottom: 1px solid var(--line); }
+table.plan td { padding: 11px 0; border-bottom: 1px solid var(--line); }
+table.plan td.n { font: 700 22px/1 Serif, Georgia, serif; color: var(--gold); width: 70px; }
+.chip { display: inline-block; font: 600 14px/1 Inter, sans-serif; padding: 6px 10px; border-radius: 3px; background: #ece8df; color: var(--navy); }
+.sources { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.sources .card { padding: 18px 20px; }
+.sources .card b { font: 700 34px/1 Serif, Georgia, serif; color: var(--navy); display: block; }
+.sources .card span { font-size: 16px; color: var(--muted); line-height: 1.4; display: block; margin-top: 8px; }
+</style>
 </head>
 <body>
 <main class="deck" aria-label="Präsentation Agentic Marketing">
-
 <section aria-label="Titel">
   <div class="photo" style="left:0;width:640px;background-image:url(../assets/img/strategie.jpg);background-position:35% 50%"></div>
-  <div class="pad" style="left:730px;top:150px">
+  <div class="pad" style="left:730px;top:130px">
     <div class="kicker">Agentic Marketing</div>
-    <h1>Marktrecherche mit KI.<br>Jede Zahl belegt.</h1>
-    <p class="lead">Bevor ein Befund Ihrer Agenten in Strategie, Kampagne oder Pressetext wandert, wird jede Zahl in ihrer Quelle nachgeschlagen – und ein Mensch entscheidet.</p>
-    <p class="small" style="margin-top:46px">Daniel Hütte · AI Agent Engineer · Münster</p>
+    <h1>Von der geprüften Recherche zur laufenden Kampagne</h1>
+    <p class="lead">KI-Agenten recherchieren und schreiben. Jede Zahl wird gegen ihre Quelle geprüft. Ein Mensch gibt im Cockpit frei und startet. Veröffentlicht und gemessen wird automatisch.</p>
+    <p class="small" style="margin-top:46px">Daniel Hütte · AI Engineer · Münster</p>
   </div>
 </section>
 
@@ -88,97 +110,189 @@ a.inline { color: var(--gold); }
   <div class="pad">
     <div class="kicker">Das Risiko</div>
     <h2>Eine erfundene Zahl liest sich genau wie eine echte</h2>
-    <p class="lead">Sprachmodelle liefern Zahlen mit großer Sicherheit. Im Marketing landet eine falsche Zahl nicht in einem Test, sondern in der Öffentlichkeit.</p>
+    <p class="lead">Sprachmodelle liefern Zahlen mit großer Sicherheit. Im Marketing landet eine falsche Zahl nicht in einem Test, sondern in der Öffentlichkeit, mit Ihrem Namen darunter.</p>
     <div class="grid2" style="margin-top:38px;max-width:1300px">
-      <div class="card"><span class="stamp ok">IN DER QUELLE</span><h3 style="margin-top:16px">„Die Auftragseingänge liegen 2,3 Prozent unter Vorjahr …“</h3><p>Steht so in der genannten Quelle.</p></div>
-      <div class="card"><span class="stamp no">IN KEINER QUELLE</span><h3 style="margin-top:16px">„… der Nachschliffmarkt wächst gegenläufig um 11,4 Prozent“</h3><p>Klingt plausibel, steht aber nirgends. Ohne Prüfung geht sie in die Präsentation beim Kunden.</p></div>
+      <div class="card"><span class="stamp ok">IN DER QUELLE</span><h3 style="margin-top:16px">„50 Prozent nutzen zumindest manchmal einen KI-Chat statt der Internetsuche.“</h3><p>Bitkom Research, November 2025. Steht so auf der Seite, im Cockpit mit Zitat hinterlegt.</p></div>
+      <div class="card"><span class="stamp no">IN KEINER QUELLE</span><h3 style="margin-top:16px">„Das spart 35 Prozent.“</h3><p>Klingt plausibel, steht nirgends. Im Testlauf nachträglich in einen Beitrag geschrieben: Die Freigabe war sofort gesperrt.</p></div>
     </div>
-    <p class="small" style="margin-top:22px">Beispiel aus dem mitgelieferten Beispiellauf mit gekennzeichneten Beispielquellen.</p>
   </div>
 </section>
 
-<section aria-label="Zu viel Text">
+<section aria-label="Die Lücke">
   <div class="pad">
-    <div class="kicker">Das zweite Problem</div>
-    <h2>Zu viel Text, zu wenig Entscheidung</h2>
-    <p class="lead" style="margin-bottom:40px">Wer den ganzen Rechercheverlauf in die nächste Sitzung mitnimmt, bezahlt für Material, über das nie jemand entschieden hat. Gemessen am Beispiellauf:</p>
-    <div class="funnel">
-      <div class="row"><span>Rohlauf der Agenten</span><div class="barx" style="width:100%"></div><span class="val">10.879 Z.</span></div>
-      <div class="row"><span>Gepflegte, belegte Datei</span><div class="barx" style="width:32.5%;background:var(--gold)"></div><span class="val">3.535 Z.</span></div>
-      <div class="row"><span>Startkontext der nächsten Sitzung</span><div class="barx" style="width:52.1%;background:#7b8794"></div><span class="val">5.668 Z.</span></div>
+    <div class="kicker">Die Lücke</div>
+    <h2>Recherche allein ist kein Marketing</h2>
+    <p class="lead" style="margin-bottom:34px">Die meisten Agenten-Aufbauten enden bei einem guten Dokument. Dazwischen und danach fehlt, was ein Marketingteam täglich braucht:</p>
+    <div class="grid2" style="max-width:1340px">
+      <div class="card"><h3>Wer gibt frei?</h3><p>Ein Ort, an dem ein Mensch jeden Beitrag mit seinen Belegen sieht und entscheidet, nachvollziehbar mit Verlauf.</p></div>
+      <div class="card"><h3>Wann geht was raus?</h3><p>Ein Plan, der erst mit dem Startklick Termine bekommt, und ein Ablauf, der pünktlich veröffentlicht.</p></div>
+      <div class="card"><h3>Was hat es gebracht?</h3><p>Aufrufe, Klicks und Anfragen je Beitrag, gegen ein Ziel, das vor dem Start feststand.</p></div>
+      <div class="card"><h3>Was kostet der Betrieb?</h3><p>Keine Lizenz je Ausführung, keine zusätzliche Plattform: Datenbank, Zeitplan und Hosting im kostenlosen Rahmen.</p></div>
     </div>
-    <p class="small" style="margin-top:28px">Z. = Zeichen. Die gepflegte Datei enthält 32,5 % des Rohlaufs – und nur Geprüftes. Der Startkontext umfasst zusätzlich die Grunddateien, rund 1.419 Tokens. Echte Läufe mit Downloads verdichten deutlich stärker.</p>
   </div>
 </section>
 
-<section aria-label="Die Lösung">
+<section aria-label="Der Weg">
   <div class="pad">
-    <div class="kicker">Die Lösung</div>
-    <h2>Ein Tor vor dem Arbeitsbereich: prüfen, entscheiden, übernehmen</h2>
-    <div class="flow">
-      <div class="step"><div class="n">1</div><h3>Zahlenabgleich</h3><p>Jede Zahl wird in der genannten Quelle gesucht – auch über Schreibweisen hinweg. Ohne Modell, ohne Kosten.</p></div>
-      <div class="step"><div class="n">2</div><h3>Modell mit Zitat</h3><p>Nur Offenes geht an Claude. Es muss die Stelle zitieren, auf die es sich stützt.</p></div>
-      <div class="step"><div class="n">3</div><h3>Freigabe</h3><p>Ein Mensch behält oder verwirft jeden Befund. Die Entscheidungen liegen als Datei vor.</p></div>
-      <div class="step dark"><div class="n">4</div><h3>Gepflegte Datei</h3><p>Nur Belegtes kommt in den Arbeitsbereich – die einzige Datei, die je wieder geladen wird.</p></div>
+    <div class="kicker">Der Weg</div>
+    <h2>Sechs Schritte, ein Tor: raus geht nur, was belegt und freigegeben ist</h2>
+    <div class="flow" style="grid-template-columns:repeat(6,1fr)">
+      <div class="step"><div class="n">1</div><h3>Recherche</h3><p>Agenten schreiben Befunde mit Zahl und Quelle.</p></div>
+      <div class="step"><div class="n">2</div><h3>Prüfung</h3><p>Jede Zahl wird in ihrer Quelle nachgeschlagen.</p></div>
+      <div class="step"><div class="n">3</div><h3>Kampagne</h3><p>Beiträge zitieren nur behaltene Befunde.</p></div>
+      <div class="step dark"><div class="n">4</div><h3>Freigabe</h3><p>Ein Mensch entscheidet im Cockpit und startet.</p></div>
+      <div class="step"><div class="n">5</div><h3>Veröffentlichung</h3><p>Stündlich in den Blog, LinkedIn von Hand.</p></div>
+      <div class="step"><div class="n">6</div><h3>Messung</h3><p>Täglich gezählt, montags berichtet.</p></div>
     </div>
-    <p class="lead" style="margin-top:36px;font-family:Serif,Georgia,serif;color:var(--ink);font-size:28px">„Jeder Punkt hier ist durch die Quelle dahinter belegt. Was nicht hier steht, gilt als ungeprüft und darf nicht erfunden werden.“</p>
-  </div>
-</section>
-
-<section aria-label="Zwei Stufen">
-  <div class="pad">
-    <div class="kicker">Kosten bewusst eingesetzt</div>
-    <h2>Die kostenlose Stufe klärt das Meiste – das Modell nur den Rest</h2>
-    <p class="lead" style="margin-bottom:34px">Unbelegte Befunde im Prüfstand, erkannt je Stufe:</p>
-    <div style="max-width:1150px">
-      <div class="hbar"><span>Zahlenabgleich, ohne Modell</span><div class="track"><div class="fill" style="width:75%;background:var(--navy)"></div></div><b>6</b></div>
-      <div class="hbar"><span>Mit Modellstufe</span><div class="track"><div class="fill" style="width:100%;background:var(--gold)"></div></div><b>8</b></div>
-    </div>
-    <div class="grid2" style="margin-top:30px;max-width:1300px">
-      <div class="card"><h3>Was die erste Stufe sicher kann</h3><p>Erfundene oder veränderte Zahlen finden: nichts übersehen, kein falscher Alarm.</p></div>
-      <div class="card"><h3>Wofür die zweite Stufe bezahlt wird</h3><p>Richtig zitierte Zahl, falscher Schluss: die zwei umgedrehten Aussagen fängt nur das Modell.</p></div>
-    </div>
+    <p class="lead" style="margin-top:36px;font-family:Serif,Georgia,serif;color:var(--ink);font-size:28px">Die Agenten arbeiten zu. Die Entscheidung bleibt beim Menschen.</p>
   </div>
 </section>
 
 <section aria-label="Prüfstand">
   <div class="photo" style="right:0;width:520px;background-image:url(../assets/img/pruefung.jpg)"></div>
   <div class="pad" style="right:600px">
-    <div class="kicker">Prüfstand gegen echte Quellen</div>
-    <h2>16 von 16 Fällen gegen das Statistische Bundesamt richtig eingestuft</h2>
+    <div class="kicker">Prüfung, gemessen</div>
+    <h2>16 von 16 Prüffällen gegen das Statistische Bundesamt richtig eingestuft</h2>
     <div class="grid2" style="margin-top:26px">
-      <div class="card"><div class="big" style="color:var(--green)">16/16</div><p style="margin-top:8px">Zahlenabgleich</p></div>
-      <div class="card"><div class="big" style="color:var(--green)">16/16</div><p style="margin-top:8px">mit Modellstufe</p></div>
+      <div class="card"><div class="big" style="color:var(--green)">16/16</div><p style="margin-top:8px">Zahlenabgleich, ohne Modell und Kosten</p></div>
+      <div class="card"><div class="big" style="color:var(--green)">16/16</div><p style="margin-top:8px">mit Modellstufe für umgedrehte Aussagen</p></div>
       <div class="card"><div class="big">0</div><p style="margin-top:8px">unbelegte Befunde übersehen</p></div>
-      <div class="card"><div class="big">0</div><p style="margin-top:8px">belegte zu Unrecht markiert</p></div>
+      <div class="card"><div class="big">9/9</div><p style="margin-top:8px">Befunde der echten Kampagne gegen Live-Quellen belegt</p></div>
     </div>
-    <p class="small" style="margin-top:22px">Echte Sätze von Destatis-Seiten, gezielt verändert: wie veröffentlicht, andere Schreibweise, Ziffer geändert, Zahl erfunden, Aussage umgedreht, Adresse antwortet nicht. Live gelaufen, Quellen mit Prüfsumme gesichert.</p>
+    <p class="small" style="margin-top:22px">Echte Sätze von Destatis-Seiten, gezielt verändert: andere Schreibweise, Ziffer geändert, Zahl erfunden, Aussage umgedreht. Die RadarAuditor-Befunde stammen von Bitkom, ZDH, HWK Münster, Bundesnetzagentur und YouGov.</p>
+  </div>
+</section>
+
+<section aria-label="Cockpit">
+  <div class="pad" style="right:830px">
+    <div class="kicker">Das Cockpit</div>
+    <h2 style="font-size:46px">Jeder Beitrag zeigt neben dem Text seine Belege</h2>
+    <ul class="list" style="margin-top:26px">
+      <li>Links der Beitrag, wie Lesende ihn sehen.</li>
+      <li>Rechts jeder zitierte Befund: Zahlen, Quelle mit Datum, der Satz aus der Quelle.</li>
+      <li>Freigeben, bearbeiten, ablehnen mit Begründung. Jede Handlung im Verlauf.</li>
+      <li>Installierbar als App auf Rechner und Telefon.</li>
+    </ul>
+  </div>
+  <div class="shot" style="position:absolute;right:80px;top:96px;width:720px"><img src="../assets/img/cockpit/beitrag-belege.jpg" alt="Beitrag im Cockpit mit Belegen: Bitkom-Befund mit den Zahlen 50, 24 und 1.156 und dem Satz aus der Quelle"></div>
+</section>
+
+<section aria-label="Wächter">
+  <div class="shot" style="position:absolute;left:80px;top:96px;width:720px"><img src="../assets/img/cockpit/pruefung-gesperrt.jpg" alt="Editor im Cockpit: rote Meldung Zahlen ohne Quelle: 35, Freigabe nicht möglich"></div>
+  <div class="pad" style="left:860px">
+    <div class="kicker">Der Wächter</div>
+    <h2 style="font-size:44px">Eine Zahl ohne Beleg sperrt die Freigabe, dreifach</h2>
+    <div class="layers">
+      <div class="layer"><div class="n">1</div><div><h3>Bei der Übergabe</h3><p>Die Kampagne meldet jeden Beitrag mit unbelegter Zahl.</p></div></div>
+      <div class="layer"><div class="n">2</div><div><h3>Beim Tippen</h3><p>Die App prüft jede Änderung sofort und sperrt den Knopf.</p></div></div>
+      <div class="layer"><div class="n">3</div><div><h3>In der Datenbank</h3><p>Ein Trigger verweigert die Freigabe auch an der App vorbei, im Test sogar mit dem Service-Schlüssel.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Start">
+  <div class="pad" style="right:830px">
+    <div class="kicker">Ein Klick</div>
+    <h2 style="font-size:46px">„Freigeben &amp; starten“ setzt den ganzen Plan</h2>
+    <ul class="list" style="margin-top:26px">
+      <li>Jeder freigegebene Beitrag bekommt seinen Termin: Starttag plus Versatz, feste Uhrzeit.</li>
+      <li>Eine Kampagne kann Wochen vorher fertig sein. Kein Datum muss angepasst werden.</li>
+      <li>Pausieren hebt alle Termine auf, Fortsetzen plant neu.</li>
+    </ul>
+  </div>
+  <div class="shot" style="position:absolute;right:80px;top:96px;width:720px"><img src="../assets/img/cockpit/start-bestaetigen.jpg" alt="Rückfrage Wirklich starten mit Knöpfen Ja, starten und Abbrechen"></div>
+</section>
+
+<section aria-label="Veröffentlichen">
+  <div class="shot" style="position:absolute;left:96px;top:80px;width:470px"><img src="../assets/img/cockpit/beispielblog.jpg" alt="Veröffentlichter Beitrag im Beispielblog mit Hinweis, dass Firma und Quellen erfunden sind"></div>
+  <div class="pad" style="left:650px">
+    <div class="kicker">Veröffentlichen</div>
+    <h2 style="font-size:46px">Der Blog füllt sich von selbst, LinkedIn bleibt in Ihrer Hand</h2>
+    <div class="grid2" style="margin-top:22px">
+      <div class="card"><h3>Blog</h3><p>Stündlich prüft ein Ablauf auf GitHub, was fällig ist, und schreibt Beitrag, Übersicht und Feed in einem Commit. Jeder Beitrag endet mit seinen Quellen.</p></div>
+      <div class="card"><h3>LinkedIn</h3><p>Zum Termin steht der Beitrag unter „Jetzt posten“: kopieren, posten, Adresse eintragen. Kein Konto wird automatisiert.</p></div>
+      <div class="card"><h3>Messbar</h3><p>Links tragen Kampagnenparameter. Ein Zähler ohne Cookies ordnet jeden Klick dem Beitrag zu, der ihn ausgelöst hat.</p></div>
+      <div class="card"><h3>Umkehrbar</h3><p>Jede Veröffentlichung ist ein Commit: nachvollziehbar, rückgängig zu machen, die Seite bleibt statisch.</p></div>
+    </div>
   </div>
 </section>
 
 <section aria-label="Beispiellauf">
-  <div class="pad">
-    <div class="kicker">So sieht die Freigabe aus</div>
-    <h2 style="max-width:620px">Die erfundene 11,4 % fällt auf, bevor sie jemand veröffentlicht</h2>
-    <ul class="list" style="max-width:600px;margin-top:26px">
-      <li>7 Befunde einer Umfeldanalyse für einen Werkzeughändler.</li>
-      <li>6 vollständig belegt, 1 nur teilweise: die 11,4 % fehlt in der Quelle.</li>
-      <li>Der Mensch behält 6 und verwirft 1 – nachvollziehbar gespeichert.</li>
-    </ul>
+  <div class="pad" style="right:860px">
+    <div class="kicker">Beispiellauf · fiktiv</div>
+    <h2 style="font-size:42px">Nordwind: 6 Beiträge, 21 Tage, ein Ziel übertroffen, zwei verfehlt</h2>
+    <div class="kpi3">
+      <div class="card"><div class="v">118 %</div><div class="g">Aufrufe: 1.774 von 1.500</div><div class="track"><i style="width:100%"></i></div></div>
+      <div class="card"><div class="v">93 %</div><div class="g">Klicks: 37 von 40</div><div class="track"><i style="width:93%"></i></div></div>
+      <div class="card"><div class="v">75 %</div><div class="g">Anfragen: 3 von 4</div><div class="track"><i style="width:75%"></i></div></div>
+    </div>
+    <p class="small" style="margin-top:20px">Firma und Quellen erfunden, Ergebnisse simuliert und überall so markiert. Echt sind Cockpit, Freigaben, ein vom Wächter gestoppter und ein abgelehnter Beitrag, die drei veröffentlichten Blogbeiträge und die Berichte. Der Lauf wurde mit simulierter Uhr durchgespielt, mit demselben Code wie im Echtbetrieb.</p>
   </div>
-  <div class="shot" style="position:absolute;right:96px;top:100px;width:760px"><img src="../assets/img/review.jpg" alt="Prüfseite: belegter Befund wird behalten, Befund mit fehlender Zahl 11,4 wird verworfen"></div>
+  <div class="shot" style="position:absolute;right:80px;top:120px;width:740px"><img src="../assets/img/cockpit/ergebnisse.jpg" alt="Ergebnisse im Cockpit: Kennzahlen gegen Ziel, Tagesverlauf von Aufrufen, Klicks und Anfragen, Tabelle je Beitrag"></div>
 </section>
 
-<section aria-label="Arbeitsbereich">
+<section aria-label="Bericht">
+  <div class="shot" style="position:absolute;left:80px;top:96px;width:740px"><img src="../assets/img/cockpit/wochenbericht.jpg" alt="Wochenbericht im Cockpit: Ergebnis gegen Ziel und Beiträge nach Wirkung"></div>
+  <div class="pad" style="left:880px">
+    <div class="kicker">Jeden Montag</div>
+    <h2 style="font-size:44px">Ein Bericht, der Wirkung gegen Ziel stellt</h2>
+    <ul class="list" style="margin-top:24px">
+      <li>Diese Woche, gesamt, Ziel, Anteil erreicht.</li>
+      <li>Was veröffentlicht wurde und welche Beiträge am meisten gebracht haben.</li>
+      <li>Was noch auf Freigabe wartet.</li>
+      <li>Täglich gezählt, ohne Cookies, ohne Einwilligungsbanner.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-label="Echte Kampagne">
+  <div class="pad" style="right:840px">
+    <div class="kicker">Startklar</div>
+    <h2 style="font-size:42px">Die echte Kampagne für RadarAuditor wartet auf einen Klick</h2>
+    <p class="lead" style="font-size:21px;margin-bottom:6px">Lokale Sichtbarkeit im Münsterland. Neun Befunde, alle gegen die Live-Quelle geprüft, zum Beispiel:</p>
+    <div class="sources">
+      <div class="card"><b>50 %</b><span>nutzen KI-Chats statt Suche (Bitkom)</span></div>
+      <div class="card"><b>30.749</b><span>Handwerksbetriebe im Kammerbezirk Münster</span></div>
+      <div class="card"><b>40 %</b><span>schließen Betriebe ohne Webseite aus (Bitkom)</span></div>
+    </div>
+    <p class="small" style="margin-top:18px">Sechs Beiträge freigegeben, Blog bereit. Gestartet wird, wenn das Produkt verkauft werden kann.</p>
+  </div>
+  <div class="shot" style="position:absolute;right:80px;top:96px;width:720px"><img src="../assets/img/cockpit/echte-kampagne.jpg" alt="Echte RadarAuditor-Kampagne im Cockpit: Bereit zum Start, sechs Beiträge freigegeben, Knopf Freigeben und starten"></div>
+</section>
+
+<section aria-label="Plan">
+  <div class="pad">
+    <div class="kicker">Der Plan nach dem Start</div>
+    <h2>Drei Wochen, drei Themen, je ein Blogbeitrag und ein LinkedIn-Beitrag</h2>
+    <div class="grid2" style="grid-template-columns:1.25fr 1fr;gap:56px;margin-top:10px">
+      <table class="plan">
+        <tr><th>Tag</th><th>Kanal</th><th>Beitrag</th></tr>
+        <tr><td class="n">1</td><td><span class="chip">Blog</span></td><td>Die Hälfte fragt erst die KI</td></tr>
+        <tr><td class="n">3</td><td><span class="chip">LinkedIn</span></td><td>Die Hälfte fragt erst die KI</td></tr>
+        <tr><td class="n">8</td><td><span class="chip">Blog</span></td><td>Sterne entscheiden mit</td></tr>
+        <tr><td class="n">10</td><td><span class="chip">LinkedIn</span></td><td>Sterne entscheiden mit</td></tr>
+        <tr><td class="n">15</td><td><span class="chip">Blog</span></td><td>Geprüft wird online</td></tr>
+        <tr><td class="n">17</td><td><span class="chip">LinkedIn</span></td><td>Auch Empfehlungen werden online geprüft</td></tr>
+      </table>
+      <div class="stack" style="display:grid;gap:18px">
+        <div class="card"><h3>Ziele</h3><p>600 Aufrufe, 40 Klicks, 3 Anfragen. Vorher festgelegt, im Bericht nachgehalten.</p></div>
+        <div class="card"><h3>Zielgruppe</h3><p>Inhaber kleiner Handwerksbetriebe, Praxen und Geschäfte im Kammerbezirk Münster.</p></div>
+        <div class="card"><h3>Ton</h3><p>Nachgemessen, ruhig erklärt, keine Angstmache. Jede Zahl mit Quelle unter dem Beitrag.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Betrieb">
   <div class="photo" style="left:0;width:540px;background-image:url(../assets/img/team.jpg);background-position:42% 50%"></div>
   <div class="pad" style="left:620px">
-    <div class="kicker">Für das ganze Team</div>
-    <h2>Ein Arbeitsbereich, den Mensch und Agent gleich lesen</h2>
+    <div class="kicker">Betrieb</div>
+    <h2>Läuft ohne zusätzliche Plattform und ohne Kosten je Ausführung</h2>
     <div class="grid2" style="margin-top:26px">
-      <div class="card"><h3>Acht Analyse-Skills</h3><p>STEP-Makroanalyse, Mikroanalyse, Wettbewerb, Porters fünf Kräfte, Bewertungsauswertung, Zielgruppe, Entwürfe für LinkedIn und Blog.</p></div>
-      <div class="card"><h3>Klare Ordnung</h3><p>Stammdaten, Strategie, Produkte, Kanäle, Kampagnen, Daten – alles als lesbare Dateien, keine Datenbank dazwischen.</p></div>
-      <div class="card"><h3>Budget als Zahl</h3><p>Der Sitzungskontext wird gemessen statt geschätzt, bevor er etwas kostet.</p></div>
-      <div class="card"><h3>Nichts verfällt still</h3><p>„stale“ meldet, welche Punkte nach ihrer Art wieder fällig sind – und löscht nichts.</p></div>
+      <div class="card"><h3>Zeitplan: GitHub Actions</h3><p>Stündlich veröffentlichen, täglich messen, montags berichten. Versioniert und prüfbar statt n8n, Zapier oder Make.</p></div>
+      <div class="card"><h3>Daten: Supabase</h3><p>Freigaben, Termine, Zählungen. Zeilenrechte: nur der Betreiber entscheidet, die Seiten können nur zählen.</p></div>
+      <div class="card"><h3>Seiten: Cloudflare Pages</h3><p>Cockpit, Blogs und Projektseite. Jeder Push rollt aus.</p></div>
+      <div class="card"><h3>Geprüft</h3><p>Strenge Typprüfung, automatische Tests bei jedem Push, Ende-zu-Ende im Browser durchgespielt.</p></div>
     </div>
   </div>
 </section>
@@ -189,29 +303,17 @@ a.inline { color: var(--gold); }
     <h2 style="font-size:48px">Was die Prüfung an Arbeitszeit spart</h2>
     <div class="calc">
       <div>
-        <label>Rechercheergebnisse (Befunde) pro Monat <input id="c-findings" type="number" min="0" step="10" value="120"></label>
-        <label>Minuten, um einen Befund heute von Hand gegenzuprüfen <input id="c-manual" type="number" min="0" step="1" value="12"></label>
-        <label>Minuten für die Freigabe mit fertigem Prüfurteil <input id="c-review" type="number" min="0" step="1" value="2"></label>
+        <label>Befunde und Beiträge pro Monat <input id="c-findings" type="number" min="0" step="10" value="120"></label>
+        <label>Minuten, um einen davon heute von Hand gegenzuprüfen <input id="c-manual" type="number" min="0" step="1" value="12"></label>
+        <label>Minuten für die Freigabe mit fertigem Beleg <input id="c-review" type="number" min="0" step="1" value="2"></label>
         <label>Interner Stundensatz (€) <input id="c-rate" type="number" min="0" step="5" value="75"></label>
-        <p class="small" style="margin-top:18px">Alle Werte sind Annahmen – tragen Sie Ihre eigenen ein. Die erste Prüfstufe kostet nichts; die Modellstufe läuft nur über das, was offen bleibt.</p>
+        <p class="small" style="margin-top:18px">Alle Werte sind Annahmen – tragen Sie Ihre eigenen ein. Die Zahlenprüfung kostet nichts; die Modellstufe läuft nur über das, was offen bleibt.</p>
       </div>
       <div class="result">
         <div><div class="num" id="r-hours">0</div><div class="lbl">eingesparte Stunden pro Monat</div></div>
         <div><div class="num" id="r-year">0 €</div><div class="lbl">eingesparte Arbeitszeit pro Jahr</div></div>
-        <div><div class="num" style="font-size:44px">0 ungeprüfte Zahlen</div><div class="lbl">im Arbeitsbereich – das lässt sich nicht in Euro rechnen</div></div>
+        <div><div class="num" style="font-size:44px">0 unbelegte Zahlen</div><div class="lbl">in veröffentlichten Beiträgen – das lässt sich nicht in Euro rechnen</div></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section aria-label="Nachvollziehbarkeit">
-  <div class="pad">
-    <div class="kicker">Nachvollziehbarkeit</div>
-    <h2>Jede Entscheidung bleibt prüfbar – auch in einem Jahr</h2>
-    <div class="grid3" style="margin-top:34px">
-      <div class="card"><h3>Quellen gesichert</h3><p>Jeder Lauf legt Abzüge der Quellen mit Prüfsumme ab. Ändert sich eine Seite, bleibt das Ergebnis nachprüfbar.</p></div>
-      <div class="card"><h3>Entscheidungen als Datei</h3><p>Die gepflegte Datei entsteht nur aus Lauf und Entscheidungen – wiederherstellbar statt „Stimmung im Browser“.</p></div>
-      <div class="card"><h3>Grenzen offen benannt</h3><p>Der Prüfstand misst die Prüfung, nicht die Qualität der Recherche. Gefundene Fehler stehen mit Test im Repository.</p></div>
     </div>
   </div>
 </section>
@@ -220,13 +322,13 @@ a.inline { color: var(--gold); }
   <div class="photo" style="right:0;width:560px;background-image:url(../assets/img/strategie.jpg);background-position:60% 50%"></div>
   <div class="pad" style="right:640px">
     <div class="kicker">Nächster Schritt</div>
-    <h2>Ein Pilot mit Ihrer nächsten Marktanalyse</h2>
+    <h2>Eine Pilotkampagne mit Ihrem Thema</h2>
     <div class="flow" style="grid-template-columns:repeat(3,1fr)">
-      <div class="step"><div class="n">1</div><h3>Thema wählen</h3><p>Eine Analyse, die Sie ohnehin brauchen.</p></div>
-      <div class="step"><div class="n">2</div><h3>Prüfen</h3><p>Agentenlauf, Zahlenabgleich, Ihre Freigabe.</p></div>
-      <div class="step dark"><div class="n">3</div><h3>Vergleichen</h3><p>Zeit und Fehler gegen Ihren heutigen Weg.</p></div>
+      <div class="step"><div class="n">1</div><h3>Recherche</h3><p>Ein Markt, eine Zielgruppe, geprüfte Befunde.</p></div>
+      <div class="step"><div class="n">2</div><h3>Kampagne</h3><p>Beiträge, Plan, Ziele. Sie geben frei.</p></div>
+      <div class="step dark"><div class="n">3</div><h3>Ergebnis</h3><p>Drei Wochen später: Wirkung gegen Ziel.</p></div>
     </div>
-    <p class="lead" style="margin-top:36px;color:var(--ink)">Daniel Hütte · AI Agent Engineer · Münster<br><a class="inline" href="https://github.com/DanielHuette/agentic-marketing">github.com/DanielHuette/agentic-marketing</a></p>
+    <p class="lead" style="margin-top:36px;color:var(--ink)">Daniel Hütte · AI Engineer · Münster<br><a class="inline" href="https://app.agenticmarketing.speedofthespirit.dev">app.agenticmarketing.speedofthespirit.dev</a><br><a class="inline" href="https://github.com/DanielHuette/agentic-marketing">github.com/DanielHuette/agentic-marketing</a></p>
   </div>
 </section>
 
