@@ -6,7 +6,7 @@ audience: Inhaber von Zerspanungsbetrieben mit weniger als zwanzig Beschäftigte
 target: beispiel
 duration_days: 21
 publish_time: "08:30"
-kpi: {views: 500, clicks: 30, leads: 4}
+kpi: {views: 1500, clicks: 40, leads: 4}
 example: true
 runs:
   - strategie/umwelt/makroanalyse/makroanalyse-2026-08-29

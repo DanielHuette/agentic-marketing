@@ -57,7 +57,7 @@ export function ExampleBadge() {
 }
 
 export function Kpi({ label, value, goal }: { label: string; value: string; goal?: { done: number; target: number } }) {
-  const share = goal === undefined || goal.target <= 0 ? null : Math.min(100, Math.round((100 * goal.done) / goal.target));
+  const share = goal === undefined || goal.target <= 0 ? null : Math.round((100 * goal.done) / goal.target);
   return (
     <div class="kpi">
       <div class="kpi__label">{label}</div>
@@ -65,7 +65,7 @@ export function Kpi({ label, value, goal }: { label: string; value: string; goal
       {share !== null && goal !== undefined && (
         <>
           <div class="bar" aria-hidden="true">
-            <span style={{ width: `${String(share)}%` }} />
+            <span style={{ width: `${String(Math.min(100, share))}%` }} />
           </div>
           <div class="small muted num">
             {share} % von {goal.target.toLocaleString("de-DE")}

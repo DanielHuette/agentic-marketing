@@ -26,10 +26,10 @@ logger = logging.getLogger(__name__)
 
 MEASURED = "counter"
 SIMULATED = "simulated"
-SIMULATED_PEAK = {"blog": 60, "linkedin": 420}
-SIMULATED_HALF_LIFE_DAYS = 3.0
-SIMULATED_CLICK_RATE = {"blog": 0.06, "linkedin": 0.018}
-SIMULATED_LEAD_EVERY_CLICKS = 9
+SIMULATED_PEAK = {"blog": 26, "linkedin": 160}
+SIMULATED_HALF_LIFE_DAYS = {"blog": 4.0, "linkedin": 1.5}
+SIMULATED_CLICK_RATE = {"blog": 0.05, "linkedin": 0.015}
+SIMULATED_LEAD_PER_CLICK = 0.09
 
 
 @dataclass(frozen=True, slots=True)
@@ -118,18 +118,16 @@ def _noise(*parts: str) -> float:
 def simulated_day(channel: str, slug: str, age_days: int) -> tuple[int, int, int]:
     """Reads, clicks and leads a post of the example campaign shows on one day of its life.
 
-    Reach decays with a fixed half-life from the day of publication; clicks and leads follow
-    as fixed shares. The numbers illustrate the cockpit and are labelled simulated wherever
-    they are shown.
+    Reach decays from the day of publication, quickly on LinkedIn and slowly in the blog. Clicks
+    follow as a fixed share, and each click of a day raises the chance of one inquiry that day.
+    The scale fits a small firm. The numbers illustrate the cockpit and are labelled simulated
+    wherever they are shown.
     """
-    decay = math.pow(0.5, age_days / SIMULATED_HALF_LIFE_DAYS)
+    decay = math.pow(0.5, age_days / SIMULATED_HALF_LIFE_DAYS[channel])
     views = round(SIMULATED_PEAK[channel] * decay * _noise(slug, str(age_days), "v"))
     clicks = round(views * SIMULATED_CLICK_RATE[channel] * _noise(slug, str(age_days), "c"))
-    leads = (
-        1
-        if clicks and _noise(slug, str(age_days), "l") * SIMULATED_LEAD_EVERY_CLICKS < clicks * 1.3
-        else 0
-    )
+    lead_roll = (_noise(slug, str(age_days), "l") - 0.75) * 2
+    leads = 1 if lead_roll < SIMULATED_LEAD_PER_CLICK * clicks else 0
     return views, clicks, leads
 
 

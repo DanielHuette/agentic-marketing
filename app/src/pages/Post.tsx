@@ -143,7 +143,12 @@ function ResultForm({ post, onDone }: { post: PostWithFindings; onDone: () => vo
   );
 }
 
-function Decision({ data, onChange, onEdit }: { data: Data; onChange: () => void; onEdit: () => void }) {
+function dayText(offset: number): string {
+  if (offset === 0) return "am Starttag";
+  return offset === 1 ? "einen Tag nach dem Start" : `${String(offset)} Tage nach dem Start`;
+}
+
+function Decision({ data, onChange, onEdit, editing }: { data: Data; onChange: () => void; onEdit: () => void; editing: boolean }) {
   const { post, campaign } = data;
   const action = useAction();
   const [note, setNote] = useState("");
@@ -153,9 +158,19 @@ function Decision({ data, onChange, onEdit }: { data: Data; onChange: () => void
   const run = (task: () => Promise<unknown>) =>
     void action.run(async () => {
       await task();
+      setRejecting(false);
+      setNote("");
       onChange();
     });
   const blocked = post.unbacked_figures.length > 0;
+  if (editing) {
+    return (
+      <div class="panel stack stack--tight">
+        <h2>Entscheidung</h2>
+        <p class="note small">Erst speichern. Entschieden wird über die gespeicherte Fassung.</p>
+      </div>
+    );
+  }
   const due = post.status === "approved" && post.scheduled_for !== null && new Date(post.scheduled_for) <= new Date();
 
   return (
@@ -211,7 +226,7 @@ function Decision({ data, onChange, onEdit }: { data: Data; onChange: () => void
           <p class="small">
             {campaign.status === "running"
               ? `Termin: ${formatMoment(plannedMoment(campaign, post, new Date()).toISOString())}`
-              : `Geht ${String(post.day_offset)} Tage nach dem Start der Kampagne raus, um ${campaign.publish_time.slice(0, 5)} Uhr.`}
+              : `Geht ${dayText(post.day_offset)} der Kampagne raus, um ${campaign.publish_time.slice(0, 5)} Uhr.`}
             {post.channel === "blog" && " Der stündliche Lauf veröffentlicht ihn im Blog."}
           </p>
           {post.channel === "linkedin" && due && (
@@ -294,7 +309,7 @@ export function PostPage({ id }: { id: string }) {
           {editing ? <Editor post={post} onDone={done} /> : <article class="panel"><Preview post={post} /></article>}
         </div>
         <aside class="stack sticky">
-          <Decision data={data} onChange={state.reload} onEdit={() => { setEditing(true); }} />
+          <Decision data={data} editing={editing} onChange={state.reload} onEdit={() => { setEditing(true); }} />
           {post.status === "published" && <ResultForm post={post} onDone={state.reload} />}
           <section class="panel">
             <h2>Belege</h2>
