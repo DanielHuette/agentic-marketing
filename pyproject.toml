@@ -52,6 +52,9 @@ Source = "https://github.com/DanielHuette/agentic-marketing"
 [tool.hatch.build.targets.wheel]
 packages = ["src/agentic_marketing"]
 
+[tool.hatch.build.targets.sdist]
+exclude = ["app/node_modules", "app/dist", "app/dev-dist", "web/assets/img", "benchmark/snapshots"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py311"
