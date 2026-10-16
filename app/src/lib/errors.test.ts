@@ -19,6 +19,11 @@ describe("describeError", () => {
     expect(describeError(new QueryError("Laden", "JWT expired", "PGRST301"))).toContain("Melde dich neu an");
   });
 
+  it("explains that readers may not change anything", () => {
+    expect(describeError(new QueryError("Starten", "read only: only the administrator may start a campaign", "P0001"))).toContain("Nur Lesen");
+    expect(describeError(new QueryError("Freigeben", "new row violates row-level security policy", "42501"))).toContain("Nur Lesen");
+  });
+
   it("treats fetch failures as missing connection", () => {
     expect(describeError(new TypeError("Failed to fetch"))).toContain("Keine Verbindung");
   });

@@ -60,6 +60,13 @@ package (`.whl`) and the built app as a `.zip` that runs on any static web serve
 Sign in with the operator account (email and password), the same account as in the RadarAuditor
 cockpit. New accounts cannot be created; sign-ups are switched off in Supabase.
 
+There are two roles. The **administrator** may do everything: approve, edit, reject, start, pause
+and record results. Everyone else who signs in **reads only**: the app shows the note "Nur Lesen"
+at the top and hides every action. The database refuses any change from these accounts even when
+someone bypasses the app. Administrators are listed in `public.app_admins` (migration
+`005_marketing_roles.sql` builds on `005_roles.sql` of RadarAuditor); a further administrator is
+added there in the Supabase SQL editor.
+
 ## The campaign overview
 
 The start page shows every campaign as a card: status, how many posts wait for approval, what is

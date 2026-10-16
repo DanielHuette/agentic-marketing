@@ -63,6 +63,13 @@ Angemeldet wird mit dem Betreiberkonto (E-Mail und Passwort), demselben Konto wi
 RadarAuditor-Cockpit. Neue Konten lassen sich nicht anlegen, die Registrierung ist in Supabase
 abgeschaltet. Abmelden unter **Einstellungen → Abmelden**.
 
+Es gibt zwei Rollen. Der **Administrator** darf alles: freigeben, bearbeiten, ablehnen, starten,
+pausieren und Ergebnisse eintragen. Wer sonst angemeldet ist, darf **nur lesen**: Die App zeigt
+oben den Hinweis „Nur Lesen“ und blendet alle Aktionen aus. Die Datenbank verweigert diesen
+Konten jede Änderung auch dann, wenn jemand die App umgeht. Wer Administrator ist, steht in der
+Tabelle `public.app_admins` (Migration `005_marketing_roles.sql` baut auf `005_roles.sql` des
+RadarAuditor auf); einen weiteren Administrator trägt man dort im Supabase-SQL-Editor ein.
+
 ## Die Kampagnenübersicht
 
 Die Startseite zeigt jede Kampagne als Karte: Status, wie viele Beiträge auf eine Freigabe

@@ -13,6 +13,7 @@ import {
 import type { Campaign, CampaignEvent, Finding, Metric, Post, Report } from "../api/types";
 import { ResultsChart } from "../components/ResultsChart";
 import { CampaignBadge, Empty, ErrorNote, ExampleBadge, Kpi, Loading, VerdictBadge } from "../components/ui";
+import { useIsAdmin } from "../hooks/role";
 import { useAction, useAsync } from "../hooks/useAsync";
 import { COLUMNS, groupPosts, plannedMoment, startCheck } from "../lib/board";
 import { CHANNEL, EVENT, formatDay, formatMoment, formatNumber } from "../lib/format";
@@ -293,6 +294,7 @@ function History({ data }: { data: Data }) {
 export function CampaignPage({ id }: { id: string }) {
   const state = useAsync(() => load(id), [id]);
   const [tab, setTab] = useState<Tab>("board");
+  const admin = useIsAdmin();
   if (state.loading && state.data === undefined) return <Loading />;
   if (state.data === undefined) return <ErrorNote message={state.error ?? "Nicht gefunden."} />;
   const data = state.data;
@@ -316,7 +318,7 @@ export function CampaignPage({ id }: { id: string }) {
           <strong>Zielgruppe:</strong> {campaign.audience}
         </p>
       </section>
-      <StartPanel data={data} onChange={state.reload} />
+      {admin && <StartPanel data={data} onChange={state.reload} />}
       <div class="tabs" role="tablist">
         {TABS.map((item) => (
           <button key={item.key} type="button" role="tab" aria-selected={tab === item.key} onClick={() => { setTab(item.key); }}>

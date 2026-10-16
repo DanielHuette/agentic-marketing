@@ -1,5 +1,5 @@
-// Every read and write of the app. Row level security lets the signed-in operator do all of it;
-// the approval guard and the scheduling live in database triggers, not here.
+// Every read and write of the app. Row level security lets everyone signed in read and only the
+// administrator write; the approval guard and the scheduling live in database triggers, not here.
 import { supabase } from "./supabase";
 import { QueryError } from "../lib/errors";
 import type {
@@ -150,6 +150,10 @@ export async function recordResult(
     .upsert({ post_id: post.id, day, source: "manual", ...values }, { onConflict: "post_id,day,source" });
   if (result.error !== null) throw new QueryError("Ergebnis eintragen", result.error.message, result.error.code);
   await logEvent(post.campaign_id, "result", post.id, `${day}: ${String(values.views)}/${String(values.clicks)}/${String(values.leads)}`);
+}
+
+export async function isAdmin(): Promise<boolean> {
+  return unwrap("Rolle prüfen", await supabase.rpc("is_admin")) === true;
 }
 
 export async function signIn(email: string, password: string): Promise<void> {

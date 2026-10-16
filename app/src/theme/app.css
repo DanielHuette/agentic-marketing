@@ -160,3 +160,5 @@ textarea { min-height: 280px; resize: vertical; line-height: 1.5; font-family: u
   .topbar nav a { padding: 6px 7px; font-size: 0.82rem; }
   .brand small { display: none; }
 }
+
+.readonly-note { background: var(--gold-soft); color: var(--gold-strong); border-bottom: 1px solid var(--gold); padding: 10px 16px; text-align: center; font-size: 0.9rem; }

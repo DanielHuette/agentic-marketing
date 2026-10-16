@@ -17,7 +17,10 @@ const RAISED_EXCEPTION = "P0001";
 const EXPIRED_TOKEN = "PGRST301";
 const ROW_SECURITY = "42501";
 
+const READ_ONLY = "Nur Lesen: Diese Aktion darf nur der Administrator ausführen.";
+
 function explainRaised(detail: string): string {
+  if (detail.startsWith("read only")) return READ_ONLY;
   if (detail.includes("figures without a checked source")) {
     return "Freigabe abgelehnt: Der Beitrag enthält Zahlen ohne geprüfte Quelle. Korrigiere den Text oder zitiere den passenden Befund.";
   }
@@ -35,8 +38,9 @@ export function describeError(error: unknown): string {
         return "Der Eintrag hängt an Daten, die es nicht mehr gibt. Lade die Seite neu.";
       case RAISED_EXCEPTION:
         return explainRaised(error.detail);
-      case EXPIRED_TOKEN:
       case ROW_SECURITY:
+        return READ_ONLY;
+      case EXPIRED_TOKEN:
         return "Deine Anmeldung ist abgelaufen. Melde dich neu an.";
       default:
         return `Das hat nicht geklappt. (${error.message})`;

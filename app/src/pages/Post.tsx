@@ -12,6 +12,7 @@ import {
 } from "../api/queries";
 import type { Campaign, Finding, PostWithFindings } from "../api/types";
 import { ErrorNote, ExampleBadge, Loading, PostBadge, VerdictBadge } from "../components/ui";
+import { useIsAdmin } from "../hooks/role";
 import { useAction, useAsync } from "../hooks/useAsync";
 import { plannedMoment } from "../lib/board";
 import { unbackedFigures } from "../lib/figures";
@@ -283,6 +284,7 @@ function Decision({ data, onChange, onEdit, editing }: { data: Data; onChange: (
 export function PostPage({ id }: { id: string }) {
   const state = useAsync(() => load(id), [id]);
   const [editing, setEditing] = useState(false);
+  const admin = useIsAdmin();
   if (state.loading && state.data === undefined) return <Loading />;
   if (state.data === undefined) return <ErrorNote message={state.error ?? "Nicht gefunden."} />;
   const data = state.data;
@@ -306,11 +308,11 @@ export function PostPage({ id }: { id: string }) {
             {campaign.is_example && <ExampleBadge />}
           </div>
           <h1>{post.title}</h1>
-          {editing ? <Editor post={post} onDone={done} /> : <article class="panel"><Preview post={post} /></article>}
+          {admin && editing ? <Editor post={post} onDone={done} /> : <article class="panel"><Preview post={post} /></article>}
         </div>
         <aside class="stack sticky">
-          <Decision data={data} editing={editing} onChange={state.reload} onEdit={() => { setEditing(true); }} />
-          {post.status === "published" && <ResultForm post={post} onDone={state.reload} />}
+          {admin && <Decision data={data} editing={editing} onChange={state.reload} onEdit={() => { setEditing(true); }} />}
+          {admin && post.status === "published" && <ResultForm post={post} onDone={state.reload} />}
           <section class="panel">
             <h2>Belege</h2>
             <p class="small muted">Die Befunde, die dieser Beitrag zitiert. Nur diese Zahlen darf er zeigen.</p>

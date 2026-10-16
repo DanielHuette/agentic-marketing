@@ -8,7 +8,7 @@ const LINKS = [
   { href: "/einstellungen", label: "Einstellungen" },
 ];
 
-export function Shell({ children }: { children: ComponentChildren }) {
+export function Shell({ children, admin }: { children: ComponentChildren; admin?: boolean | undefined }) {
   const { path } = useLocation();
   const active = (href: string) => (href === "/" ? path === "/" || path.startsWith("/kampagne") || path.startsWith("/beitrag") : path.startsWith(href));
   return (
@@ -31,6 +31,11 @@ export function Shell({ children }: { children: ComponentChildren }) {
           </nav>
         </div>
       </header>
+      {admin === false && (
+        <div class="readonly-note" role="status">
+          <strong>Nur Lesen.</strong> Du kannst alles ansehen, aber nichts freigeben, ändern oder starten. Das darf nur der Administrator.
+        </div>
+      )}
       <main class="page">{children}</main>
     </>
   );
