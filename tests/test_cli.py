@@ -135,3 +135,14 @@ def test_the_bundled_example_verifies_as_documented(
     ]
     assert verdicts.count("supported") == 6
     assert verdicts.count("partial") == 1
+
+
+def test_a_closed_campaign_is_reported_once_more_and_then_not() -> None:
+    from datetime import date
+
+    from agentic_marketing.cli import _reportable
+
+    closed: dict[str, object] = {"ended_at": "2026-10-12T08:30:00+02:00"}
+    assert _reportable(closed, date(2026, 10, 18))
+    assert not _reportable(closed, date(2026, 10, 25))
+    assert _reportable({"ended_at": None}, date(2026, 10, 25))

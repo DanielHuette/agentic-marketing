@@ -99,7 +99,6 @@ COUNTER_SCRIPT = """// Counts one page load. No cookie, nothing about the reader
   try {
     fetch("$url/rest/v1/rpc/record_hit", {
       method: "POST",
-      keepalive: true,
       headers: {
         apikey: "$key",
         "Content-Type": "application/json",

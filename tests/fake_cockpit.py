@@ -28,6 +28,8 @@ def _matches(row: Row, filters: Mapping[str, str]) -> bool:
             return False
         if rule.startswith("lte.") and not text <= rule[4:]:
             return False
+        if rule.startswith("gt.") and not text > rule[3:]:
+            return False
     return True
 
 

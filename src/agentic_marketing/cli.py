@@ -342,15 +342,22 @@ def _cmd_metrics(args: argparse.Namespace, settings: Settings) -> int:
     return 0
 
 
+def _reportable(campaign: dict[str, object], period_end: date) -> bool:
+    """A closed campaign gets one report for the week it ended in, not one every week after."""
+    ended = campaign.get("ended_at")
+    if not ended:
+        return True
+    return datetime.fromisoformat(str(ended)).date() > period_end - timedelta(days=7)
+
+
 def _cmd_report(args: argparse.Namespace, settings: Settings) -> int:
     from agentic_marketing.campaign_report import write_report
     from agentic_marketing.cockpit import CockpitClient
 
     period_end = args.period_end or _yesterday()
     with CockpitClient.from_settings(settings) as client:
-        campaigns = client.select(
-            "campaigns", {"status": "in.(running,paused,done)", "select": "*"}
-        )
+        started = client.select("campaigns", {"status": "in.(running,paused,done)", "select": "*"})
+        campaigns = [campaign for campaign in started if _reportable(campaign, period_end)]
         for campaign in campaigns:
             write_report(client, campaign, period_end)
             print(f"report written: {campaign['slug']} until {period_end}")

@@ -398,3 +398,28 @@ def test_replay_refuses_a_real_campaign(target: Target) -> None:
             start=date(2026, 9, 21),
             until=date(2026, 10, 15),
         )
+
+
+def test_simulation_stops_at_the_end_of_a_campaign() -> None:
+    fake = FakeCockpit()
+    campaign = _running_campaign(fake, ended_at="2026-10-12T06:30:00+00:00", status="done")
+    post = fake.add(
+        "posts",
+        campaign_id=campaign["id"],
+        slug="p",
+        channel="blog",
+        status="published",
+        published_at="2026-10-10T06:30:00+00:00",
+    )
+    fake.add(
+        "metrics",
+        post_id=post["id"],
+        day="2026-10-14",
+        views=5,
+        clicks=0,
+        leads=0,
+        source="simulated",
+    )
+    written = simulate_example(cast(CockpitClient, fake), date(2026, 10, 20))
+    assert written == 3
+    assert max(row["day"] for row in fake.rows("metrics")) == "2026-10-12"

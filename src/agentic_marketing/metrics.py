@@ -134,11 +134,17 @@ def simulated_day(channel: str, slug: str, age_days: int) -> tuple[int, int, int
 def simulate_example(client: CockpitClient, today: date) -> int:
     """Write simulated results for every published post of the example campaigns.
 
+    A campaign that has ended gets results up to its last day only, and simulated rows after
+    that day are removed, so its totals stay the same on every later run.
+
     Returns:
         The number of rows written.
     """
     rows: list[dict[str, object]] = []
-    for campaign in client.select("campaigns", {"is_example": "eq.true", "select": "id"}):
+    for campaign in client.select("campaigns", {"is_example": "eq.true", "select": "id,ended_at"}):
+        last = today
+        if campaign.get("ended_at"):
+            last = min(today, parse_moment(campaign["ended_at"]).date())
         posts = client.select(
             "posts",
             {
@@ -148,8 +154,12 @@ def simulate_example(client: CockpitClient, today: date) -> int:
             },
         )
         for post in posts:
+            client.delete(
+                "metrics",
+                {"post_id": f"eq.{post['id']}", "source": f"eq.{SIMULATED}", "day": f"gt.{last}"},
+            )
             first = parse_moment(post["published_at"]).date()
-            for age in range((today - first).days + 1):
+            for age in range((last - first).days + 1):
                 views, clicks, leads = simulated_day(str(post["channel"]), str(post["slug"]), age)
                 rows.append(
                     {
