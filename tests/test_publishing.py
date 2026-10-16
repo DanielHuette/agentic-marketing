@@ -275,6 +275,7 @@ def test_report_compares_with_the_goal_and_flags_simulation() -> None:
     ]
     text = render_report(campaign, posts, metrics, date(2026, 10, 19))
     assert "| Aufrufe | 50 | 50 | 100 | 50 % |" in text
+    assert "| Klicks | 4 | 4 | 10 | 40 % |" in text
     assert "simuliert" in text
     assert "wartet auf Freigabe: Zweiter" in text
 
@@ -432,3 +433,13 @@ def test_fold_hits_leaves_example_campaigns_to_the_simulation(target: Target) ->
     fake.add("hits", day="2026-10-19", host=target.host, path="/beispiel-blog/erster/")
     result = fold_hits(cast(CockpitClient, fake), {"beispiel": target}, date(2026, 10, 19))
     assert result.rows == 0
+
+
+def test_report_rounds_half_up_and_writes_german_thousands() -> None:
+    campaign = {"title": "Probe", "status": "done", "kpi": {"views": 1500, "clicks": 40}}
+    posts = [{"id": "1", "title": "Erster", "channel": "blog", "status": "published"}]
+    metrics = [{"post_id": "1", "day": "2026-10-18", "views": 1774, "clicks": 37, "leads": 0}]
+    text = render_report(campaign, posts, metrics, date(2026, 10, 19))
+    assert "| Aufrufe | 1.774 | 1.774 | 1.500 | 118 % |" in text
+    assert "| Klicks | 37 | 37 | 40 | 93 % |" in text
+    assert "abgeschlossen" in text

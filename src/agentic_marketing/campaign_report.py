@@ -9,6 +9,7 @@ period.
 
 from __future__ import annotations
 
+import math
 from collections.abc import Mapping, Sequence
 from datetime import date, timedelta
 
@@ -27,10 +28,16 @@ STATUS_LABELS = {
 CHANNEL_LABELS = {"blog": "Blog", "linkedin": "LinkedIn"}
 
 
+def _number(value: int) -> str:
+    """A count as a German reader writes it, e.g. `1.774`."""
+    return f"{value:,}".replace(",", ".")
+
+
 def _ratio(done: int, goal: int) -> str:
+    """Share of the goal reached, rounded half up like the cockpit does."""
     if goal <= 0:
         return "-"
-    return f"{round(100 * done / goal)} %"
+    return f"{math.floor(100 * done / goal + 0.5)} %"
 
 
 def render_report(
@@ -89,7 +96,8 @@ def render_report(
     for key, label in KPI_LABELS.items():
         goal = int(kpi.get(key, 0))
         lines.append(
-            f"| {label} | {week[key]} | {overall[key]} | {goal or '-'} "
+            f"| {label} | {_number(week[key])} | {_number(overall[key])} | "
+            f"{_number(goal) if goal else '-'} "
             f"| {_ratio(overall[key], goal)} |"
         )
     lines += ["", "## Veröffentlicht in diesem Zeitraum", ""]
@@ -107,8 +115,9 @@ def render_report(
     for post in ranked:
         result = per_post[str(post["id"])]
         lines.append(
-            f"| {post['title']} | {CHANNEL_LABELS[str(post['channel'])]} | {result['views']} "
-            f"| {result['clicks']} | {result['leads']} |"
+            f"| {post['title']} | {CHANNEL_LABELS[str(post['channel'])]} "
+            f"| {_number(result['views'])} | {_number(result['clicks'])} "
+            f"| {_number(result['leads'])} |"
         )
     lines += ["", "## Offen", ""]
     lines += [f"- wartet auf Freigabe: {post['title']}" for post in waiting] or [
