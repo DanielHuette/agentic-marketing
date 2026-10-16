@@ -1,0 +1,12 @@
+slug: nordwind-nachschliff
+title: "Nordwind: Stillstand vermeiden, Nachschliff planen"
+product: Nachschliff mit verbindlicher Lieferzeit
+goal: Inhaber kleiner Zerspanungsbetriebe sehen, dass fehlendes Werkzeug der häufigste Grund für Stillstand ist, und fragen einen Nachschliff an.
+audience: Inhaber von Zerspanungsbetrieben mit weniger als zwanzig Beschäftigten in Nordwestdeutschland.
+target: beispiel
+duration_days: 21
+publish_time: "08:30"
+kpi: {views: 500, clicks: 30, leads: 4}
+example: true
+runs:
+  - strategie/umwelt/makroanalyse/makroanalyse-2026-08-29

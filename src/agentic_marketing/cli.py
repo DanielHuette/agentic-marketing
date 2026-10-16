@@ -12,6 +12,12 @@ Usage:
     agentic-marketing apply <run> [--auto]
     agentic-marketing pack [--extra <path>]... [--out <file>]
     agentic-marketing stale [--offline]
+    agentic-marketing campaign <folder>
+    agentic-marketing publish
+    agentic-marketing site <target> --out <repository>
+    agentic-marketing example-run <slug> --start YYYY-MM-DD [--until YYYY-MM-DD]
+    agentic-marketing metrics [--day YYYY-MM-DD]
+    agentic-marketing report [--period-end YYYY-MM-DD]
 """
 
 from __future__ import annotations
@@ -21,11 +27,13 @@ import json
 import logging
 import sys
 from collections.abc import Sequence
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 from agentic_marketing import __version__
+from agentic_marketing.blog import Counter
 from agentic_marketing.config import Settings, load_settings
-from agentic_marketing.errors import AgenticMarketingError
+from agentic_marketing.errors import AgenticMarketingError, PublishError
 from agentic_marketing.models import Verification
 from agentic_marketing.pack import build_pack
 from agentic_marketing.report import format_check, format_compaction, format_pack, format_stale
@@ -68,6 +76,32 @@ def build_parser() -> argparse.ArgumentParser:
 
     stale = subparsers.add_parser("stale", help="report curated points that are due")
     stale.add_argument("--offline", action="store_true", help="skip the address check")
+
+    campaign = subparsers.add_parser("campaign", help="check a campaign and hand it to the cockpit")
+    campaign.add_argument("folder", type=Path, help="campaign folder holding kampagne.yaml")
+
+    subparsers.add_parser("publish", help="publish every approved post that is due")
+
+    site = subparsers.add_parser("site", help="write a target's blog folder into a local checkout")
+    site.add_argument("target")
+    site.add_argument("--out", type=Path, required=True, help="root of the target repository")
+
+    replay = subparsers.add_parser(
+        "example-run", help="replay a fictional example campaign with a simulated clock"
+    )
+    replay.add_argument("slug")
+    replay.add_argument("--start", type=date.fromisoformat, required=True)
+    replay.add_argument("--until", type=date.fromisoformat, help="last day; yesterday if unset")
+
+    metrics = subparsers.add_parser("metrics", help="fold the page hits of a day into results")
+    metrics.add_argument("--day", type=date.fromisoformat, help="day to fold; yesterday if unset")
+
+    report = subparsers.add_parser(
+        "report", help="write the weekly report of every started campaign"
+    )
+    report.add_argument(
+        "--period-end", type=date.fromisoformat, help="last day; yesterday if unset"
+    )
     return parser
 
 
@@ -184,6 +218,147 @@ def _cmd_stale(args: argparse.Namespace, settings: Settings) -> int:
     return 0
 
 
+def _templates(settings: Settings) -> Path:
+    return settings.targets_file.parent / "templates"
+
+
+def _counter(settings: Settings) -> Counter:
+    if not settings.supabase_url or not settings.supabase_anon_key:
+        raise PublishError(
+            "set AGENTIC_MARKETING_SUPABASE_URL and AGENTIC_MARKETING_SUPABASE_ANON_KEY"
+        )
+    return Counter(settings.supabase_url, settings.supabase_anon_key)
+
+
+def _cmd_campaign(args: argparse.Namespace, settings: Settings) -> int:
+    from agentic_marketing.blog import load_targets
+    from agentic_marketing.campaign import collect_findings, load_campaign, push_campaign
+    from agentic_marketing.cockpit import CockpitClient
+
+    root = resolve_root(settings.workspace)
+    spec, posts = load_campaign(args.folder)
+    if spec.target not in load_targets(settings.targets_file):
+        print(f"error: target {spec.target} is not in {settings.targets_file}", file=sys.stderr)
+        return 1
+    findings = collect_findings(root, spec)
+    with CockpitClient.from_settings(settings) as client:
+        result = push_campaign(client, spec, posts, findings)
+    print(
+        f"{spec.slug}: {result.findings} findings, {result.created} new posts, "
+        f"{result.updated} updated, {len(result.kept_as_is)} already decided"
+    )
+    if result.blocked:
+        print("Figures without a source, approval blocked: " + ", ".join(result.blocked))
+    return 0
+
+
+def _cmd_publish(args: argparse.Namespace, settings: Settings) -> int:
+    del args
+    from agentic_marketing.blog import load_targets
+    from agentic_marketing.cockpit import CockpitClient
+    from agentic_marketing.github import GitHubWriter
+    from agentic_marketing.publisher import publish_due
+
+    targets = load_targets(settings.targets_file)
+    writer = GitHubWriter.from_settings(settings)
+    try:
+        with CockpitClient.from_settings(settings) as client:
+            result = publish_due(
+                client, writer, targets, _templates(settings), _counter(settings), datetime.now(UTC)
+            )
+    finally:
+        writer.close()
+    print(f"published {len(result.published)}: {', '.join(result.published) or '-'}")
+    print(f"LinkedIn due for posting by hand: {', '.join(result.linkedin_due) or '-'}")
+    if result.finished:
+        print(f"finished campaigns: {', '.join(result.finished)}")
+    return 0
+
+
+def _cmd_site(args: argparse.Namespace, settings: Settings) -> int:
+    from agentic_marketing.blog import load_targets, site_files
+    from agentic_marketing.cockpit import CockpitClient
+    from agentic_marketing.publisher import published_blog_posts
+
+    targets = load_targets(settings.targets_file)
+    if args.target not in targets:
+        print(f"error: target {args.target} is not in {settings.targets_file}", file=sys.stderr)
+        return 1
+    with CockpitClient.from_settings(settings) as client:
+        members = client.select("campaigns", {"target": f"eq.{args.target}", "select": "id,slug"})
+        posts = published_blog_posts(client, members)
+    files = site_files(posts, targets[args.target], _templates(settings), _counter(settings))
+    for relative, content in files.items():
+        path = args.out / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    print(f"{args.target}: {len(posts)} posts, {len(files)} files written under {args.out}")
+    return 0
+
+
+def _yesterday() -> date:
+    return datetime.now(UTC).date() - timedelta(days=1)
+
+
+def _cmd_example_run(args: argparse.Namespace, settings: Settings) -> int:
+    from agentic_marketing.blog import load_targets
+    from agentic_marketing.cockpit import CockpitClient
+    from agentic_marketing.example_run import replay_example
+    from agentic_marketing.github import GitHubWriter
+
+    targets = load_targets(settings.targets_file)
+    writer = GitHubWriter.from_settings(settings)
+    try:
+        with CockpitClient.from_settings(settings) as client:
+            result = replay_example(
+                client,
+                writer,
+                targets,
+                _templates(settings),
+                _counter(settings),
+                slug=args.slug,
+                start=args.start,
+                until=args.until or _yesterday(),
+            )
+    finally:
+        writer.close()
+    print(f"published in the blog: {', '.join(result.published) or '-'}")
+    print(f"marked as posted on LinkedIn (fictional): {', '.join(result.posted) or '-'}")
+    print(f"simulated result rows: {result.simulated_rows}")
+    print(f"weekly reports: {', '.join(day.isoformat() for day in result.reports) or '-'}")
+    return 0
+
+
+def _cmd_metrics(args: argparse.Namespace, settings: Settings) -> int:
+    from agentic_marketing.blog import load_targets
+    from agentic_marketing.cockpit import CockpitClient
+    from agentic_marketing.metrics import fold_hits, simulate_example
+
+    day = args.day or _yesterday()
+    with CockpitClient.from_settings(settings) as client:
+        folded = fold_hits(client, load_targets(settings.targets_file), day)
+        simulated = simulate_example(client, datetime.now(UTC).date())
+    print(f"{day}: {folded.hits} hits into {folded.rows} result rows; {simulated} simulated rows")
+    return 0
+
+
+def _cmd_report(args: argparse.Namespace, settings: Settings) -> int:
+    from agentic_marketing.campaign_report import write_report
+    from agentic_marketing.cockpit import CockpitClient
+
+    period_end = args.period_end or _yesterday()
+    with CockpitClient.from_settings(settings) as client:
+        campaigns = client.select(
+            "campaigns", {"status": "in.(running,paused,done)", "select": "*"}
+        )
+        for campaign in campaigns:
+            write_report(client, campaign, period_end)
+            print(f"report written: {campaign['slug']} until {period_end}")
+    if not campaigns:
+        print("no started campaign")
+    return 0
+
+
 COMMANDS = {
     "new": _cmd_new,
     "check": _cmd_check,
@@ -192,6 +367,12 @@ COMMANDS = {
     "apply": _cmd_apply,
     "pack": _cmd_pack,
     "stale": _cmd_stale,
+    "campaign": _cmd_campaign,
+    "publish": _cmd_publish,
+    "site": _cmd_site,
+    "example-run": _cmd_example_run,
+    "metrics": _cmd_metrics,
+    "report": _cmd_report,
 }
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title · $blog_title · $site_name</title>
+<meta name="description" content="$summary">
+<link rel="canonical" href="$canonical">
+<meta property="og:type" content="article">
+<meta property="og:title" content="$title">
+<meta property="og:description" content="$summary">
+<meta property="og:url" content="$canonical">
+<meta property="og:image" content="https://radarauditor.speedofthespirit.dev/bilder/vorschau.png">
+<meta property="article:published_time" content="$date_iso">
+<meta name="theme-color" content="#04060b">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="$blog_title" href="${index_url}feed.xml">
+<link rel="preload" href="/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/blog/blog.css">
+<script src="/blog/zaehler.js" defer></script>
+</head>
+<body>
+<header class="bar"><a class="brand" href="/">$site_name</a><a href="$index_url">$blog_title</a></header>
+<main class="article">
+$notice
+<p class="meta"><time datetime="$date_iso">$date_long</time></p>
+<h1>$title</h1>
+<p class="lead">$summary</p>
+<div class="body">
+$body_html
+</div>
+<aside class="cta"><p>Wie sichtbar ist Ihr Betrieb? RadarAuditor prüft Google, Karte, Verzeichnisse und KI-Assistenten und zeigt, was fehlt.</p><a class="button" href="$cta_url">$cta_label</a></aside>
+<section class="sources"><h2>Quellen</h2><ol>
+$sources_html
+</ol><p class="hint">Jede Zahl dieses Beitrags wurde vor der Veröffentlichung gegen ihre Quelle geprüft.</p></section>
+</main>
+<footer class="foot"><a href="/">$site_name</a> · <a href="${index_url}feed.xml">RSS</a> · <a href="https://speedofthespirit.dev/impressum/">Impressum</a></footer>
+</body>
+</html>

@@ -22,6 +22,9 @@ _WHITESPACE = re.compile(r"\s+")
 _FIGURE_SPLIT = re.compile(r"([.,\s])")
 _PARAGRAPH_BREAK = re.compile(r"\n\s*\n")
 _SENTENCE_END = re.compile(r"(?<!\b\d)(?<!\b\d\d)[.!?]\s+(?=[A-ZÄÖÜ])")
+_NUMBER = re.compile(r"(?<![\w])\d+(?:[.,]\d+|[\u00a0\u202f ]\d{3}(?!\d))*")
+_MARKDOWN_LINK_TARGET = re.compile(r"\]\([^)]*\)")
+_BARE_URL = re.compile(r"https?://\S+")
 
 
 def slugify(value: str) -> str:
@@ -175,3 +178,20 @@ def sentence_with_figure(text: str, figure: str) -> str | None:
             start = boundary.end()
         return flat[start:].strip()
     return None
+
+
+def numbers_in(text: str) -> list[str]:
+    """Every number a reader sees in a text, in order of appearance.
+
+    Link targets and addresses are left out, because a reader does not take the digits of a
+    URL as a claim. A separator counts as part of the number only between two digits, so the
+    full stop that ends a sentence is not swallowed.
+
+    Args:
+        text: Markdown or plain text.
+
+    Returns:
+        The numbers as written, without trailing punctuation.
+    """
+    visible = _BARE_URL.sub(" ", _MARKDOWN_LINK_TARGET.sub("]", text))
+    return [match.group(0).strip() for match in _NUMBER.finditer(normalise(visible))]

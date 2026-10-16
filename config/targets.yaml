@@ -1,0 +1,27 @@
+# Publishing targets. Context: where the blog posts of a campaign are written and how the pages
+# are framed. A campaign names one target by its key. | Input: read by the publish command. |
+# Output: none.
+targets:
+  radarauditor:
+    repo: DanielHuette/RepoCity-RadarAuditor
+    branch: main
+    folder: site/blog
+    base_url: https://radarauditor.speedofthespirit.dev/blog/
+    template: radarauditor
+    site_name: RepoCity RadarAuditor
+    blog_title: Sichtbar vor Ort
+    blog_intro: Wie örtliche Betriebe gefunden werden, bei Google, auf der Karte und in KI-Assistenten. Jede Zahl mit Quelle.
+    cta_url: https://radarauditor.speedofthespirit.dev/
+    cta_label: Sichtbarkeit prüfen lassen
+  beispiel:
+    repo: DanielHuette/agentic-marketing
+    branch: main
+    folder: web/beispiel-blog
+    base_url: https://agenticmarketing.speedofthespirit.dev/beispiel-blog/
+    template: beispiel
+    site_name: Nordwind Werkzeugbau
+    blog_title: Werkstattnotizen
+    blog_intro: Beispielblog einer erfundenen Firma. Er zeigt, was Agentic Marketing veröffentlicht, wenn eine Kampagne läuft.
+    cta_url: https://agenticmarketing.speedofthespirit.dev/beispiel-blog/anfrage/
+    cta_label: Nachschliff anfragen
+    notice: Beispiel. Nordwind Werkzeugbau, die zitierten Quellen und ihre Zahlen sind erfunden. Der Blog zeigt einen Probelauf von Agentic Marketing.

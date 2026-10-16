@@ -1,0 +1,34 @@
+/* Example blog of the fictional Nordwind Werkzeugbau. Paper, navy ink, serif headings. */
+@font-face { font-family: "Inter"; src: url("/assets/fonts/inter-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/assets/fonts/inter-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Source Serif"; src: url("/assets/fonts/serif-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+:root { --paper: #f5f6f8; --ink: #0b1a2c; --text: #1b2733; --muted: #5a6775; --line: #e2e6ec; --gold: #b07a12; --gold-soft: #f8efdc; color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--text); font-family: "Inter", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.7; overflow-x: hidden; }
+a { color: var(--ink); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+.bar { background: var(--ink); padding: 14px 16px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.bar a { color: #dfe5ec; text-decoration: none; font-size: 0.95rem; }
+.bar .brand { color: #fff; font-weight: 700; font-family: "Source Serif", Georgia, serif; font-size: 1.15rem; }
+.bar .back { margin-left: auto; color: #e0a526; }
+.article, .list { max-width: 70ch; margin: 0 auto; padding: 32px 16px 64px; }
+.list { max-width: 880px; }
+.kicker { color: var(--gold); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 8px; }
+h1, h2 { font-family: "Source Serif", Georgia, serif; color: var(--ink); line-height: 1.2; }
+h1 { font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem); margin: 0 0 16px; }
+h2 { font-size: 1.35rem; margin: 2em 0 0.5em; }
+.lead { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
+.meta { color: var(--gold); font-size: 0.9rem; margin: 0 0 8px; font-weight: 600; }
+.body p, .body ul, .body ol { margin: 0 0 1.1em; }
+.notice { background: var(--gold-soft); color: #7a4f00; border-left: 4px solid var(--gold); padding: 12px 14px; border-radius: 8px; font-size: 0.92rem; margin: 0 0 24px; }
+.cta { margin: 40px 0; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 12px; display: grid; gap: 14px; box-shadow: 0 8px 24px rgba(11, 26, 44, 0.06); }
+.button { justify-self: start; display: inline-block; padding: 11px 20px; border-radius: 10px; background: var(--ink); color: #fff; font-weight: 600; text-decoration: none; }
+.sources { border-top: 1px solid var(--line); padding-top: 16px; font-size: 0.92rem; color: var(--muted); }
+.sources h2 { font-size: 1rem; margin-top: 0; }
+.hint { font-size: 0.85rem; }
+.cards { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+.card h2 { margin: 6px 0 8px; font-size: 1.3rem; }
+.card h2 a { text-decoration: none; }
+.card time { color: var(--gold); font-size: 0.85rem; font-weight: 600; }
+.card p { margin: 0; color: var(--muted); }
+.foot { max-width: 880px; margin: 0 auto; padding: 24px 16px 40px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }

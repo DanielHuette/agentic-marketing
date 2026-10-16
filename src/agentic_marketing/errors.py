@@ -34,3 +34,15 @@ class BudgetExceededError(AgenticMarketingError):
 
 class JudgeError(AgenticMarketingError):
     """The second verification pass cannot run or returned nothing usable."""
+
+
+class CampaignError(AgenticMarketingError):
+    """A campaign folder or post file is missing, malformed or inconsistent."""
+
+
+class CockpitError(AgenticMarketingError):
+    """The cockpit database refused a request or is not configured."""
+
+
+class PublishError(AgenticMarketingError):
+    """A post could not be rendered or written to its target."""

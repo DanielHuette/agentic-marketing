@@ -1,0 +1,33 @@
+# Folds yesterday's page hits into results every morning; writes the weekly reports on Mondays.
+name: Measure and report
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: measure
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      AGENTIC_MARKETING_SUPABASE_URL: ${{ secrets.AGENTIC_MARKETING_SUPABASE_URL }}
+      AGENTIC_MARKETING_SUPABASE_SERVICE_KEY: ${{ secrets.AGENTIC_MARKETING_SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --no-dev
+      - run: uv run agentic-marketing metrics
+      - name: Weekly report on Mondays, or when started by hand
+        run: |
+          if [ "$(date -u +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            uv run agentic-marketing report
+          else
+            echo "Weekly report runs on Mondays"
+          fi
