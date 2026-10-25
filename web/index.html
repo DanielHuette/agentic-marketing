@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agentic Marketing · RepoCity</title>
+<meta name="description" content="Marketing mit einer Recherche-Sitzung, bei dem jede Zahl ihre Quelle hat: Recherche mit Zahlenprüfung, Freigabe durch einen Menschen, ein Planer für dreizehn Kanäle und Meldungen im RepoCity-Cockpit. Prüfstand mit 16 Fällen gegen Seiten des Statistischen Bundesamtes.">
+<link rel="canonical" href="https://agenticmarketing.speedofthespirit.dev/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agenticmarketing.speedofthespirit.dev/">
+<meta property="og:title" content="Agentic Marketing · RepoCity">
+<meta property="og:description" content="Recherche, bei der jede Zahl ihre Quelle hat, und Beiträge für jeden Kanal, die erst nach Freigabe rausgehen.">
+<meta property="og:image" content="https://agenticmarketing.speedofthespirit.dev/assets/img/vorschau.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#02060f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/syncopate-700.woff2" as="font" type="font/woff2" crossorigin>
+<script src="effekte/vorab.js"></script>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="effekte/start.js"></script>
+</head>
+<body>
+
+<svg class="vorrat" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gold-metall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e3bf"/><stop offset="0.32" stop-color="#cdb07a"/><stop offset="0.55" stop-color="#9c7f52"/><stop offset="0.78" stop-color="#e2c993"/><stop offset="1" stop-color="#8a6c43"/>
+    </linearGradient>
+  </defs>
+  <symbol id="marke" viewBox="0 0 100 100">
+    <g fill="url(#gold-metall)">
+      <path fill-rule="evenodd" d="M50 2.5a47.5 47.5 0 1 1 0 95a47.5 47.5 0 1 1 0-95zm0 5a42.5 42.5 0 1 0 0 85a42.5 42.5 0 1 0 0-85z"/>
+      <rect x="31.8" y="46.3" width="8.8" height="18"/><rect x="47.1" y="24.9" width="8.8" height="39.4"/><rect x="62.6" y="36.6" width="8.8" height="27.7"/><rect x="12.4" y="64.9" width="75.2" height="4.4"/>
+    </g>
+  </symbol>
+  <symbol id="i-projekt" viewBox="0 0 24 24"><path d="M4 19.5h16M7 16v-4.5M12 16V6.5M17 16v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-organigramm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1.4"/><rect x="3" y="16" width="6" height="5" rx="1.4"/><rect x="15" y="16" width="6" height="5" rx="1.4"/><path d="M12 8v4M6 16v-2.2a1.8 1.8 0 0 1 1.8-1.8h8.4a1.8 1.8 0 0 1 1.8 1.8V16"/></g></symbol>
+  <symbol id="i-benchmarks" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h9M4 12h14M4 18h6"/><circle cx="16.5" cy="6" r="1.6"/><circle cx="20.2" cy="12" r="1.6"/><circle cx="13" cy="18" r="1.6"/></g></symbol>
+  <symbol id="i-praesentation" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="13" rx="2.2"/><path d="M10.2 8.4v5.2l4.4-2.6z" fill="currentColor"/><path d="M8 20.5h8" stroke-linecap="round"/></g></symbol>
+  <symbol id="i-pfeil" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5L16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="kopf">
+  <a class="marke" href="#projekt" data-tab-link="projekt">
+    <svg aria-hidden="true"><use href="#marke"/></svg>
+    <span class="marke__wort">Agentic Marketing<span>RepoCity</span></span>
+  </a>
+  <div class="kopf__rechts">
+    <div class="sprache" role="group" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="kopf__app" href="https://app.agenticmarketing.speedofthespirit.dev">App</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================= Tab 1: Projekt ======================= -->
+<section class="tafel-panel" id="projekt" role="tabpanel" aria-labelledby="tab-projekt" tabindex="-1">
+
+  <div class="held">
+    <div class="held__buehne" data-grube aria-hidden="true"></div>
+    <div class="held__inhalt">
+      <h1 class="held__titel">Agentic<br>Marketing</h1>
+      <p class="held__satz"><span class="de">Recherche in einer Sitzung nach acht Skills, bei der jede Zahl ihre Quelle hat, und Beiträge für jeden Kanal, die erst nach der Freigabe durch einen Menschen rausgehen.</span><span class="en">Research in one session by eight skills in which every figure has its source, and posts for every channel that only go out after a person has approved them.</span></p>
+      <dl class="held__zahlen">
+        <div><dt><span class="de">Prüffälle gegen Seiten des Statistischen Bundesamts richtig eingestuft</span><span class="en">test cases against pages of the Federal Statistical Office classified correctly</span></dt><dd data-kpi="model">16/16</dd></div>
+        <div><dt><span class="de">unbelegte Befunde übersehen</span><span class="en">unbacked findings missed</span></dt><dd data-kpi="missed">0</dd></div>
+        <div><dt><span class="de">Kanäle in einem Planer</span><span class="en">channels in one planner</span></dt><dd>13</dd></div>
+      </dl>
+      <div class="knoepfe">
+        <a class="pille pille--voll" href="#benchmarks" data-tab-link="benchmarks"><span class="de">Messungen ansehen</span><span class="en">See the measurements</span><svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+        <a class="pille" href="#organigramm" data-tab-link="organigramm"><span class="de">So funktioniert es</span><span class="en">How it works</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="inhalt">
+
+    <section class="block" aria-labelledby="problem-titel">
+      <h2 class="block__titel" id="problem-titel"><span class="de">Eine ungeprüfte Zahl liest sich genau wie eine geprüfte</span><span class="en">An unchecked figure reads exactly like a checked one</span></h2>
+      <div class="zwei">
+        <p class="de">Eine Recherche-Sitzung, die einen Markt untersucht, liefert viel Text. Sprachmodelle nennen Zahlen mit großer Sicherheit, und im Marketing sieht eine falsche Zahl die Öffentlichkeit, nicht ein Test. Dazu ist das Ergebnis zu groß: Wer einen ganzen Recherchelauf in die nächste Sitzung lädt, verbraucht den Platz für Material, das niemand behalten wollte.</p>
+        <p class="en">A research session studying a market produces a lot of text. Language models state figures with great confidence, and in marketing a wrong figure is seen by the public rather than caught by a test. And the output is too large: load a whole research run into the next session and the room goes to material nobody decided to keep.</p>
+        <p class="de">Hier kommt ein Befund erst in den Arbeitsbereich, wenn jede Zahl in der genannten Quelle gefunden wurde und ein Mensch entschieden hat, was bleibt. Aus den geprüften Befunden entstehen Beiträge. Eine Zahl ohne Beleg sperrt die Freigabe, in der App und in der Datenbank. Gepostet wird von Hand, wenn das RepoCity-Cockpit den Termin meldet.</p>
+        <p class="en">Here a finding only enters the workspace once every figure has been found in the source it names and a person has decided what stays. The checked findings become posts. A figure without a source blocks approval, in the app and in the database. Posting is done by hand when the RepoCity Cockpit reports the date.</p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="weg-titel">
+      <h2 class="block__titel" id="weg-titel"><span class="de">Der Weg einer Zahl in fünf Schritten</span><span class="en">The path of a figure in five steps</span></h2>
+      <ol class="schritte">
+        <li><b><span class="de">Recherchieren</span><span class="en">Research</span></b><p><span class="de">Eine Recherche-Sitzung folgt acht Skills und schreibt jeden Befund als eigene Datei, mit Zahlen und Quelle.</span><span class="en">One research session follows eight skills and writes each finding as its own file, with figures and source.</span></p></li>
+        <li><b><span class="de">Zahlen nachschlagen</span><span class="en">Look figures up</span></b><p><span class="de">Jede Zahl wird in ihrer Quelle gesucht, über Schreibweisen hinweg; dafür braucht es kein Sprachmodell.</span><span class="en">Every figure is looked for in its source, across spellings; this needs no language model.</span></p></li>
+        <li><b><span class="de">Offenes prüfen lassen</span><span class="en">Check what is open</span></b><p><span class="de">Nur was offen blieb, geht an ein Sprachmodell, und das muss die Stelle zitieren, auf die es sich stützt.</span><span class="en">Only what stayed open goes to a language model, which must quote the passage it relies on.</span></p></li>
+        <li><b><span class="de">Entscheiden</span><span class="en">Decide</span></b><p><span class="de">Ein Mensch behält oder verwirft jeden Befund. Daraus entsteht die gepflegte Datei, die die nächste Sitzung wieder liest.</span><span class="en">A person keeps or drops each finding. That builds the curated file the next session reads again.</span></p></li>
+        <li><b><span class="de">Planen und posten</span><span class="en">Plan and post</span></b><p><span class="de">Beiträge zitieren nur behaltene Befunde, bekommen im Planer ihren Termin und werden von Hand gepostet.</span><span class="en">Posts cite kept findings only, get their date in the planner and are posted by hand.</span></p></li>
+      </ol>
+    </section>
+
+    <section class="block" aria-labelledby="app-titel">
+      <h2 class="block__titel" id="app-titel"><span class="de">Die App: Kampagnen, Planer, Freigabe</span><span class="en">The app: campaigns, planner, approval</span></h2>
+      <p class="block__vorspann"><span class="de">Eine installierbare Web-App im RepoCity-Design. Die Bilder zeigen die echte RadarAuditor-Kampagne: neun geprüfte Befunde, sechs geschriebene Beiträge, die als Entwurf auf den Verkaufsstart des Produkts warten und deshalb noch keinen Termin haben.</span><span class="en">An installable web app in the RepoCity design. The pictures show the real RadarAuditor campaign: nine checked findings and six written posts that wait as drafts for the product's sales start and therefore have no date yet.</span></p>
+      <figure class="bild bild--gross">
+        <picture>
+          <source media="(max-width: 600px)" srcset="assets/img/app-planer-telefon.jpg" width="390" height="940">
+          <img src="assets/img/app-planer.jpg" data-alt-en="The app's planner: calendar week 43 with empty days, below them the posts without a date, each blog or LinkedIn, status draft; a shortened view on the phone" width="1440" height="900" loading="lazy" alt="Planer der App: Kalenderwoche 43 mit leeren Tagen, darunter die Beiträge ohne Termin, je Blog oder LinkedIn, Status Entwurf; auf dem Telefon ein gekürzter Ausschnitt">
+        </picture>
+        <figcaption><b><span class="de">Planer</span><span class="en">Planner</span></b> <span class="de">Eine Woche je Seite, dreizehn Kanäle, neue Beiträge mit eigenem Termin. Darunter, was noch keinen Termin hat.</span><span class="en">One week per page, thirteen channels, new posts with their own date. Below, what has no date yet.</span></figcaption>
+      </figure>
+      <div class="bilder-zwei">
+        <figure class="bild">
+          <img src="assets/img/app-beitrag.jpg" data-alt-en="A post in the app: the blog text on the left, on the right the evidence with the source Bitkom and the checked sentence" width="1440" height="900" loading="lazy" alt="Beitrag der App: links der Blogtext, rechts die Belege mit Quelle Bitkom und dem geprüften Satz">
+          <figcaption><b><span class="de">Beitrag mit Belegen</span><span class="en">Post with evidence</span></b> <span class="de">Jede Zahl im Text steht rechts mit ihrer Quelle und dem Satz, in dem sie steht.</span><span class="en">Every figure in the text appears on the right with its source and the sentence that holds it.</span></figcaption>
+        </figure>
+        <figure class="bild">
+          <img src="assets/img/app-kampagne.jpg" data-alt-en="The campaign page of the app: goal, audience, start panel noting that no post is approved yet" width="1440" height="900" loading="lazy" alt="Kampagnenseite der App: Ziel, Zielgruppe, Startfläche mit dem Hinweis, dass noch kein Beitrag freigegeben ist">
+          <figcaption><b><span class="de">Kampagne</span><span class="en">Campaign</span></b> <span class="de">Ziel, Zielgruppe und der Start, der erst geht, wenn Beiträge freigegeben sind.</span><span class="en">Goal, audience and the start, which only works once posts are approved.</span></figcaption>
+        </figure>
+      </div>
+      <div class="knoepfe">
+        <a class="pille pille--voll" href="https://app.agenticmarketing.speedofthespirit.dev"><span class="de">App öffnen</span><span class="en">Open the app</span><svg aria-hidden="true"><use href="#i-pfeil"/></svg></a>
+        <a class="pille" href="https://github.com/DanielHuette/agentic-marketing/blob/main/Dokumentation/BETRIEBSANLEITUNG.de.md"><span class="de">Betriebsanleitung</span><span class="en">Operating manual</span></a>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="beispiel-titel">
+      <h2 class="block__titel" id="beispiel-titel"><span class="de">Beispiellauf mit eingebautem Fehler</span><span class="en">Example run with a planted mistake</span></h2>
+      <p class="block__vorspann"><span class="de">Sieben Befunde einer Umfeldanalyse für einen erfundenen Werkzeughändler, gegen mitgelieferte Beispielquellen geprüft. Ein Befund behauptet 11,4 Prozent Wachstum, eine Zahl, die in keiner Quelle steht. Der Zahlenabgleich stuft ihn als teilweise belegt ein, der Mensch verwirft ihn.</span><span class="en">Seven findings of a market analysis for an invented tooling dealer, checked against bundled example sources. One finding claims 11.4 percent growth, a figure no source carries. The figure pass marks it partial, the person drops it.</span></p>
+      <ul class="befunde" id="befunde"><li class="laedt">…</li></ul>
+      <figure class="bild bild--schmal">
+        <img src="assets/img/pruefseite.jpg" data-alt-en="Review page of the review command: a supported finding marked keep, the finding with the missing 11.4 marked drop" width="1800" height="1200" loading="lazy" alt="Prüfseite des Befehls review: ein belegter Befund mit Behalten, der Befund mit der fehlenden 11,4 mit Verwerfen">
+        <figcaption><b><span class="de">Prüfseite</span><span class="en">Review page</span></b> <span class="de">Urteil, Beleg und die Entscheidung, die als Datei gespeichert wird.</span><span class="en">Verdict, evidence and the decision, saved as a file.</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="block" aria-labelledby="grenzen-titel">
+      <h2 class="block__titel" id="grenzen-titel"><span class="de">Was die Zahlen nicht zeigen</span><span class="en">What the figures do not show</span></h2>
+      <ul class="grenzen">
+        <li><b><span class="de">Der Prüfstand misst die Prüfung, nicht die Recherche.</span><span class="en">The benchmark measures the check, not the research.</span></b> <span class="de">16 Fälle aus fünf Seiten einer Behörde. Ob ein Agent gute Befunde findet, ist eine andere Frage.</span><span class="en">16 cases from five pages of one office. Whether an agent finds good findings is a different question.</span></li>
+        <li><b><span class="de">Das Beispiel ist erfunden.</span><span class="en">The example is invented.</span></b> <span class="de">Die Quellen des Beispiellaufs sind als Beispielquellen gekennzeichnet. Sie zeigen den Ablauf, keine Marktlage.</span><span class="en">The example run's sources are marked as synthetic. They show the process, not a market.</span></li>
+        <li><b><span class="de">Die erste echte Kampagne ist noch nicht gestartet.</span><span class="en">The first real campaign has not started yet.</span></b> <span class="de">Ihre Beiträge warten als Entwurf. Deshalb gibt es noch keine gemessene Wirkung.</span><span class="en">Its posts wait as drafts, so there is no measured effect yet.</span></li>
+        <li><b><span class="de">Seiten ändern sich.</span><span class="en">Pages change.</span></b> <span class="de">Jeder Lauf legt Abzüge der Quellen mit Prüfsumme ab, damit ein Ergebnis später nachprüfbar bleibt.</span><span class="en">Every run stores snapshots of its sources with digests, so a result stays auditable.</span></li>
+      </ul>
+    </section>
+
+  </div>
+</section>
+
+<!-- ======================= Tab 2: Organigramm ======================= -->
+<section class="tafel-panel" id="organigramm" role="tabpanel" aria-labelledby="tab-organigramm" tabindex="-1">
+  <div class="inhalt">
+    <header class="panel-kopf">
+      <h2 class="panel-titel"><span class="de">Organigramm</span><span class="en">How it works</span></h2>
+      <p class="panel-satz"><span class="de">Zehn Stationen, drei Orte. Verfolgen Sie eine echte Zahl aus der RadarAuditor-Kampagne: <q>50 Prozent nutzen zumindest manchmal einen KI-Chat statt der Suche</q>, Quelle Bitkom.</span><span class="en">Ten stations, three places. Follow a real figure from the RadarAuditor campaign: <q>50 percent at least sometimes use an AI chat instead of search</q>, source Bitkom.</span></p>
+      <ul class="legende" aria-label="Legende">
+        <li><i class="punkt punkt--mensch"></i><span class="de">Mensch entscheidet</span><span class="en">a person decides</span></li>
+        <li><i class="punkt punkt--auto"></i><span class="de">läuft automatisch</span><span class="en">runs on its own</span></li>
+        <li><i class="punkt punkt--sperre"></i><span class="de">Sperre</span><span class="en">block</span></li>
+      </ul>
+    </header>
+
+    <div class="org" data-org>
+      <div class="org__spur" aria-hidden="true"><span class="org__puls"></span></div>
+
+      <h3 class="org__ort"><span><span class="de">Am PC des Betreibers</span><span class="en">On the operator's PC</span></span></h3>
+      <ol class="org__stationen">
+        <li class="station" data-art="agent">
+          <span class="station__nr">1</span>
+          <h4><span class="de">Recherche</span><span class="en">Research</span></h4>
+          <p><span class="de">Eine Recherche-Sitzung arbeitet nach acht Analyse-Skills und schreibt jeden Befund als eigene Datei in einen datierten Ordner.</span><span class="en">One research session works by eight analysis skills and writes each finding as its own file into a dated folder.</span></p>
+          <p class="station__zahl"><span class="de">Die Zahl entsteht: „50 Prozent“, Quelle Bitkom.</span><span class="en">The figure appears: "50 percent", source Bitkom.</span></p>
+          <ul class="faehig"><li><span class="de">Skills</span><span class="en">skills</span></li><li><span class="de">Makroanalyse nach STEP</span><span class="en">macro analysis by STEP</span></li><li><span class="de">Mikroanalyse</span><span class="en">micro analysis</span></li><li><span class="de">Wettbewerb</span><span class="en">competitors</span></li><li><span class="de">Porters fünf Kräfte</span><span class="en">Porter's five forces</span></li><li><span class="de">Bewertungsauswertung</span><span class="en">review mining</span></li><li><span class="de">Zielgruppe</span><span class="en">audience</span></li><li><span class="de">Entwürfe für Blog und LinkedIn</span><span class="en">blog and LinkedIn drafts</span></li></ul>
+        </li>
+        <li class="station" data-art="auto">
+          <span class="station__nr">2</span>
+          <h4><span class="de">Zahlenabgleich</span><span class="en">Figure pass</span> <code>verify</code></h4>
+          <p><span class="de">Jede Quelle wird einmal geholt, als Abzug mit Prüfsumme abgelegt, und jede Zahl darin gesucht: 90.336 und 90,336 sind dieselbe Zahl, 1,7 und 17 nicht. Dieser Schritt kostet nichts, weil kein Sprachmodell gefragt wird.</span><span class="en">Each source is fetched once, stored as a snapshot with a digest, and every figure looked for in it: 90.336 and 90,336 are one number, 1.7 and 17 are not. This pass costs nothing, because no language model is asked.</span></p>
+          <p class="station__zahl"><span class="de">„50“ steht in der Quelle: belegt.</span><span class="en">"50" is in the source: supported.</span></p>
+          <p class="station__ast"><span class="de">Steht eine Zahl nicht in der Quelle, heißt das Urteil „nicht belegt“ oder „teilweise“.</span><span class="en">A figure missing from the source gets "unsupported" or "partial".</span></p>
+          <ul class="faehig"><li>Python</li><li><span class="de">Abruf mit Zeitlimit und Wiederholung</span><span class="en">fetching with timeout and retries</span></li><li><span class="de">PDF lesen</span><span class="en">PDF reading</span></li><li><span class="de">Zahlen über Schreibweisen</span><span class="en">figures across spellings</span></li></ul>
+        </li>
+        <li class="station" data-art="auto">
+          <span class="station__nr">3</span>
+          <h4><span class="de">Modellprüfung</span><span class="en">Model pass</span> <code>verify --model</code></h4>
+          <p><span class="de">Nur was offen blieb, geht an ein Sprachmodell: ein Befund mit richtiger Zahl, aber falscher Folgerung, oder einer ohne Zahl. Das Modell antwortet über einen erzwungenen Werkzeugaufruf und muss die tragende Stelle zitieren. Ohne lesbare Quelle wird es nicht gefragt.</span><span class="en">Only what stayed open goes to a language model: a finding with a right figure and a wrong conclusion, or one with no figure. The model answers through a forced tool call and must quote the passage it relies on. Without a readable source it is not asked.</span></p>
+          <ul class="faehig"><li><span class="de">Anthropic-Programmierschnittstelle</span><span class="en">Anthropic API</span></li><li><span class="de">erzwungener Werkzeugaufruf</span><span class="en">forced tool call</span></li><li><span class="de">Zitatpflicht</span><span class="en">quote required</span></li></ul>
+        </li>
+        <li class="station" data-art="mensch">
+          <span class="station__nr">4</span>
+          <h4><span class="de">Mensch entscheidet</span><span class="en">A person decides</span> <code>review · apply</code></h4>
+          <p><span class="de">Auf der Prüfseite wird jeder Befund behalten oder verworfen. Die Entscheidungen liegen als Datei vor; die gepflegte Datei entsteht allein aus Lauf und Entscheidungen.</span><span class="en">On the review page each finding is kept or dropped. The decisions are a file; the curated file is built from run and decisions alone.</span></p>
+          <p class="station__zahl"><span class="de">Der Befund mit „50 Prozent“ wird behalten.</span><span class="en">The finding with "50 percent" is kept.</span></p>
+          <p class="station__ast"><span class="de">Im Beispiellauf wird der Befund mit den erfundenen 11,4 Prozent verworfen.</span><span class="en">In the example run the finding with the invented 11.4 percent is dropped.</span></p>
+          <ul class="faehig"><li><span class="de">Mensch in der Schleife</span><span class="en">human in the loop</span></li><li><span class="de">Entscheidungen als Datei</span><span class="en">decisions as a file</span></li></ul>
+        </li>
+        <li class="station" data-art="auto">
+          <span class="station__nr">5</span>
+          <h4><span class="de">Sitzungskontext</span><span class="en">Session context</span> <code>pack · stale</code></h4>
+          <p><span class="de">Eine Sitzung startet mit sechs Grunddateien. Was sie kosten, wird in Zeichen und Tokens gemessen statt geschätzt. <code>stale</code> meldet, welche Punkte nach ihrer Art wieder fällig sind, und löscht nichts.</span><span class="en">A session starts with six base files. What they cost is measured in characters and tokens rather than estimated. <code>stale</code> reports which points are due again by their kind and deletes nothing.</span></p>
+          <ul class="faehig"><li><span class="de">Kontextbudget</span><span class="en">context budget</span></li><li><span class="de">Alter statt Verfallsdatum</span><span class="en">age, not expiry</span></li></ul>
+        </li>
+      </ol>
+
+      <h3 class="org__ort"><span><span class="de">In Datenbank und App</span><span class="en">In database and app</span></span></h3>
+      <ol class="org__stationen" start="6">
+        <li class="station" data-art="auto">
+          <span class="station__nr">6</span>
+          <h4><span class="de">Kampagne übergeben</span><span class="en">Hand over the campaign</span> <code>campaign</code></h4>
+          <p><span class="de">Kampagne und Beiträge stehen als Dateien im Arbeitsbereich. Der Zahlenwächter prüft jeden Beitrag gegen die Befunde, die er zitiert, und übergibt alles an die Datenbank.</span><span class="en">Campaign and posts are files in the workspace. The figure guard checks each post against the findings it cites and hands everything to the database.</span></p>
+          <p class="station__zahl"><span class="de">Der Blogbeitrag „Die Hälfte fragt erst die KI“ zitiert den Befund.</span><span class="en">The blog post "Die Hälfte fragt erst die KI" cites the finding.</span></p>
+          <ul class="faehig"><li>Pydantic</li><li><span class="de">Zahlenwächter</span><span class="en">figure guard</span></li><li><span class="de">REST-Schnittstelle</span><span class="en">REST interface</span></li></ul>
+        </li>
+        <li class="station" data-art="sperre">
+          <span class="station__nr">7</span>
+          <h4><span class="de">Datenbank</span><span class="en">Database</span></h4>
+          <p><span class="de">Supabase mit PostgreSQL. Zeilenrechte (Row Level Security) lassen nur den Administrator schreiben. Ein Trigger verweigert jede Freigabe mit einer Zahl ohne Beleg, auch wenn jemand die App umgeht. Die Sicht „plan“ legt jeden Beitrag auf seinen Tag.</span><span class="en">Supabase with PostgreSQL. Row level security lets only the administrator write. A trigger refuses any approval with an unbacked figure, even when someone bypasses the app. The view "plan" puts every post on its day.</span></p>
+          <p class="station__ast station__ast--sperre"><span class="de">Zahl ohne Beleg: Freigabe verweigert.</span><span class="en">Figure without a source: approval refused.</span></p>
+          <ul class="faehig"><li>Supabase</li><li>PostgreSQL</li><li><span class="de">Zeilenrechte (Row Level Security)</span><span class="en">row level security</span></li><li><span class="de">Trigger als Sperre</span><span class="en">trigger as a lock</span></li><li>pg_cron</li></ul>
+        </li>
+        <li class="station" data-art="mensch">
+          <span class="station__nr">8</span>
+          <h4><span class="de">App mit Planer</span><span class="en">App with planner</span></h4>
+          <p><span class="de">Prüfen, bearbeiten, freigeben, starten. Der Planer zeigt eine Woche mit allen Beiträgen aus dreizehn Kanälen; neue Beiträge bekommen einen eigenen Termin. Die Zahlenprüfung läuft beim Tippen mit.</span><span class="en">Review, edit, approve, start. The planner shows a week with every post across thirteen channels; new posts get a date of their own. The figure check runs while typing.</span></p>
+          <p class="station__zahl"><span class="de">Der Beitrag wird freigegeben und bekommt seinen Termin.</span><span class="en">The post is approved and gets its date.</span></p>
+          <ul class="faehig"><li>TypeScript</li><li>Preact</li><li>Vite</li><li><span class="de">installierbare Web-App (Progressive Web App)</span><span class="en">progressive web app</span></li><li>Cloudflare Pages</li></ul>
+        </li>
+      </ol>
+
+      <h3 class="org__ort"><span><span class="de">Hinaus</span><span class="en">Out</span></span></h3>
+      <ol class="org__stationen" start="9">
+        <li class="station" data-art="auto">
+          <span class="station__nr">9</span>
+          <h4><span class="de">RepoCity-Cockpit</span><span class="en">RepoCity Cockpit</span></h4>
+          <p><span class="de">Die Datenbank meldet drei Dinge an das Cockpit, in dem alle RepoCity-Apps melden: ein Beitrag wartet auf Freigabe, der Termin ist erreicht (stündlich geprüft), ein Beitrag ist veröffentlicht. Eine gescheiterte Meldung blockiert nie den Beitrag.</span><span class="en">The database reports three things to the Cockpit where every RepoCity app reports: a post waits for approval, its moment has come (checked hourly), a post is published. A failing message never blocks the post.</span></p>
+          <p class="station__zahl"><span class="de">Meldung: „Jetzt posten: Die Hälfte fragt erst die KI“.</span><span class="en">Message: "Jetzt posten: Die Hälfte fragt erst die KI".</span></p>
+          <ul class="faehig"><li><span class="de">Trigger</span><span class="en">triggers</span></li><li><span class="de">stündlicher Zeitplan (pg_cron)</span><span class="en">hourly schedule (pg_cron)</span></li></ul>
+        </li>
+        <li class="station" data-art="mensch">
+          <span class="station__nr">10</span>
+          <h4><span class="de">Von Hand posten</span><span class="en">Post by hand</span></h4>
+          <p><span class="de">Text kopieren, im Firmenkonto des Kanals posten, Adresse eintragen, „Als gepostet markieren“. Impressionen, Klicks und Anfragen werden im Beitrag eingetragen und gegen die Ziele der Kampagne gezeigt.</span><span class="en">Copy the text, post it from the channel's company account, enter the address, "Als gepostet markieren". Impressions, clicks and inquiries are entered on the post and shown against the campaign goals.</span></p>
+          <p class="station__zahl"><span class="de">Die Zahl geht hinaus, mit ihrer Quelle.</span><span class="en">The figure goes out, with its source.</span></p>
+          <ul class="faehig"><li><span class="de">Blog, LinkedIn, X, XING, Instagram, Facebook, Threads, YouTube, TikTok, Reddit, Forum, Presse, Newsletter</span><span class="en">blog, LinkedIn, X, XING, Instagram, Facebook, Threads, YouTube, TikTok, Reddit, forum, press, newsletter</span></li></ul>
+        </li>
+      </ol>
+
+      <aside class="org__qualitaet">
+        <h3><span class="de">Bei jeder Änderung</span><span class="en">On every change</span></h3>
+        <p><span class="de">GitHub Actions prüft Python mit ruff, mypy und pytest und die App mit TypeScript, ESLint, Vitest und Build.</span><span class="en">GitHub Actions checks Python with ruff, mypy and pytest and the app with TypeScript, ESLint, Vitest and a build.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= Tab 3: Benchmarks ======================= -->
+<section class="tafel-panel" id="benchmarks" role="tabpanel" aria-labelledby="tab-benchmarks" tabindex="-1">
+  <div class="inhalt">
+    <header class="panel-kopf">
+      <h2 class="panel-titel"><span class="de">Messungen</span><span class="en">Benchmarks</span></h2>
+      <p class="panel-satz"><span class="de">Gemessen gegen Seiten, die das Statistische Bundesamt veröffentlicht, nicht gegen Testdaten.</span><span class="en">Measured against pages the Federal Statistical Office publishes, not against test data.</span></p>
+    </header>
+
+    <section class="mess" aria-labelledby="pruefstand-titel">
+      <h3 class="mess__titel" id="pruefstand-titel"><span class="de">Prüfstand: 16 Fälle, zwei Prüfschritte</span><span class="en">Benchmark: 16 cases, two passes</span></h3>
+      <p class="mess__kern" id="kern"><span class="de">Zusammen übersehen beide Schritte keine unbelegte Aussage und schlagen nie falschen Alarm.</span><span class="en">Together the two passes miss no unbacked statement and never raise a false alarm.</span></p>
+      <div class="vergleich" id="vergleich"><p class="laedt">…</p></div>
+      <p class="mess__erklaerung"><span class="de">Der Zahlenabgleich kann umgedrehte Aussagen nicht sehen: Ihre Zahlen stehen wirklich in der Quelle, nur die Richtung stimmt nicht. Für ihn gelten diese zwei Fälle als belegt. Genau die fängt das Sprachmodell.</span><span class="en">The figure pass cannot see reversed statements: their figures really are in the source, only the direction is wrong. For it these two cases count as supported. Those are exactly what the language model catches.</span></p>
+
+      <h4 class="mess__unter"><span class="de">Fall für Fall, nach Art der Veränderung</span><span class="en">Case by case, by kind of alteration</span></h4>
+      <ul class="arten" id="arten"><li class="laedt">…</li></ul>
+      <ul class="zeichen-legende" aria-label="Legende">
+        <li><span class="chip chip--supported">✓</span><span class="de">belegt</span><span class="en">supported</span></li>
+        <li><span class="chip chip--partial">½</span><span class="de">teilweise</span><span class="en">partial</span></li>
+        <li><span class="chip chip--unsupported">✕</span><span class="de">nicht belegt</span><span class="en">unsupported</span></li>
+        <li><span class="chip chip--unreachable">–</span><span class="de">nicht erreichbar</span><span class="en">unreachable</span></li>
+      </ul>
+      <details class="faelle">
+        <summary><span class="de">Alle 16 Aussagen mit Urteil lesen</span><span class="en">Read all 16 statements with verdicts</span></summary>
+        <ol class="faelle__liste" id="faelle"></ol>
+      </details>
+      <p class="quelle"><span class="de">Quelle:</span><span class="en">Source:</span> <a href="https://github.com/DanielHuette/agentic-marketing/blob/main/benchmark/RESULTS.md">benchmark/RESULTS.md</a>, <a href="https://github.com/DanielHuette/agentic-marketing/blob/main/benchmark/results.json">benchmark/results.json</a>, <a href="https://github.com/DanielHuette/agentic-marketing/blob/main/benchmark/cases.yaml">benchmark/cases.yaml</a>. <span id="laufzeit"></span></p>
+    </section>
+
+    <section class="mess" aria-labelledby="verdichtung-titel">
+      <h3 class="mess__titel" id="verdichtung-titel"><span class="de">Beispiellauf: was übrig bleibt</span><span class="en">Example run: what is left</span></h3>
+      <p class="mess__kern" id="verdichtung-kern"><span class="de">Die gepflegte Datei ist ein Drittel so lang wie der Rohlauf. Eine Sitzung startet mit rund 1.419 Tokens.</span><span class="en">The curated file is a third as long as the raw run. A session starts with about 1,419 tokens.</span></p>
+      <div class="trichter" id="trichter"></div>
+      <div class="balken" id="balken" role="img"></div>
+      <p class="mess__erklaerung"><span class="de">Das Beispiel ist klein genug zum Lesen. Ein echter Lauf, dessen Rohordner die heruntergeladenen Quellen und Arbeitsnotizen enthält, verdichtet weit stärker; gemessen wird nach jedem Lauf, statt es zu behaupten.</span><span class="en">The example is small enough to read. A real run, whose raw folder holds the downloaded sources and working notes, compresses far harder; the figure is measured after every run rather than claimed.</span></p>
+      <p class="quelle"><span class="de">Quelle:</span><span class="en">Source:</span> <a href="https://github.com/DanielHuette/agentic-marketing#quickstart">README, Quickstart</a>, <span class="de">nachgerechnet mit</span><span class="en">reproduced with</span> <code>agentic-marketing apply</code> <span class="de">und</span><span class="en">and</span> <code>pack</code> <span class="de">auf</span><span class="en">on</span> <code>tests/fixtures/workspace</code>.</p>
+    </section>
+
+    <section class="mess" aria-labelledby="fehler-titel">
+      <h3 class="mess__titel" id="fehler-titel"><span class="de">Was der Prüfstand gefunden hat</span><span class="en">What the benchmark found</span></h3>
+      <ul class="funde">
+        <li><b><span class="de">Ein verschlucktes Dezimalkomma.</span><span class="en">A dropped decimal comma.</span></b> <span class="de">Der Zahlenabgleich entfernte das Komma, so passte 1,7 auf die 17 eines Datums an anderer Stelle. Ein Trennzeichen vor drei Ziffern darf wegfallen, jedes andere nicht.</span><span class="en">The figure matcher stripped the comma, so 1.7 matched the 17 of a date elsewhere on the page. A separator before three digits may be dropped, any other may not.</span></li>
+        <li><b><span class="de">Ein falsch gelesenes Datum.</span><span class="en">A misread date.</span></b> <span class="de">Die Korrektur hielt den Punkt in „1. Januar 2026“ für ein Dezimalzeichen. Ein Trennzeichen zählt nur noch zur Zahl, wenn auf beiden Seiten eine Ziffer steht.</span><span class="en">The fix took the dot in "1. Januar 2026" for a decimal separator. A separator now only counts as part of a number when a digit stands on both sides.</span></li>
+      </ul>
+      <p class="mess__erklaerung"><span class="de">Beide Fehler sind behoben und durch Tests festgehalten.</span><span class="en">Both defects are fixed and pinned by tests.</span></p>
+    </section>
+  </div>
+</section>
+
+<!-- ======================= Tab 4: Präsentation ======================= -->
+<section class="tafel-panel" id="praesentation" role="tabpanel" aria-labelledby="tab-praesentation" tabindex="-1">
+  <div class="inhalt">
+    <header class="panel-kopf">
+      <h2 class="panel-titel"><span class="de">Präsentation</span><span class="en">Presentation</span></h2>
+    </header>
+    <div class="film" data-film aria-roledescription="Präsentation">
+      <div class="film__buehne">
+        <section class="szene" data-kapitel="Problem|Problem" aria-hidden="true">
+          <div class="szene__bild szene__bild--zwei">
+            <span class="zahlkarte"><b><span class="de">1,4 %</span><span class="en">1.4%</span></b><small><span class="de">mit Quelle</span><span class="en">with source</span></small></span>
+            <span class="zahlkarte zahlkarte--falsch"><b><span class="de">1,7 %</span><span class="en">1.7%</span></b><small><span class="de">ohne Quelle</span><span class="en">no source</span></small></span>
+          </div>
+          <p class="szene__text"><span class="de">Zwei Zahlen. Eine stimmt. Man sieht es ihnen nicht an.</span><span class="en">Two figures. One is right. You cannot tell by looking.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Recherche|Research" aria-hidden="true">
+          <div class="szene__bild szene__bild--kreis">
+            <span class="kern"><span class="de">Recherche</span><span class="en">Research</span></span>
+            <span class="trabant" style="--i:0">STEP</span><span class="trabant" style="--i:1"><span class="de">Mikro</span><span class="en">Micro</span></span><span class="trabant" style="--i:2"><span class="de">Wettbewerb</span><span class="en">Competitors</span></span><span class="trabant" style="--i:3"><span class="de">Fünf Kräfte</span><span class="en">Five forces</span></span><span class="trabant" style="--i:4"><span class="de">Bewertungen</span><span class="en">Reviews</span></span><span class="trabant" style="--i:5"><span class="de">Zielgruppe</span><span class="en">Audience</span></span><span class="trabant" style="--i:6">LinkedIn</span><span class="trabant" style="--i:7">Blog</span>
+          </div>
+          <p class="szene__text"><span class="de">Eine Recherche-Sitzung arbeitet nach acht Analyse-Skills.</span><span class="en">One research session works by eight analysis skills.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Zahlen|Figures" aria-hidden="true">
+          <div class="szene__bild szene__bild--abgleich">
+            <span class="abgleich"><b>90.336</b><i>=</i><b>90,336</b></span>
+            <span class="abgleich abgleich--nein"><b>1,7</b><i>≠</i><b>17</b></span>
+          </div>
+          <p class="szene__text"><span class="de">Jede Zahl wird in ihrer Quelle gesucht, ganz ohne Sprachmodell.</span><span class="en">Every figure is looked up in its source, with no language model at all.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Zitat|Quote" aria-hidden="true">
+          <div class="szene__bild szene__bild--zitat">
+            <blockquote>„Der reale (preisbereinigte) Umsatz im zulassungspflichtigen Handwerk in Deutschland ist im 2. Quartal 2026 gegenüber dem 2. Quartal 2025 um 1,4 % gesunken.“<cite>Statistisches Bundesamt</cite></blockquote>
+          </div>
+          <p class="szene__text"><span class="de">Was offen bleibt, prüft ein Sprachmodell. Es muss die Stelle zitieren.</span><span class="en">What stays open is checked by a language model. It must quote the passage.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Mensch|Person" aria-hidden="true">
+          <div class="szene__bild szene__bild--wahl">
+            <span class="wahl wahl--ja"><span class="de">Behalten</span><span class="en">Keep</span></span>
+            <span class="wahl wahl--nein"><span class="de">Verwerfen</span><span class="en">Drop</span></span>
+          </div>
+          <p class="szene__text"><span class="de">Ein Mensch entscheidet, was bleibt.</span><span class="en">A person decides what stays.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Planer|Planner" aria-hidden="true">
+          <div class="szene__bild szene__bild--woche">
+            <span class="tag">Mo</span><span class="tag">Di</span><span class="tag">Mi</span><span class="tag">Do</span><span class="tag">Fr</span><span class="tag">Sa</span><span class="tag">So</span>
+            <span class="kanal" style="--t:0">Blog</span><span class="kanal" style="--t:1">LinkedIn</span><span class="kanal" style="--t:2">XING</span><span class="kanal" style="--t:3">Instagram</span><span class="kanal" style="--t:4">Newsletter</span><span class="kanal" style="--t:5">YouTube</span><span class="kanal" style="--t:6">Threads</span>
+          </div>
+          <p class="szene__text"><span class="de">Ein Planer für jeden Kanal.</span><span class="en">One planner for every channel.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Sperre|Lock" aria-hidden="true">
+          <div class="szene__bild szene__bild--schloss">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="28" width="40" height="28" rx="6"/><path class="buegel" d="M20 28v-7a12 12 0 0 1 24 0v7"/></svg>
+            <span class="schloss__text"><span class="de">Freigabe gesperrt</span><span class="en">Approval locked</span></span>
+          </div>
+          <p class="szene__text"><span class="de">Ohne Beleg keine Freigabe. In der App und in der Datenbank.</span><span class="en">No source, no approval. In the app and in the database.</span></p>
+        </section>
+        <section class="szene" data-kapitel="Cockpit|Cockpit" aria-hidden="true">
+          <div class="szene__bild szene__bild--meldung">
+            <div class="meldung">
+              <svg aria-hidden="true"><use href="#marke"/></svg>
+              <div><b>Jetzt posten: Die Hälfte fragt erst die KI</b><small><span class="de">Blog · Text kopieren, posten, dann als gepostet markieren</span><span class="en">Blog · copy the text, post, then mark as posted</span></small></div>
+            </div>
+          </div>
+          <p class="szene__text"><span class="de">Das Cockpit meldet den Termin. Gepostet wird von Hand.</span><span class="en">The Cockpit reports the date. Posting is done by hand.</span></p>
+        </section>
+        <section class="szene szene--abspann" data-kapitel="Abspann|Credits" aria-hidden="true">
+          <div class="abspann">
+            <svg class="abspann__marke" aria-hidden="true"><use href="#marke"/></svg>
+            <p class="abspann__name">Agentic Marketing</p>
+            <ul class="abspann__faehig">
+              <li><span class="de">Skills</span><span class="en">skills</span></li><li>Python</li><li>Pydantic</li><li>pytest</li><li><span class="de">Anthropic-Programmierschnittstelle</span><span class="en">Anthropic API</span></li><li>Supabase</li><li>PostgreSQL</li><li><span class="de">Zeilenrechte</span><span class="en">row level security</span></li><li>pg_cron</li><li>TypeScript</li><li>Preact</li><li>Vite</li><li>Vitest</li><li>Cloudflare Pages</li><li>GitHub Actions</li><li><span class="de">Messläufe gegen echte Quellen</span><span class="en">evaluation runs on live sources</span></li>
+            </ul>
+            <p class="abspann__wer">Daniel Hütte · AI Agent Engineer · Münster</p>
+          </div>
+        </section>
+      </div>
+      <div class="film__steuer">
+        <button class="film__spielen" type="button" data-spielen aria-pressed="true"><span class="sr" data-spielen-text>Pause</span><svg class="pause" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4v12M14 4v12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><svg class="play" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4l10 6-10 6z" fill="currentColor"/></svg></button>
+        <ol class="film__kapitel" data-kapitelliste aria-label="Kapitel"></ol>
+      </div>
+      <p class="sr" aria-live="polite" data-ansage></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <div class="fuss__links">
+    <a href="https://github.com/DanielHuette/agentic-marketing"><span class="de">Quelltext auf GitHub</span><span class="en">Source on GitHub</span></a>
+    <a href="https://app.agenticmarketing.speedofthespirit.dev">App</a>
+    <a href="https://speedofthespirit.dev/de/">RepoCity</a>
+    <a href="https://speedofthespirit.dev/impressum/">Impressum</a>
+    <a href="https://speedofthespirit.dev/datenschutz/"><span class="de">Datenschutz</span><span class="en">Privacy</span></a>
+  </div>
+  <p>Daniel Hütte · AI Agent Engineer · Münster</p>
+</footer>
+
+<nav class="dock" aria-label="Bereiche">
+  <div class="dock__leiste" role="tablist" aria-label="Bereiche der Projektseite">
+    <a class="dock__reiter" role="tab" id="tab-projekt" href="#projekt" aria-controls="projekt" aria-selected="true"><svg aria-hidden="true"><use href="#i-projekt"/></svg><span class="de">Projekt</span><span class="en">Project</span></a>
+    <a class="dock__reiter" role="tab" id="tab-organigramm" href="#organigramm" aria-controls="organigramm" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-organigramm"/></svg><span class="de">Organigramm</span><span class="en">How it works</span></a>
+    <a class="dock__reiter" role="tab" id="tab-benchmarks" href="#benchmarks" aria-controls="benchmarks" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-benchmarks"/></svg><span class="de">Messungen</span><span class="en">Benchmarks</span></a>
+    <a class="dock__reiter" role="tab" id="tab-praesentation" href="#praesentation" aria-controls="praesentation" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-praesentation"/></svg><span class="de">Präsentation</span><span class="en">Presentation</span></a>
+  </div>
+</nav>
+
+<script src="sprache.js"></script>
+<script src="reiter.js"></script>
+<script src="page.js"></script>
+<script src="organigramm.js"></script>
+<script src="film.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+# Benchmark cases against live public sources.
+#
+# Every statement below is taken from the source it names, as that source published it.
+# The `kind` says what was done to it:
+#
+#   truthful     figures exactly as published
+#   variant      the same figure in the other locale convention
+#   fabricated   one digit changed, so the figure is in no source
+#   mixed        one published figure and one invented one
+#   semantic     published figures, but the statement reverses what the source says
+#   unreachable  an address that does not answer
+#
+# `expect` is the verdict the figure pass should reach, `expect_model` the verdict of the
+# model pass. A semantic case is the only one where the two must differ: that difference
+# is the whole argument for a second pass.
+
+sources:
+  handwerk:
+    url: https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Handwerk/_inhalt.html
+    publisher: Statistisches Bundesamt
+    title: Handwerk
+  unternehmensregister:
+    url: https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Unternehmen/Unternehmensregister/_inhalt.html
+    publisher: Statistisches Bundesamt
+    title: Unternehmensregister
+  dienstleistungen:
+    url: https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Dienstleistungen/_inhalt.html
+    publisher: Statistisches Bundesamt
+    title: Dienstleistungen
+  industrie:
+    url: https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Industrie-Verarbeitendes-Gewerbe/_inhalt.html
+    publisher: Statistisches Bundesamt
+    title: Industrie und Verarbeitendes Gewerbe
+  konjunktur:
+    url: https://www.destatis.de/DE/Themen/Wirtschaft/Konjunkturindikatoren/_inhalt.html
+    publisher: Statistisches Bundesamt
+    title: Konjunkturindikatoren
+  verschwunden:
+    url: https://www.destatis.de/DE/diese-seite-gibt-es-nicht-benchmark.html
+    publisher: Statistisches Bundesamt
+    title: Address that no longer answers
+
+cases:
+  - id: handwerk-umsatz
+    source: handwerk
+    kind: truthful
+    statement: Der reale Umsatz im zulassungspflichtigen Handwerk lag im zweiten Quartal 2026 um 1,4 Prozent unter dem Vorjahresquartal
+    detail: Das ist der Rueckgang, den das Statistische Bundesamt fuer das zulassungspflichtige Handwerk ausweist, preisbereinigt und gegenueber dem Vorjahresquartal.
+    figures: ["1,4"]
+    expect: supported
+    expect_model: supported
+
+  - id: handwerk-beschaeftigte
+    source: handwerk
+    kind: truthful
+    statement: Ende Juni 2026 waren im zulassungspflichtigen Handwerk 1,9 Prozent weniger Personen beschaeftigt als ein Jahr zuvor
+    detail: Der Vergleich bezieht sich auf Ende Juni 2025 und stammt aus den vorlaeufigen Ergebnissen des Statistischen Bundesamtes.
+    figures: ["1,9"]
+    expect: supported
+    expect_model: supported
+
+  - id: handwerk-umsatz-erfunden
+    source: handwerk
+    kind: fabricated
+    statement: Der reale Umsatz im zulassungspflichtigen Handwerk lag im zweiten Quartal 2026 um 1,7 Prozent unter dem Vorjahresquartal
+    detail: Eine Ziffer gegenueber der veroeffentlichten Zahl veraendert. Die Seite nennt an anderer Stelle ein Datum mit 17, was eine zu grosszuegige Suche faelschlich als Treffer wertet.
+    figures: ["1,7"]
+    expect: unsupported
+    expect_model: unsupported
+
+  - id: handwerk-umsatz-umgedreht
+    source: handwerk
+    kind: semantic
+    statement: Der reale Umsatz im zulassungspflichtigen Handwerk stieg im zweiten Quartal 2026 um 1,4 Prozent gegenueber dem Vorjahresquartal
+    detail: Die Zahl stimmt und steht so in der Quelle. Die Richtung ist umgedreht, denn die Quelle weist einen Rueckgang aus. Genau das kann die Zahlenpruefung nicht sehen.
+    figures: ["1,4"]
+    expect: supported
+    expect_model: unsupported
+
+  - id: register-betriebe-variante
+    source: unternehmensregister
+    kind: variant
+    statement: Rund 5.150 landwirtschaftliche Betriebe in der Rechtsform juristische Person oder Personenhandelsgesellschaft waren 2024 Teil einer Unternehmensgruppe
+    detail: Die Quelle schreibt die Zahl mit Leerzeichen als Tausendertrennzeichen, der Befund mit Punkt. Dieselbe Zahl in zwei Schreibweisen.
+    figures: ["5.150"]
+    expect: supported
+    expect_model: supported
+
+  - id: register-zuwachs-variante
+    source: unternehmensregister
+    kind: variant
+    statement: Seit 2020 stieg die Zahl der landwirtschaftlichen Betriebe in einer Unternehmensgruppe um 38 Prozent oder 1.410 Betriebe
+    detail: Auch hier steht die absolute Zahl in der Quelle mit Leerzeichen getrennt.
+    figures: ["38", "1.410"]
+    expect: supported
+    expect_model: supported
+
+  - id: register-betriebe-erfunden
+    source: unternehmensregister
+    kind: fabricated
+    statement: Rund 5.160 landwirtschaftliche Betriebe waren 2024 Teil einer Unternehmensgruppe
+    detail: Eine Ziffer gegenueber der veroeffentlichten Zahl veraendert.
+    figures: ["5.160"]
+    expect: unsupported
+    expect_model: unsupported
+
+  - id: register-gemischt
+    source: unternehmensregister
+    kind: mixed
+    statement: Rund 5.150 landwirtschaftliche Betriebe waren 2024 Teil einer Unternehmensgruppe, 9.999 davon mit mehr als zehn Beschaeftigten
+    detail: Die erste Zahl steht in der Quelle, die zweite ist frei erfunden. Ein Befund, der echte und erfundene Zahlen mischt, ist der haeufigste Fall in der Praxis.
+    figures: ["5.150", "9.999"]
+    expect: partial
+    # Corrected after the first run. The file declared `partial` for the figure pass and
+    # `unsupported` for the model pass on the same case, which contradicts this project's
+    # own definition: one published figure and one invented one is partial support. The
+    # model answered `partial`; the declaration was wrong, not the answer.
+    expect_model: partial
+
+  - id: dienstleistungen-umsatz
+    source: dienstleistungen
+    kind: truthful
+    statement: Gegenueber Juli 2025 ging der Umsatz im Dienstleistungsbereich real um 0,9 Prozent zurueck, waehrend er nominal um 2,9 Prozent stieg
+    detail: Beide Zahlen stehen in derselben Mitteilung des Statistischen Bundesamtes.
+    figures: ["0,9", "2,9"]
+    expect: supported
+    expect_model: supported
+
+  - id: dienstleistungen-umgedreht
+    source: dienstleistungen
+    kind: semantic
+    statement: Gegenueber Juli 2025 stieg der Umsatz im Dienstleistungsbereich real um 0,9 Prozent
+    detail: Die Zahl steht in der Quelle, die Richtung nicht. Die Quelle nennt einen realen Rueckgang.
+    figures: ["0,9"]
+    expect: supported
+    expect_model: unsupported
+
+  - id: industrie-auftragseingang
+    source: industrie
+    kind: truthful
+    statement: Der Auftragseingang im Verarbeitenden Gewerbe lag im August 2026 um 10,6 Prozent unter dem Vormonat
+    detail: Die Zahl stammt aus der Pressemitteilung des Statistischen Bundesamtes vom Oktober 2026.
+    figures: ["10,6"]
+    expect: supported
+    expect_model: supported
+
+  - id: industrie-maut
+    source: industrie
+    kind: truthful
+    statement: Der Lkw-Maut-Fahrleistungsindex stieg im September 2026 um 0,8 Prozent gegenueber dem Vormonat und lag 2,5 Prozent ueber dem Vorjahresmonat
+    detail: Beide Zahlen stehen in derselben Mitteilung von Bundesamt fuer Logistik und Mobilitaet und Statistischem Bundesamt.
+    figures: ["0,8", "2,5"]
+    expect: supported
+    expect_model: supported
+
+  - id: industrie-maut-erfunden
+    source: industrie
+    kind: fabricated
+    statement: Der Lkw-Maut-Fahrleistungsindex lag im September 2026 um 11,6 Prozent ueber dem Vorjahresmonat
+    detail: Eine Ziffer veraendert. Die Seite enthaelt an anderer Stelle die Ziffernfolge 116, was eine zu grosszuegige Suche faelschlich als Treffer wertet.
+    figures: ["11,6"]
+    expect: unsupported
+    expect_model: unsupported
+
+  - id: konjunktur-erwerbstaetige
+    source: konjunktur
+    kind: truthful
+    statement: Die Zahl der Erwerbstaetigen wird mit 45,53 Millionen ausgewiesen
+    detail: Der Wert steht als Kennzahl auf der Themenseite Konjunkturindikatoren des Statistischen Bundesamtes.
+    figures: ["45,53"]
+    expect: supported
+    expect_model: supported
+
+  - id: konjunktur-erfunden
+    source: konjunktur
+    kind: fabricated
+    statement: Die Zahl der Erwerbstaetigen wird mit 45,35 Millionen ausgewiesen
+    detail: Zwei Ziffern getauscht, eine Verwechslung, die beim Abschreiben entsteht.
+    figures: ["45,35"]
+    expect: unsupported
+    expect_model: unsupported
+
+  - id: adresse-tot
+    source: verschwunden
+    kind: unreachable
+    statement: Eine Aussage, deren Quelle unter der angegebenen Adresse nicht mehr erreichbar ist
+    detail: Die Adresse antwortet nicht mehr. Ein Befund, dessen Quelle verschwunden ist, darf nicht als belegt durchgehen und auch nicht an das Modell weitergereicht werden.
+    figures: ["42,0"]
+    expect: unreachable
+    expect_model: unreachable
