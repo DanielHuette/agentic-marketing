@@ -19,6 +19,7 @@ import { plannedMoment } from "../lib/board";
 import { unbackedFigures } from "../lib/figures";
 import { CHANNEL, formatDay, formatMoment } from "../lib/format";
 import { renderMarkdown } from "../lib/markdown";
+import { markLinks, markersFor } from "../lib/tracking";
 
 interface Data {
   post: PostWithFindings;
@@ -240,7 +241,7 @@ function Decision({ data, onChange, onEdit, editing }: { data: Data; onChange: (
                   class="button"
                   type="button"
                   onClick={() => {
-                    void navigator.clipboard.writeText(post.body_md).then(() => { setCopied(true); });
+                    void navigator.clipboard.writeText(markLinks(post.body_md, markersFor(post.channel, campaign.slug, post.slug))).then(() => { setCopied(true); });
                   }}
                 >
                   {copied ? "Kopiert" : "Text kopieren"}

@@ -161,6 +161,26 @@ def test_push_writes_campaign_findings_and_posts_for_review() -> None:
     assert fake.events[-1]["kind"] == "pushed"
 
 
+def test_push_gives_links_to_own_sites_the_markers_of_channel_campaign_and_post() -> None:
+    fake = FakeCockpit()
+    post = _post(
+        channel="linkedin",
+        body="Von 12.480 Betrieben sind 61,4 Prozent klein: https://speedofthespirit.dev/de/.",
+    )
+    push_campaign(cast(CockpitClient, fake), _spec(), [post], [_checked()])
+    assert fake.rows("posts")[0]["body_md"] == (
+        "Von 12.480 Betrieben sind 61,4 Prozent klein: https://speedofthespirit.dev/de/"
+        "?utm_source=linkedin&utm_medium=social&utm_campaign=probe&utm_content=kleine-betriebe."
+    )
+
+
+def test_push_leaves_links_in_blog_posts_alone() -> None:
+    fake = FakeCockpit()
+    body = "Von 12.480 Betrieben sind 61,4 Prozent klein: https://speedofthespirit.dev/de/."
+    push_campaign(cast(CockpitClient, fake), _spec(), [_post(body=body)], [_checked()])
+    assert fake.rows("posts")[0]["body_md"] == body
+
+
 def test_push_marks_posts_with_unbacked_figures() -> None:
     fake = FakeCockpit()
     post = _post(body="Von 12.480 Betrieben sind 61,4 Prozent klein und 88 Prozent zufrieden.")
