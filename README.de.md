@@ -1,23 +1,16 @@
 # Agentic Marketing
 
-Prüft jede Zahl eines Recherchelaufs gegen die genannte Quelle, bevor ein Mensch entscheidet, welche Befunde bleiben und zu Beiträgen werden.
+[English version](README.md) · [Projektseite](https://agenticmarketing.speedofthespirit.dev/#projekt) · [So funktioniert es](https://agenticmarketing.speedofthespirit.dev/#organigramm) · [Messungen](https://agenticmarketing.speedofthespirit.dev/#benchmarks) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/#praesentation) · [App](https://app.agenticmarketing.speedofthespirit.dev) · [Betriebsanleitung](Dokumentation/BETRIEBSANLEITUNG.de.md) · [Downloads](https://github.com/DanielHuette/agentic-marketing/releases/latest)
 
-[English version](README.md) · [Projektseite](https://agenticmarketing.speedofthespirit.dev/#projekt) · [So funktioniert es](https://agenticmarketing.speedofthespirit.dev/#organigramm) · [Messungen](https://agenticmarketing.speedofthespirit.dev/#benchmarks) · [Präsentation](https://agenticmarketing.speedofthespirit.dev/#praesentation) · [App](https://app.agenticmarketing.speedofthespirit.dev) · [Betriebsanleitung](Dokumentation/BETRIEBSANLEITUNG.de.md)
-
-Stand: 16 Prüffälle gegen Seiten des Statistischen Bundesamts.
-
-Ein Marketing-Arbeitsbereich für eine Recherche-Sitzung, die nach acht Skills arbeitet,
-und der Schritt, der einer solchen Sitzung fehlt: Recherche kommt erst in den Arbeitsbereich,
-nachdem eine feste Zahlenprüfung ihre Zahlen in den Quellen nachgeschlagen hat, ein
-Modellrichter über die Anthropic-Schnittstelle das Offene bewertet hat und ein Mensch entschieden
-hat, was bleibt. Ein Supabase-Trigger meldet jeden Beitrag, der auf Freigabe wartet, und jeden
-veröffentlichten Beitrag an das RepoCity-Cockpit. Aus den geprüften Befunden werden
+Ein Marketing-Arbeitsbereich für Agententeams — und der Schritt, der in jedem von ihnen
+fehlt: Recherche kommt erst in den Arbeitsbereich, nachdem ihre Zahlen gegen die Quellen
+geprüft wurden und ein Mensch entschieden hat, was bleibt. Aus den geprüften Befunden werden
 Beiträge, die ein Mensch in einer App freigibt, für jeden Kanal in einem Kalender plant und von
 Hand postet, sobald das RepoCity-Cockpit sie als fällig meldet.
 
 ## Das Problem
 
-Eine Recherche-Sitzung, die einen Markt untersucht, produziert viel Text. Die Seminarfassung
+Ein Agententeam, das einen Markt recherchiert, produziert viel Text. Die Seminarfassung
 hört genau dort auf: Das Ergebnis wird gelesen, bewundert und irgendwohin kopiert. Zwei
 Dinge gehen dabei schief.
 

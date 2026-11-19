@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "agentic-marketing"
 version = "0.2.0"
-description = "A marketing workspace for one research session: research runs become curated, source-checked context files and posts for approval"
+description = "A marketing workspace for agent teams: research runs become curated, source-checked context files and posts for approval"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"

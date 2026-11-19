@@ -1,7 +1,6 @@
 /* Presentation as a self-running film: scenes play one after another with their own motion,
- * chapters jump to a scene, the button pauses and resumes. It starts when its tab opens and,
- * once the last scene has played out, opens the project tab; with reduced motion it waits for
- * the viewer, shows each scene without movement and never switches tabs by itself. */
+ * chapters jump to a scene, the button pauses and resumes. It starts when its tab opens; with
+ * reduced motion it waits for the viewer and shows each scene without movement. */
 "use strict";
 
 (function film() {
@@ -65,22 +64,8 @@
     if (!laeuft) return;
     const anteil = Math.min(1, (verstrichen + jetzt - start) / dauer());
     buehne.style.setProperty("--fortschritt", ((index + anteil) / szenen.length).toFixed(4));
-    if (anteil >= 1) {
-      const ende = index === szenen.length - 1;
-      zeigen((index + 1) % szenen.length);
-      verstrichen = 0;
-      start = jetzt;
-      if (ende && !ruhig) { zumProjekt(); return; }
-    }
+    if (anteil >= 1) { zeigen((index + 1) % szenen.length); verstrichen = 0; start = jetzt; }
     rahmen = requestAnimationFrame(bild);
-  }
-
-  // A film that has played to the end hands over to the project tab, through the tab itself so
-  // address, history and tab bar follow; the film waits on its first scene for the next visit.
-  function zumProjekt() {
-    const reiter = document.querySelector('[role="tab"][aria-controls="projekt"]');
-    if (reiter) reiter.click();
-    else rahmen = requestAnimationFrame(bild);
   }
 
   function sichtbar() { return !document.getElementById("praesentation").hidden && !document.hidden; }

@@ -1,22 +1,16 @@
 # Agentic Marketing
 
-Checks every figure of a market research run against the source it names before a person decides which findings stay and become posts.
+[Deutsche Fassung](README.de.md) · [Project page](https://agenticmarketing.speedofthespirit.dev/#projekt) · [How it works](https://agenticmarketing.speedofthespirit.dev/#organigramm) · [Benchmarks](https://agenticmarketing.speedofthespirit.dev/#benchmarks) · [Presentation](https://agenticmarketing.speedofthespirit.dev/#praesentation) · [App](https://app.agenticmarketing.speedofthespirit.dev) · [Operating manual](Dokumentation/OPERATING_MANUAL.md) · [Downloads](https://github.com/DanielHuette/agentic-marketing/releases/latest)
 
-[Deutsche Fassung](README.de.md) · [Project page](https://agenticmarketing.speedofthespirit.dev/#projekt) · [How it works](https://agenticmarketing.speedofthespirit.dev/#organigramm) · [Benchmarks](https://agenticmarketing.speedofthespirit.dev/#benchmarks) · [Presentation](https://agenticmarketing.speedofthespirit.dev/#praesentation) · [App](https://app.agenticmarketing.speedofthespirit.dev) · [Operating manual](Dokumentation/OPERATING_MANUAL.md)
-
-Status: 16 test cases against pages of the Federal Statistical Office.
-
-A marketing workspace for one research session that works by eight skills, and the
-step such a session lacks: research only enters the workspace after a deterministic figure
-check has looked up its figures in their sources, one model judge over the Anthropic interface
-has weighed what stayed open, and a person has decided what stays. A Supabase trigger reports
-each post awaiting approval and each published post to the RepoCity Cockpit. The checked findings become posts that a
+A marketing workspace for agent teams, and the step that is missing from every one of
+them: research only enters the workspace after its figures have been checked against
+their sources and a person has decided what stays. The checked findings become posts that a
 person approves in an app, plans on a calendar for every channel, and posts by hand when the
 RepoCity Cockpit reports them due.
 
 ## The problem
 
-A research session studying a market produces a lot of text. The seminar version of this
+An agent team researching a market produces a lot of text. The seminar version of this
 ends there: the output is read, admired, and pasted somewhere. Two things go wrong.
 
 A figure nobody checked reads exactly like a figure somebody checked. Models produce

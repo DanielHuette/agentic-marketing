@@ -22,7 +22,7 @@ export function Campaigns() {
         <p class="kicker">Übersicht</p>
         <h1>Kampagnen</h1>
         <p class="muted">
-          Hier entscheidest du. Die Recherche läuft nach acht Skills, jede Zahl ist gegen ihre Quelle geprüft. Raus geht nur, was du freigibst.
+          Hier entscheidest du. Die Agenten recherchieren und schreiben, jede Zahl ist gegen ihre Quelle geprüft. Raus geht nur, was du freigibst.
         </p>
       </section>
       {campaigns.loading && <Loading />}

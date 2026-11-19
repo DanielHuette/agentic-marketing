@@ -1,6 +1,6 @@
 """Reading a research run folder into findings.
 
-Context: A research session leaves behind one Markdown file per finding plus the prose it
+Context: An agent team leaves behind one Markdown file per finding plus the prose it
 worked from. This module is the only place that knows that shape. Nothing is guessed: a
 statement without a source is an error, not a finding with a blank source. | Input: a run
 folder. | Output: a RunManifest.

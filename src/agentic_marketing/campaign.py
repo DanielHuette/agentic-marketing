@@ -25,7 +25,6 @@ from agentic_marketing.errors import CampaignError, RunError
 from agentic_marketing.models import Decision, Finding, Verification
 from agentic_marketing.runs import read_run
 from agentic_marketing.text import figure_variants, numbers_in, slugify
-from agentic_marketing.tracking import mark_links, markers_for
 
 logger = logging.getLogger(__name__)
 
@@ -313,7 +312,7 @@ def push_campaign(
             "slug": post.slug,
             "title": post.title,
             "summary": post.summary,
-            "body_md": mark_links(post.body, markers_for(post.channel, spec.slug, post.slug)),
+            "body_md": post.body,
             "day_offset": post.day_offset,
             "status": "review",
             "unbacked_figures": missing,
